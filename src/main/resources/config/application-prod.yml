@@ -27,9 +27,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/CPSJ?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
+        url: jdbc:mysql://db4free.net:3306/app_cpsj?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: rootdb4
+        password: 1q2w3e4r
         hikari:
             data-source-properties:
                 cachePrepStmts: true
