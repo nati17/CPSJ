@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "antecedentesFamiliares" : {
+            "home": {
+                "title": "Antecedentes Familiares",
+                "createLabel": "Create a new Antecedentes Familiares",
+                "createOrEditLabel": "Create or edit a Antecedentes Familiares"
+            },
+            "created": "A new Antecedentes Familiares is created with identifier {{ param }}",
+            "updated": "A Antecedentes Familiares is updated with identifier {{ param }}",
+            "deleted": "A Antecedentes Familiares is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Antecedentes Familiares {{ id }}?"
+            },
+            "detail": {
+                "title": "Antecedentes Familiares"
+            },
+            "vivoAF": "Vivo AF",
+            "causaMuerteAF": "Causa Muerte AF"
+        }
+    }
+}

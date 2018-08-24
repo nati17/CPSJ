@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="antecedentesPersonales">
+            <h2><span jhiTranslate="cpsjApp.antecedentesPersonales.detail.title">Antecedentes Personales</span> {{antecedentesPersonales.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.enfermedad">Enfermedad</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.EnfermedadesEnum.' + antecedentesPersonales.enfermedad}}">{{antecedentesPersonales.enfermedad}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.alergia">Alergia</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.AlergiasEnum.' + antecedentesPersonales.alergia}}">{{antecedentesPersonales.alergia}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.intolerancia">Intolerancia</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.IntoleranciasEnum.' + antecedentesPersonales.intolerancia}}">{{antecedentesPersonales.intolerancia}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.regimen">Regimen</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.RegimenesEnum.' + antecedentesPersonales.regimen}}">{{antecedentesPersonales.regimen}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.bebida">Bebida</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.BebidasEnum.' + antecedentesPersonales.bebida}}">{{antecedentesPersonales.bebida}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.ejercicio">Ejercicio</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'cpsjApp.EjerciciosEnum.' + antecedentesPersonales.ejercicio}}">{{antecedentesPersonales.ejercicio}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.tabaco">Tabaco</span></dt>
+                <dd>
+                    <span>{{antecedentesPersonales.tabaco}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.tecafe">Tecafe</span></dt>
+                <dd>
+                    <span>{{antecedentesPersonales.tecafe}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/antecedentes-personales', antecedentesPersonales.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+
+{
+    "cpsjApp": {
+        "antecedentesPersonales" : {
+            "home": {
+                "title": "Antecedentes Personales",
+                "createLabel": "Create a new Antecedentes Personales",
+                "createOrEditLabel": "Create or edit a Antecedentes Personales"
+            },
+            "created": "A new Antecedentes Personales is created with identifier {{ param }}",
+            "updated": "A Antecedentes Personales is updated with identifier {{ param }}",
+            "deleted": "A Antecedentes Personales is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Antecedentes Personales {{ id }}?"
+            },
+            "detail": {
+                "title": "Antecedentes Personales"
+            },
+            "enfermedad": "Enfermedad",
+            "alergia": "Alergia",
+            "intolerancia": "Intolerancia",
+            "regimen": "Regimen",
+            "bebida": "Bebida",
+            "ejercicio": "Ejercicio",
+            "tabaco": "Tabaco",
+            "tecafe": "Tecafe"
+        }
+    }
+}

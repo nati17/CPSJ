@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-obra-social-heading" jhiTranslate="cpsjApp.obraSocial.home.createOrEditLabel">Create or edit a Obra Social</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!obraSocial.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="obraSocial.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.codigoObraSocial" for="field_codigoObraSocial">Codigo Obra Social</label>
+                    <input type="text" class="form-control" name="codigoObraSocial" id="field_codigoObraSocial"
+                        [(ngModel)]="obraSocial.codigoObraSocial" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.nombreObraSocial" for="field_nombreObraSocial">Nombre Obra Social</label>
+                    <input type="text" class="form-control" name="nombreObraSocial" id="field_nombreObraSocial"
+                        [(ngModel)]="obraSocial.nombreObraSocial" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

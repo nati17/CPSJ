@@ -1,0 +1,13 @@
+{
+    "cpsjApp": {
+        "RegimenesEnum" : {
+            "null": "",
+            "NO": "NO",
+            "HIPOGLUCIDOS": "HIPOGLUCIDOS",
+            "HIPOLIPIDOS": "HIPOLIPIDOS",
+            "HIPOSODICOS": "HIPOSODICOS",
+            "HIPERGLUCIDOS": "HIPERGLUCIDOS",
+            "HIPERLIPIDOS": "HIPERLIPIDOS"
+        }
+    }
+}

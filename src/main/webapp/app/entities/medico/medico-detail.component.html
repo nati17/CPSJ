@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medico">
+            <h2><span jhiTranslate="cpsjApp.medico.detail.title">Medico</span> {{medico.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.medico.codigoMedico">Codigo Medico</span></dt>
+                <dd>
+                    <span>{{medico.codigoMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.nombreMedico">Nombre Medico</span></dt>
+                <dd>
+                    <span>{{medico.nombreMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.direccionMedico">Direccion Medico</span></dt>
+                <dd>
+                    <span>{{medico.direccionMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.telefonoMedico">Telefono Medico</span></dt>
+                <dd>
+                    <span>{{medico.telefonoMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.emailMedico">Email Medico</span></dt>
+                <dd>
+                    <span>{{medico.emailMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.obrasocial">Obrasocial</span></dt>
+                <dd>
+                    <span *ngFor="let obrasocial of medico.obrasocials; let last = last">
+                        <a [routerLink]="['/obra-social', obrasocial?.id, 'view' ]">{{obrasocial.medicoObraSocial}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.especialidad">Especialidad</span></dt>
+                <dd>
+                    <span *ngFor="let especialidad of medico.especialidads; let last = last">
+                        <a [routerLink]="['/especialidad', especialidad?.id, 'view' ]">{{especialidad.codigoEspecialidad}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medico', medico.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

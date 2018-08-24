@@ -5,6 +5,32 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201048_added_entity_CodigoPostal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201049_added_entity_Provincia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201050_added_entity_ObraSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201051_added_entity_Medico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201052_added_entity_Especialidad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201053_added_entity_Paciente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201054_added_entity_Enfermedad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201055_added_entity_Alergia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201056_added_entity_Intolerancia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201057_added_entity_Regimen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201058_added_entity_Bebida.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201059_added_entity_Ejercicio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201100_added_entity_AntecedentesPersonales.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201101_added_entity_AntecedentesFamiliares.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201102_added_entity_Consulta.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201103_added_entity_Ficha.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180824201048_added_entity_constraints_CodigoPostal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201051_added_entity_constraints_Medico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201053_added_entity_constraints_Paciente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201054_added_entity_constraints_Enfermedad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201055_added_entity_constraints_Alergia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201056_added_entity_constraints_Intolerancia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201057_added_entity_constraints_Regimen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201058_added_entity_constraints_Bebida.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201059_added_entity_constraints_Ejercicio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201103_added_entity_constraints_Ficha.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

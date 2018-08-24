@@ -1,0 +1,14 @@
+{
+    "cpsjApp": {
+        "EnfermedadesEnum" : {
+            "null": "",
+            "ASMA": "ASMA",
+            "DIABETES": "DIABETES",
+            "HIPERTENSION": "HIPERTENSION",
+            "OBESIDAD": "OBESIDAD",
+            "INSUFCARDIACA": "INSUFCARDIACA",
+            "INSUFRENAL": "INSUFRENAL",
+            "OTROS": "OTROS"
+        }
+    }
+}

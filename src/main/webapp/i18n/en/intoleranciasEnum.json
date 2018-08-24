@@ -1,0 +1,10 @@
+{
+    "cpsjApp": {
+        "IntoleranciasEnum" : {
+            "null": "",
+            "GLUTEN": "GLUTEN",
+            "LACTOSA": "LACTOSA",
+            "OTROS": "OTROS"
+        }
+    }
+}

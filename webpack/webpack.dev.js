@@ -48,48 +48,49 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
     },
     module: {
         rules: [{
-            test: /\.ts$/,
-            enforce: 'pre',
-            loaders: 'tslint-loader',
-            exclude: ['node_modules', new RegExp('reflect-metadata\\' + path.sep + 'Reflect\\.ts')]
-        },
-        {
-            test: /\.ts$/,
-            use: [
-                { loader: 'angular2-template-loader' },
-                {
-                    loader: 'cache-loader',
-                    options: {
-                      cacheDirectory: path.resolve('target/cache-loader')
-                    }
-                },
-                {
-                    loader: 'thread-loader',
-                    options: {
-                        // there should be 1 cpu for the fork-ts-checker-webpack-plugin
-                        workers: require('os').cpus().length - 1
-                    }
-                },
-                {
-                    loader: 'ts-loader',
-                    options: {
-                        transpileOnly: true,
-                        happyPackMode: true
-                    }
-                },
-                { loader: 'angular-router-loader' }
-            ],
-            exclude: ['node_modules']
-        },
-        {
-            test: /\.css$/,
-            loaders: ['to-string-loader', 'css-loader'],
-            exclude: /(vendor\.css|global\.css)/
-        },
-        {
-            test: /(vendor\.css|global\.css)/,
-            loaders: ['style-loader', 'css-loader']
-        }]
+                test: /\.ts$/,
+                enforce: 'pre',
+                loaders: 'tslint-loader',
+                exclude: ['node_modules', new RegExp('reflect-metadata\\' + path.sep + 'Reflect\\.ts')]
+            },
+            {
+                test: /\.ts$/,
+                use: [
+                    { loader: 'angular2-template-loader' },
+                    {
+                        loader: 'cache-loader',
+                        options: {
+                            cacheDirectory: path.resolve('target/cache-loader')
+                        }
+                    },
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+                            workers: require('os').cpus().length - 1
+                        }
+                    },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            happyPackMode: true
+                        }
+                    },
+                    { loader: 'angular-router-loader' }
+                ],
+                exclude: ['node_modules']
+            },
+            {
+                test: /\.css$/,
+                loaders: ['to-string-loader', 'css-loader'],
+                exclude: /(vendor\.css|global\.css)/
+            },
+            {
+                test: /(vendor\.css|global\.css)/,
+                loaders: ['style-loader', 'css-loader']
+            }
+        ]
     },
     stats: options.stats,
     plugins: [

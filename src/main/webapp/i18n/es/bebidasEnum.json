@@ -1,0 +1,10 @@
+{
+    "cpsjApp": {
+        "BebidasEnum" : {
+            "null": "",
+            "NO": "NO",
+            "SISIEMPRE": "SISIEMPRE",
+            "SIAVECES": "SIAVECES"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "name": "Paciente",
+    "fields": [
+        {
+            "fieldName": "nombrePaciente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apellidoPaciente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "documentoPaciente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "direccionPaciente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoPaciente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailPaciente",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "pacienteObraSocial",
+            "otherEntityName": "obraSocial",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "paciente"
+        }
+    ],
+    "changelogDate": "20180824201053",
+    "entityTableName": "paciente",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

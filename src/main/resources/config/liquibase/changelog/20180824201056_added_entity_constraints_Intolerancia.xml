@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Intolerancia.
+    -->
+    <changeSet id="20180824201056-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="intolerancias_id"
+                                 baseTableName="intolerancia_values"
+                                 constraintName="fk_intolerancia_values_intolerancias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="intolerancia"/>
+        <addForeignKeyConstraint baseColumnNames="values_id"
+                                 baseTableName="intolerancia_values"
+                                 constraintName="fk_intolerancia_values_values_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="antecedentes_personales"/>
+        
+    </changeSet>
+</databaseChangeLog>

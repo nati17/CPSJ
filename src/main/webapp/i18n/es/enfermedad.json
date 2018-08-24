@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "enfermedad" : {
+            "home": {
+                "title": "Enfermedads",
+                "createLabel": "Crear nuevo Enfermedad",
+                "createOrEditLabel": "Crear o editar Enfermedad"
+            },
+            "created": "Un nuevo Enfermedad ha sido creado con el identificador {{ param }}",
+            "updated": "Un Enfermedad ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Enfermedad ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Enfermedad {{ id }}?"
+            },
+            "detail": {
+                "title": "Enfermedad"
+            },
+            "valor": "Valor",
+            "values": "Values"
+        }
+    }
+}

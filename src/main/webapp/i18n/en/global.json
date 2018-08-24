@@ -7,6 +7,22 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "codigoPostal": "Codigo Postal",
+                "provincia": "Provincia",
+                "obraSocial": "Obra Social",
+                "medico": "Medico",
+                "especialidad": "Especialidad",
+                "paciente": "Paciente",
+                "enfermedad": "Enfermedad",
+                "alergia": "Alergia",
+                "intolerancia": "Intolerancia",
+                "regimen": "Regimen",
+                "bebida": "Bebida",
+                "ejercicio": "Ejercicio",
+                "antecedentesPersonales": "Antecedentes Personales",
+                "antecedentesFamiliares": "Antecedentes Familiares",
+                "consulta": "Consulta",
+                "ficha": "Ficha",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -84,7 +100,7 @@
             "id": "ID"
         },
         "ribbon": {
-            "dev":"Development"
+            "dev": "Development"
         },
         "item-count": "Showing {{first}} - {{second}} of {{total}} items."
     },

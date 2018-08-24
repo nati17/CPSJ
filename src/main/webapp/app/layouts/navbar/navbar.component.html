@@ -3,10 +3,7 @@
         <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
             <fa-icon [icon]="'bars'"></fa-icon>
         </a>
-        <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
-            <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">CPSJ</span> <span class="navbar-version">{{version}}</span>
-        </a>
+
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
@@ -16,6 +13,12 @@
                         <fa-icon [icon]="'home'"></fa-icon>
                         <span jhiTranslate="global.menu.home">Home</span>
                     </span>
+                </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <!-- Cada posición del arreglo es una parte de la ruta-->
+                <a class="nav-link" [routerLink]="[ 'about']">
+                    Acerca de 
                 </a>
             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
@@ -29,6 +32,102 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu>
+                    <li>
+                        <a class="dropdown-item" routerLink="codigo-postal" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.codigoPostal">Codigo Postal</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="provincia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.provincia">Provincia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="obra-social" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.obraSocial">Obra Social</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="medico" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.medico">Medico</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="especialidad" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.especialidad">Especialidad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="paciente" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.paciente">Paciente</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="enfermedad" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.enfermedad">Enfermedad</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="alergia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.alergia">Alergia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="intolerancia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.intolerancia">Intolerancia</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="regimen" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.regimen">Regimen</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="bebida" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.bebida">Bebida</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="ejercicio" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.ejercicio">Ejercicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="antecedentes-personales" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.antecedentesPersonales">Antecedentes Personales</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="antecedentes-familiares" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.antecedentesFamiliares">Antecedentes Familiares</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="consulta" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.consulta">Consulta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="ficha" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon [icon]="'asterisk'" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.ficha">Ficha</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>
@@ -100,13 +199,13 @@
             </li>
             <li ngbDropdown class="nav-item dropdown pointer" placement="bottom-right" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
-                  <span *ngIf="!getImageUrl()">
+                    <span *ngIf="!getImageUrl()">
                     <fa-icon [icon]="'user'"></fa-icon>
                     <span jhiTranslate="global.menu.account.main">
                       Account
                     </span>
-                  </span>
-                  <span *ngIf="getImageUrl()">
+                    </span>
+                    <span *ngIf="getImageUrl()">
                       <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
                   </span>
                 </a>

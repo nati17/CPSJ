@@ -1,0 +1,30 @@
+{
+    "name": "CodigoPostal",
+    "fields": [
+        {
+            "fieldName": "codigo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nombreCiudad",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "provincia",
+            "otherEntityName": "provincia",
+            "otherEntityField": "nombreProvincia"
+        }
+    ],
+    "changelogDate": "20180824201048",
+    "entityTableName": "codigo_postal",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,11 @@
+{
+    "cpsjApp": {
+        "AlergiasEnum" : {
+            "null": "",
+            "SALICILATOS": "SALICILATOS",
+            "PIRAZOLONAS": "PIRAZOLONAS",
+            "PENISILINA": "PENISILINA",
+            "OTROS": "OTROS"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paciente">
+            <h2><span jhiTranslate="cpsjApp.paciente.detail.title">Paciente</span> {{paciente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.paciente.nombrePaciente">Nombre Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.nombrePaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.apellidoPaciente">Apellido Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.apellidoPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.documentoPaciente">Documento Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.documentoPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.direccionPaciente">Direccion Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.direccionPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.telefonoPaciente">Telefono Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.telefonoPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.emailPaciente">Email Paciente</span></dt>
+                <dd>
+                    <span>{{paciente.emailPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.paciente.pacienteObraSocial">Paciente Obra Social</span></dt>
+                <dd>
+                    <div *ngIf="paciente.pacienteObraSocialId">
+                        <a [routerLink]="['/obra-social', paciente.pacienteObraSocialId, 'view']">{{paciente.pacienteObraSocialId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paciente', paciente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

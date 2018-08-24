@@ -1,0 +1,28 @@
+
+{
+    "cpsjApp": {
+        "paciente" : {
+            "home": {
+                "title": "Pacientes",
+                "createLabel": "Create a new Paciente",
+                "createOrEditLabel": "Create or edit a Paciente"
+            },
+            "created": "A new Paciente is created with identifier {{ param }}",
+            "updated": "A Paciente is updated with identifier {{ param }}",
+            "deleted": "A Paciente is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Paciente {{ id }}?"
+            },
+            "detail": {
+                "title": "Paciente"
+            },
+            "nombrePaciente": "Nombre Paciente",
+            "apellidoPaciente": "Apellido Paciente",
+            "documentoPaciente": "Documento Paciente",
+            "direccionPaciente": "Direccion Paciente",
+            "telefonoPaciente": "Telefono Paciente",
+            "emailPaciente": "Email Paciente",
+            "pacienteObraSocial": "Paciente Obra Social"
+        }
+    }
+}

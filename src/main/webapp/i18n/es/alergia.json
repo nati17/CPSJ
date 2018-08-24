@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "alergia" : {
+            "home": {
+                "title": "Alergias",
+                "createLabel": "Crear nuevo Alergia",
+                "createOrEditLabel": "Crear o editar Alergia"
+            },
+            "created": "Un nuevo Alergia ha sido creado con el identificador {{ param }}",
+            "updated": "Un Alergia ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Alergia ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Alergia {{ id }}?"
+            },
+            "detail": {
+                "title": "Alergia"
+            },
+            "valor": "Valor",
+            "values": "Values"
+        }
+    }
+}

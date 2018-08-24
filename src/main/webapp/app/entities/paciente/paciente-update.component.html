@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-paciente-heading" jhiTranslate="cpsjApp.paciente.home.createOrEditLabel">Create or edit a Paciente</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!paciente.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="paciente.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.nombrePaciente" for="field_nombrePaciente">Nombre Paciente</label>
+                    <input type="text" class="form-control" name="nombrePaciente" id="field_nombrePaciente"
+                        [(ngModel)]="paciente.nombrePaciente" required/>
+                    <div [hidden]="!(editForm.controls.nombrePaciente?.dirty && editForm.controls.nombrePaciente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombrePaciente?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.apellidoPaciente" for="field_apellidoPaciente">Apellido Paciente</label>
+                    <input type="text" class="form-control" name="apellidoPaciente" id="field_apellidoPaciente"
+                        [(ngModel)]="paciente.apellidoPaciente" required/>
+                    <div [hidden]="!(editForm.controls.apellidoPaciente?.dirty && editForm.controls.apellidoPaciente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.apellidoPaciente?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.documentoPaciente" for="field_documentoPaciente">Documento Paciente</label>
+                    <input type="text" class="form-control" name="documentoPaciente" id="field_documentoPaciente"
+                        [(ngModel)]="paciente.documentoPaciente" required/>
+                    <div [hidden]="!(editForm.controls.documentoPaciente?.dirty && editForm.controls.documentoPaciente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.documentoPaciente?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.direccionPaciente" for="field_direccionPaciente">Direccion Paciente</label>
+                    <input type="text" class="form-control" name="direccionPaciente" id="field_direccionPaciente"
+                        [(ngModel)]="paciente.direccionPaciente" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.telefonoPaciente" for="field_telefonoPaciente">Telefono Paciente</label>
+                    <input type="text" class="form-control" name="telefonoPaciente" id="field_telefonoPaciente"
+                        [(ngModel)]="paciente.telefonoPaciente" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.emailPaciente" for="field_emailPaciente">Email Paciente</label>
+                    <input type="text" class="form-control" name="emailPaciente" id="field_emailPaciente"
+                        [(ngModel)]="paciente.emailPaciente" required/>
+                    <div [hidden]="!(editForm.controls.emailPaciente?.dirty && editForm.controls.emailPaciente?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.emailPaciente?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.pacienteObraSocial" for="field_pacienteObraSocial">Paciente Obra Social</label>
+                    <select class="form-control" id="field_pacienteObraSocial" name="pacienteObraSocial" [(ngModel)]="paciente.pacienteObraSocialId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="obraSocialOption.id" *ngFor="let obraSocialOption of pacienteobrasocials; trackBy: trackObraSocialById">{{obraSocialOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

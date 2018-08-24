@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "regimen" : {
+            "home": {
+                "title": "Regimen",
+                "createLabel": "Crear nuevo Regimen",
+                "createOrEditLabel": "Crear o editar Regimen"
+            },
+            "created": "Un nuevo Regimen ha sido creado con el identificador {{ param }}",
+            "updated": "Un Regimen ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Regimen ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Regimen {{ id }}?"
+            },
+            "detail": {
+                "title": "Regimen"
+            },
+            "valor": "Valor",
+            "values": "Values"
+        }
+    }
+}

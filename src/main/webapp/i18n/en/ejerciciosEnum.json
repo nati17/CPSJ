@@ -1,0 +1,11 @@
+{
+    "cpsjApp": {
+        "EjerciciosEnum" : {
+            "null": "",
+            "NO": "NO",
+            "UNDIA": "UNDIA",
+            "TRESDIAS": "TRESDIAS",
+            "TODOSLOSDIAS": "TODOSLOSDIAS"
+        }
+    }
+}

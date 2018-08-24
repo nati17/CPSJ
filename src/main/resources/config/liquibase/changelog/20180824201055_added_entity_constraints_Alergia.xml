@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Alergia.
+    -->
+    <changeSet id="20180824201055-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="alergias_id"
+                                 baseTableName="alergia_values"
+                                 constraintName="fk_alergia_values_alergias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="alergia"/>
+        <addForeignKeyConstraint baseColumnNames="values_id"
+                                 baseTableName="alergia_values"
+                                 constraintName="fk_alergia_values_values_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="antecedentes_personales"/>
+        
+    </changeSet>
+</databaseChangeLog>

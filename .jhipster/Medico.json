@@ -1,0 +1,64 @@
+{
+    "name": "Medico",
+    "fields": [
+        {
+            "fieldName": "codigoMedico",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nombreMedico",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "direccionMedico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoMedico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailMedico",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "ficha",
+            "otherEntityName": "ficha",
+            "otherEntityRelationshipName": "medico"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "medico",
+            "relationshipName": "obrasocial",
+            "otherEntityName": "obraSocial",
+            "otherEntityField": "medicoObraSocial",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "medico",
+            "relationshipName": "especialidad",
+            "otherEntityName": "especialidad",
+            "otherEntityField": "codigoEspecialidad",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180824201051",
+    "entityTableName": "medico",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

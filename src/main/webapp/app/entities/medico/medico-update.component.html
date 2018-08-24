@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-medico-heading" jhiTranslate="cpsjApp.medico.home.createOrEditLabel">Create or edit a Medico</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!medico.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="medico.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.medico.codigoMedico" for="field_codigoMedico">Codigo Medico</label>
+                    <input type="text" class="form-control" name="codigoMedico" id="field_codigoMedico"
+                        [(ngModel)]="medico.codigoMedico" required/>
+                    <div [hidden]="!(editForm.controls.codigoMedico?.dirty && editForm.controls.codigoMedico?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.codigoMedico?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.medico.nombreMedico" for="field_nombreMedico">Nombre Medico</label>
+                    <input type="text" class="form-control" name="nombreMedico" id="field_nombreMedico"
+                        [(ngModel)]="medico.nombreMedico" required/>
+                    <div [hidden]="!(editForm.controls.nombreMedico?.dirty && editForm.controls.nombreMedico?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nombreMedico?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.medico.direccionMedico" for="field_direccionMedico">Direccion Medico</label>
+                    <input type="text" class="form-control" name="direccionMedico" id="field_direccionMedico"
+                        [(ngModel)]="medico.direccionMedico" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.medico.telefonoMedico" for="field_telefonoMedico">Telefono Medico</label>
+                    <input type="text" class="form-control" name="telefonoMedico" id="field_telefonoMedico"
+                        [(ngModel)]="medico.telefonoMedico" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.medico.emailMedico" for="field_emailMedico">Email Medico</label>
+                    <input type="text" class="form-control" name="emailMedico" id="field_emailMedico"
+                        [(ngModel)]="medico.emailMedico" />
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="cpsjApp.medico.obrasocial" for="field_obrasocial">Obrasocial</label>
+                    <select class="form-control" id="field_obrasocial" multiple name="obrasocial" [(ngModel)]="medico.obrasocials">
+                        <option [ngValue]="getSelected(medico.obrasocials, obraSocialOption)" *ngFor="let obraSocialOption of obrasocials; trackBy: trackObraSocialById">{{obraSocialOption.medicoObraSocial}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="cpsjApp.medico.especialidad" for="field_especialidad">Especialidad</label>
+                    <select class="form-control" id="field_especialidad" multiple name="especialidad" [(ngModel)]="medico.especialidads">
+                        <option [ngValue]="getSelected(medico.especialidads, especialidadOption)" *ngFor="let especialidadOption of especialidads; trackBy: trackEspecialidadById">{{especialidadOption.codigoEspecialidad}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

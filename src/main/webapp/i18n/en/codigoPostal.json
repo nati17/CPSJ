@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "codigoPostal" : {
+            "home": {
+                "title": "Codigo Postals",
+                "createLabel": "Create a new Codigo Postal",
+                "createOrEditLabel": "Create or edit a Codigo Postal"
+            },
+            "created": "A new Codigo Postal is created with identifier {{ param }}",
+            "updated": "A Codigo Postal is updated with identifier {{ param }}",
+            "deleted": "A Codigo Postal is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Codigo Postal {{ id }}?"
+            },
+            "detail": {
+                "title": "Codigo Postal"
+            },
+            "codigo": "Codigo",
+            "nombreCiudad": "Nombre Ciudad",
+            "provincia": "Provincia"
+        }
+    }
+}

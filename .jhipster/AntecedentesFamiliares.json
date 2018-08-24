@@ -1,0 +1,23 @@
+{
+    "name": "AntecedentesFamiliares",
+    "fields": [
+        {
+            "fieldName": "vivoAF",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "causaMuerteAF",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180824201101",
+    "entityTableName": "antecedentes_familiares",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

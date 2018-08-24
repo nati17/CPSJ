@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "bebida" : {
+            "home": {
+                "title": "Bebidas",
+                "createLabel": "Create a new Bebida",
+                "createOrEditLabel": "Create or edit a Bebida"
+            },
+            "created": "A new Bebida is created with identifier {{ param }}",
+            "updated": "A Bebida is updated with identifier {{ param }}",
+            "deleted": "A Bebida is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bebida {{ id }}?"
+            },
+            "detail": {
+                "title": "Bebida"
+            },
+            "valor": "Valor",
+            "values": "Values"
+        }
+    }
+}

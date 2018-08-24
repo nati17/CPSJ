@@ -1,0 +1,118 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-antecedentes-personales-heading" jhiTranslate="cpsjApp.antecedentesPersonales.home.createOrEditLabel">Create or edit a Antecedentes Personales</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!antecedentesPersonales.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="antecedentesPersonales.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.enfermedad" for="field_enfermedad">Enfermedad</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="enfermedad" [(ngModel)]="antecedentesPersonales.enfermedad" id="field_enfermedad" required>
+                        <option value="ASMA">{{'cpsjApp.EnfermedadesEnum.ASMA' | translate}}</option>
+                        <option value="DIABETES">{{'cpsjApp.EnfermedadesEnum.DIABETES' | translate}}</option>
+                        <option value="HIPERTENSION">{{'cpsjApp.EnfermedadesEnum.HIPERTENSION' | translate}}</option>
+                        <option value="OBESIDAD">{{'cpsjApp.EnfermedadesEnum.OBESIDAD' | translate}}</option>
+                        <option value="INSUFCARDIACA">{{'cpsjApp.EnfermedadesEnum.INSUFCARDIACA' | translate}}</option>
+                        <option value="INSUFRENAL">{{'cpsjApp.EnfermedadesEnum.INSUFRENAL' | translate}}</option>
+                        <option value="OTROS">{{'cpsjApp.EnfermedadesEnum.OTROS' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.enfermedad?.dirty && editForm.controls.enfermedad?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.enfermedad?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.alergia" for="field_alergia">Alergia</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="alergia" [(ngModel)]="antecedentesPersonales.alergia" id="field_alergia" required>
+                        <option value="SALICILATOS">{{'cpsjApp.AlergiasEnum.SALICILATOS' | translate}}</option>
+                        <option value="PIRAZOLONAS">{{'cpsjApp.AlergiasEnum.PIRAZOLONAS' | translate}}</option>
+                        <option value="PENISILINA">{{'cpsjApp.AlergiasEnum.PENISILINA' | translate}}</option>
+                        <option value="OTROS">{{'cpsjApp.AlergiasEnum.OTROS' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.alergia?.dirty && editForm.controls.alergia?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.alergia?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.intolerancia" for="field_intolerancia">Intolerancia</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="intolerancia" [(ngModel)]="antecedentesPersonales.intolerancia" id="field_intolerancia" required>
+                        <option value="GLUTEN">{{'cpsjApp.IntoleranciasEnum.GLUTEN' | translate}}</option>
+                        <option value="LACTOSA">{{'cpsjApp.IntoleranciasEnum.LACTOSA' | translate}}</option>
+                        <option value="OTROS">{{'cpsjApp.IntoleranciasEnum.OTROS' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.intolerancia?.dirty && editForm.controls.intolerancia?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.intolerancia?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.regimen" for="field_regimen">Regimen</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="regimen" [(ngModel)]="antecedentesPersonales.regimen" id="field_regimen" required>
+                        <option value="NO">{{'cpsjApp.RegimenesEnum.NO' | translate}}</option>
+                        <option value="HIPOGLUCIDOS">{{'cpsjApp.RegimenesEnum.HIPOGLUCIDOS' | translate}}</option>
+                        <option value="HIPOLIPIDOS">{{'cpsjApp.RegimenesEnum.HIPOLIPIDOS' | translate}}</option>
+                        <option value="HIPOSODICOS">{{'cpsjApp.RegimenesEnum.HIPOSODICOS' | translate}}</option>
+                        <option value="HIPERGLUCIDOS">{{'cpsjApp.RegimenesEnum.HIPERGLUCIDOS' | translate}}</option>
+                        <option value="HIPERLIPIDOS">{{'cpsjApp.RegimenesEnum.HIPERLIPIDOS' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.regimen?.dirty && editForm.controls.regimen?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.regimen?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.bebida" for="field_bebida">Bebida</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="bebida" [(ngModel)]="antecedentesPersonales.bebida" id="field_bebida" required>
+                        <option value="NO">{{'cpsjApp.BebidasEnum.NO' | translate}}</option>
+                        <option value="SISIEMPRE">{{'cpsjApp.BebidasEnum.SISIEMPRE' | translate}}</option>
+                        <option value="SIAVECES">{{'cpsjApp.BebidasEnum.SIAVECES' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.bebida?.dirty && editForm.controls.bebida?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.bebida?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.ejercicio" for="field_ejercicio">Ejercicio</label>
+                    <select class="selectpicker" multiple data-live-search="true" name="ejercicio" [(ngModel)]="antecedentesPersonales.ejercicio" id="field_ejercicio" required>
+                        <option value="NO">{{'cpsjApp.EjerciciosEnum.NO' | translate}}</option>
+                        <option value="UNDIA">{{'cpsjApp.EjerciciosEnum.UNDIA' | translate}}</option>
+                        <option value="TRESDIAS">{{'cpsjApp.EjerciciosEnum.TRESDIAS' | translate}}</option>
+                        <option value="TODOSLOSDIAS">{{'cpsjApp.EjerciciosEnum.TODOSLOSDIAS' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.ejercicio?.dirty && editForm.controls.ejercicio?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.ejercicio?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.tabaco" for="field_tabaco">Tabaco</label>
+                    <input type="checkbox" class="form-control" name="tabaco" id="field_tabaco" [(ngModel)]="antecedentesPersonales.tabaco" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.antecedentesPersonales.tecafe" for="field_tecafe">Tecafe</label>
+                    <input type="checkbox" class="form-control" name="tecafe" id="field_tecafe" [(ngModel)]="antecedentesPersonales.tecafe" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

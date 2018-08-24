@@ -1,0 +1,71 @@
+{
+    "name": "AntecedentesPersonales",
+    "fields": [
+        {
+            "fieldName": "enfermedad",
+            "fieldType": "EnfermedadesEnum",
+            "fieldValues": "ASMA,DIABETES,HIPERTENSION,OBESIDAD,INSUFCARDIACA,INSUFRENAL,OTROS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "alergia",
+            "fieldType": "AlergiasEnum",
+            "fieldValues": "SALICILATOS,PIRAZOLONAS,PENISILINA,OTROS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "intolerancia",
+            "fieldType": "IntoleranciasEnum",
+            "fieldValues": "GLUTEN,LACTOSA,OTROS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "regimen",
+            "fieldType": "RegimenesEnum",
+            "fieldValues": "NO,HIPOGLUCIDOS,HIPOLIPIDOS,HIPOSODICOS,HIPERGLUCIDOS,HIPERLIPIDOS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "bebida",
+            "fieldType": "BebidasEnum",
+            "fieldValues": "NO,SISIEMPRE,SIAVECES",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ejercicio",
+            "fieldType": "EjerciciosEnum",
+            "fieldValues": "NO,UNDIA,TRESDIAS,TODOSLOSDIAS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tabaco",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tecafe",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180824201100",
+    "entityTableName": "antecedentes_personales",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "ejercicio" : {
+            "home": {
+                "title": "Ejercicios",
+                "createLabel": "Create a new Ejercicio",
+                "createOrEditLabel": "Create or edit a Ejercicio"
+            },
+            "created": "A new Ejercicio is created with identifier {{ param }}",
+            "updated": "A Ejercicio is updated with identifier {{ param }}",
+            "deleted": "A Ejercicio is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ejercicio {{ id }}?"
+            },
+            "detail": {
+                "title": "Ejercicio"
+            },
+            "valor": "Valor",
+            "values": "Values"
+        }
+    }
+}

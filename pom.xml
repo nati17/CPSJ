@@ -48,7 +48,7 @@
         <liquibase.version>3.5.5</liquibase.version>
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <mapstruct.version>1.2.0.Final</mapstruct.version>
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
 
         <!-- Plugin versions -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
@@ -223,12 +223,12 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
-            <version>${mapstruct.version}</version>
+            <version>${org.mapstruct.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.version}</version>
+            <version>${org.mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -316,7 +316,7 @@
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
+                            <version>${org.mapstruct.version}</version>
                         </path>
                         <!-- For JPA static metamodel generation -->
                         <path>
@@ -991,7 +991,7 @@
                 <dependency>
                     <groupId>org.mapstruct</groupId>
                     <artifactId>mapstruct-processor</artifactId>
-                    <version>${mapstruct.version}</version>
+                    <version>${org.mapstruct.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.hibernate</groupId>
