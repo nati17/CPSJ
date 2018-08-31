@@ -6,14 +6,12 @@
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!ficha.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        [(ngModel)]="ficha.id" readonly />
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="ficha.id" readonly />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.ficha.fechaIngreso" for="field_fechaIngreso">Fecha Ingreso</label>
                     <div class="input-group">
-                        <input id="field_fechaIngreso" type="text" class="form-control" name="fechaIngreso" ngbDatepicker  #fechaIngresoDp="ngbDatepicker" [(ngModel)]="ficha.fechaIngreso"
-                        />
+                        <input id="field_fechaIngreso" type="text" class="form-control" name="fechaIngreso" ngbDatepicker #fechaIngresoDp="ngbDatepicker" [(ngModel)]="ficha.fechaIngreso" />
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="fechaIngresoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
@@ -22,14 +20,14 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.ficha.medico" for="field_medico">Medico</label>
-                    <select class="form-control" id="field_medico" name="medico" [(ngModel)]="ficha.medicoId" >
+                    <select class="form-control" id="field_medico" name="medico" [(ngModel)]="ficha.medicoId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="medicoOption.id" *ngFor="let medicoOption of medicos; trackBy: trackMedicoById">{{medicoOption.nombreMedico}}</option>
                     </select>
                 </div>
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
@@ -37,5 +35,23 @@
                 </button>
             </div>
         </form>
+
+        <ngb-tabset>
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Antecedentes Personales</b></ng-template>
+                <ng-template ngbTabContent>
+                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
+                        synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Antecedentes Familiares</b></ng-template>
+                <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                    <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
+                        PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard
+                        ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
     </div>
 </div>

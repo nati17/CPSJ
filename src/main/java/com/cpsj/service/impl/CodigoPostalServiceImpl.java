@@ -86,4 +86,19 @@ public class CodigoPostalServiceImpl implements CodigoPostalService {
         log.debug("Request to delete CodigoPostal : {}", id);
         codigoPostalRepository.deleteById(id);
     }
+
+    /**
+     * Search for the codigoPostal corresponding to the query.
+     *
+     * @param query the query of the search
+     * @param pageable the pagination information
+     * @return the list of entities
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public Page<CodigoPostalDTO> search(String query, Pageable pageable) {
+        log.debug("Request to search for a page of CodigoPostals for query {}", query);
+        return codigoPostalRepository.findByNombreCiudadContaining(query, pageable)
+            .map(codigoPostalMapper::toDto);
+    }
 }

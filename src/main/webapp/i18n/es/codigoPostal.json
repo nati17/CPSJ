@@ -1,23 +1,22 @@
-
 {
     "cpsjApp": {
-        "codigoPostal" : {
+        "codigoPostal": {
             "home": {
-                "title": "Codigo Postals",
-                "createLabel": "Crear nuevo Codigo Postal",
-                "createOrEditLabel": "Crear o editar Codigo Postal"
+                "title": "Código Postal",
+                "createLabel": "Crear Código Postal",
+                "createOrEditLabel": "Crear o editar Código Postal"
             },
-            "created": "Un nuevo Codigo Postal ha sido creado con el identificador {{ param }}",
-            "updated": "Un Codigo Postal ha sido actualizado con el identificador {{ param }}",
-            "deleted": "Un Codigo Postal ha sido eliminado con el identificador {{ param }}",
+            "created": "Un nuevo Código Postal ha sido creado con el identificador {{ param }}",
+            "updated": "Un Código Postal ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Código Postal ha sido eliminado con el identificador {{ param }}",
             "delete": {
-                "question": "¿Seguro que quiere eliminar Codigo Postal {{ id }}?"
+                "question": "¿Seguro que quiere eliminar Código Postal {{ id }}?"
             },
             "detail": {
-                "title": "Codigo Postal"
+                "title": "Código Postal"
             },
-            "codigo": "Codigo",
-            "nombreCiudad": "Nombre Ciudad",
+            "codigo": "Código",
+            "nombreCiudad": "Ciudad",
             "provincia": "Provincia"
         }
     }

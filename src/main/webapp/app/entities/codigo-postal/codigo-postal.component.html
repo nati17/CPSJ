@@ -1,15 +1,19 @@
 <div>
     <h2 id="page-heading">
-        <span>Codigos Postales</span>
+        <span>Códigos Postales</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-codigo-postal" [routerLink]="['/codigo-postal/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="cpsjApp.codigoPostal.home.createLabel">
-            Nuevo Codigo Postal
+            Nuevo Código Postal
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
     <br/>
+    <div class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" [(ngModel)]="currentSearch" placeholder="Buscar" aria-label="Buscar" (keyup.enter)="search(buscarCP.value)" #buscarCP>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="search(buscarCP.value)">Buscar</button>
+    </div>
     <div class="table-responsive" *ngIf="codigoPostals">
         <table class="table table-striped">
             <thead>

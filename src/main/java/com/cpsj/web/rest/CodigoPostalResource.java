@@ -123,4 +123,21 @@ public class CodigoPostalResource {
         codigoPostalService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    /**
+     * SEARCH  /_search/codigo-postals?query=:query : search for the codigoPostal corresponding
+     * to the query.
+     *
+     * @param query the query of the codigoPostal search
+     * @param pageable the pagination information
+     * @return the result of the search
+     */
+    @GetMapping("/_search/codigo-postals")
+    @Timed
+    public ResponseEntity<List<CodigoPostalDTO>> searchCodigoPostals(@RequestParam String query, Pageable pageable) {
+        log.debug("REST request to search for a page of CodigoPostals for query {}", query);
+        Page<CodigoPostalDTO> page = codigoPostalService.search(query, pageable);
+        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/codigo-postals");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

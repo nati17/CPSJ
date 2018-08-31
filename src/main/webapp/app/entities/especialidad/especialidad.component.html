@@ -1,6 +1,6 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="cpsjApp.especialidad.home.title">Especialidads</span>
+        <span jhiTranslate="cpsjApp.especialidad.home.title">Especialidades</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-especialidad" [routerLink]="['/especialidad/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="cpsjApp.especialidad.home.createLabel">
@@ -13,43 +13,41 @@
     <div class="table-responsive" *ngIf="especialidads">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="codigoEspecilidad"><span jhiTranslate="cpsjApp.especialidad.codigoEspecilidad">Codigo Especilidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombreEspecialidad"><span jhiTranslate="cpsjApp.especialidad.nombreEspecialidad">Nombre Especialidad</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
-            </tr>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                    <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="codigoEspecilidad"><span jhiTranslate="cpsjApp.especialidad.codigoEspecilidad">Codigo Especilidad</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th jhiSortBy="nombreEspecialidad"><span jhiTranslate="cpsjApp.especialidad.nombreEspecialidad">Nombre Especialidad</span>
+                        <fa-icon [icon]="'sort'"></fa-icon>
+                    </th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let especialidad of especialidads ;trackBy: trackId">
-                <td><a [routerLink]="['/especialidad', especialidad.id, 'view' ]">{{especialidad.id}}</a></td>
-                <td>{{especialidad.codigoEspecilidad}}</td>
-                <td>{{especialidad.nombreEspecialidad}}</td>
-                <td class="text-right">
-                    <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['/especialidad', especialidad.id, 'view' ]"
-                                class="btn btn-info btn-sm">
+                <tr *ngFor="let especialidad of especialidads ;trackBy: trackId">
+                    <td><a [routerLink]="['/especialidad', especialidad.id, 'view' ]">{{especialidad.id}}</a></td>
+                    <td>{{especialidad.codigoEspecilidad}}</td>
+                    <td>{{especialidad.nombreEspecialidad}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/especialidad', especialidad.id, 'view' ]" class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/especialidad', especialidad.id, 'edit']"
-                                class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/especialidad', especialidad.id, 'edit']" class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'especialidad/'+ especialidad.id + '/delete'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
+                            <button type="submit" [routerLink]="['/', { outlets: { popup: 'especialidad/'+ especialidad.id + '/delete'} }]" replaceUrl="true" queryParamsHandling="merge" class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
-                    </div>
-                </td>
-            </tr>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

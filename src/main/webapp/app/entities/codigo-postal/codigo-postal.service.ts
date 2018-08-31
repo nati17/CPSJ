@@ -12,6 +12,7 @@ type EntityArrayResponseType = HttpResponse<ICodigoPostal[]>;
 @Injectable({ providedIn: 'root' })
 export class CodigoPostalService {
     private resourceUrl = SERVER_API_URL + 'api/codigo-postals';
+    private resourceSearchUrl = SERVER_API_URL + 'api/_search/codigo-postals';
 
     constructor(private http: HttpClient) {}
 
@@ -34,5 +35,10 @@ export class CodigoPostalService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    search(req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http.get<ICodigoPostal[]>(this.resourceSearchUrl, { params: options, observe: 'response' });
     }
 }
