@@ -17,10 +17,11 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nombrePaciente"><span jhiTranslate="cpsjApp.paciente.nombrePaciente">Nombre Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="apellidoPaciente"><span jhiTranslate="cpsjApp.paciente.apellidoPaciente">Apellido Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="documentoPaciente"><span jhiTranslate="cpsjApp.paciente.documentoPaciente">Documento Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="direccionPaciente"><span jhiTranslate="cpsjApp.paciente.direccionPaciente">Direccion Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="telefonoPaciente"><span jhiTranslate="cpsjApp.paciente.telefonoPaciente">Telefono Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="emailPaciente"><span jhiTranslate="cpsjApp.paciente.emailPaciente">Email Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fechaNacPaciente"><span jhiTranslate="cpsjApp.paciente.fechaNacPaciente">Fecha Nac Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="generoPaciente"><span jhiTranslate="cpsjApp.paciente.generoPaciente">Genero Paciente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="pacienteObraSocialId"><span jhiTranslate="cpsjApp.paciente.pacienteObraSocial">Paciente Obra Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -30,10 +31,11 @@
                 <td><a [routerLink]="['/paciente', paciente.id, 'view' ]">{{paciente.id}}</a></td>
                 <td>{{paciente.nombrePaciente}}</td>
                 <td>{{paciente.apellidoPaciente}}</td>
-                <td>{{paciente.documentoPaciente}}</td>
                 <td>{{paciente.direccionPaciente}}</td>
                 <td>{{paciente.telefonoPaciente}}</td>
                 <td>{{paciente.emailPaciente}}</td>
+                <td>{{paciente.fechaNacPaciente | date:'mediumDate'}}</td>
+                <td>{{paciente.generoPaciente}}</td>
                 <td>
                     <div *ngIf="paciente.pacienteObraSocialId">
                         <a [routerLink]="['../obra-social', paciente.pacienteObraSocialId , 'view' ]" >{{paciente.pacienteObraSocialId}}</a>

@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.EjercicioMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class EjercicioServiceImpl implements EjercicioService {
     @Transactional(readOnly = true)
     public List<EjercicioDTO> findAll() {
         log.debug("Request to get all Ejercicios");
-        return ejercicioRepository.findAllWithEagerRelationships().stream()
+        return ejercicioRepository.findAll().stream()
             .map(ejercicioMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Ejercicio with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<EjercicioDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return ejercicioRepository.findAllWithEagerRelationships(pageable).map(ejercicioMapper::toDto);
-    }
-    
 
     /**
      * Get one ejercicio by id.
@@ -83,7 +72,7 @@ public class EjercicioServiceImpl implements EjercicioService {
     @Transactional(readOnly = true)
     public Optional<EjercicioDTO> findOne(Long id) {
         log.debug("Request to get Ejercicio : {}", id);
-        return ejercicioRepository.findOneWithEagerRelationships(id)
+        return ejercicioRepository.findById(id)
             .map(ejercicioMapper::toDto);
     }
 

@@ -10,26 +10,19 @@
                         [(ngModel)]="especialidad.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="cpsjApp.especialidad.codigoEspecilidad" for="field_codigoEspecilidad">Codigo Especilidad</label>
-                    <input type="text" class="form-control" name="codigoEspecilidad" id="field_codigoEspecilidad"
-                        [(ngModel)]="especialidad.codigoEspecilidad" required/>
-                    <div [hidden]="!(editForm.controls.codigoEspecilidad?.dirty && editForm.controls.codigoEspecilidad?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.codigoEspecilidad?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+                    <label class="form-control-label" jhiTranslate="cpsjApp.especialidad.codigoEspecialidad" for="field_codigoEspecialidad">Codigo Especialidad</label>
+                    <input type="text" class="form-control" name="codigoEspecialidad" id="field_codigoEspecialidad"
+                        [(ngModel)]="especialidad.codigoEspecialidad" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.especialidad.nombreEspecialidad" for="field_nombreEspecialidad">Nombre Especialidad</label>
                     <input type="text" class="form-control" name="nombreEspecialidad" id="field_nombreEspecialidad"
-                        [(ngModel)]="especialidad.nombreEspecialidad" required/>
-                    <div [hidden]="!(editForm.controls.nombreEspecialidad?.dirty && editForm.controls.nombreEspecialidad?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.nombreEspecialidad?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+                        [(ngModel)]="especialidad.nombreEspecialidad" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.especialidad.descripcionEspecialidad" for="field_descripcionEspecialidad">Descripcion Especialidad</label>
+                    <input type="text" class="form-control" name="descripcionEspecialidad" id="field_descripcionEspecialidad"
+                        [(ngModel)]="especialidad.descripcionEspecialidad" />
                 </div>
 
             </div>

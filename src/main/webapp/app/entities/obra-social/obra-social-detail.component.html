@@ -9,9 +9,27 @@
                 <dd>
                     <span>{{obraSocial.codigoObraSocial}}</span>
                 </dd>
-                <dt><span jhiTranslate="cpsjApp.obraSocial.nombreObraSocial">Nombre Obra Social</span></dt>
+                <dt><span jhiTranslate="cpsjApp.obraSocial.nombreOSocial">Nombre O Social</span></dt>
                 <dd>
-                    <span>{{obraSocial.nombreObraSocial}}</span>
+                    <span>{{obraSocial.nombreOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.obraSocial.direecionOSocial">Direecion O Social</span></dt>
+                <dd>
+                    <span>{{obraSocial.direecionOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.obraSocial.telefonoOSocial">Telefono O Social</span></dt>
+                <dd>
+                    <span>{{obraSocial.telefonoOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.obraSocial.emailOSocial">Email O Social</span></dt>
+                <dd>
+                    <span>{{obraSocial.emailOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.obraSocial.pacienteObraSocial">Paciente Obra Social</span></dt>
+                <dd>
+                    <div *ngIf="obraSocial.pacienteObraSocialId">
+                        <a [routerLink]="['/paciente-obra-social', obraSocial.pacienteObraSocialId, 'view']">{{obraSocial.pacienteObraSocialId}}</a>
+                    </div>
                 </dd>
             </dl>
 

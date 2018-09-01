@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="observacion">
+            <h2><span jhiTranslate="cpsjApp.observacion.detail.title">Observacion</span> {{observacion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.observacion.idObservacion">Id Observacion</span></dt>
+                <dd>
+                    <span>{{observacion.idObservacion}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.observacion.descripcionObservacion">Descripcion Observacion</span></dt>
+                <dd>
+                    <span>{{observacion.descripcionObservacion}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/observacion', observacion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

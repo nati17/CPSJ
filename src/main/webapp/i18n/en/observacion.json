@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "observacion" : {
+            "home": {
+                "title": "Observacions",
+                "createLabel": "Create a new Observacion",
+                "createOrEditLabel": "Create or edit a Observacion"
+            },
+            "created": "A new Observacion is created with identifier {{ param }}",
+            "updated": "A Observacion is updated with identifier {{ param }}",
+            "deleted": "A Observacion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Observacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Observacion"
+            },
+            "idObservacion": "Id Observacion",
+            "descripcionObservacion": "Descripcion Observacion"
+        }
+    }
+}

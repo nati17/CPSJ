@@ -6,6 +6,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IObraSocial } from 'app/shared/model/obra-social.model';
 import { ObraSocialService } from './obra-social.service';
+import { IPacienteObraSocial } from 'app/shared/model/paciente-obra-social.model';
+import { PacienteObraSocialService } from 'app/entities/paciente-obra-social';
 import { IMedico } from 'app/shared/model/medico.model';
 import { MedicoService } from 'app/entities/medico';
 
@@ -17,11 +19,14 @@ export class ObraSocialUpdateComponent implements OnInit {
     private _obraSocial: IObraSocial;
     isSaving: boolean;
 
+    pacienteobrasocials: IPacienteObraSocial[];
+
     medicos: IMedico[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private obraSocialService: ObraSocialService,
+        private pacienteObraSocialService: PacienteObraSocialService,
         private medicoService: MedicoService,
         private activatedRoute: ActivatedRoute
     ) {}
@@ -31,6 +36,12 @@ export class ObraSocialUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ obraSocial }) => {
             this.obraSocial = obraSocial;
         });
+        this.pacienteObraSocialService.query().subscribe(
+            (res: HttpResponse<IPacienteObraSocial[]>) => {
+                this.pacienteobrasocials = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
         this.medicoService.query().subscribe(
             (res: HttpResponse<IMedico[]>) => {
                 this.medicos = res.body;
@@ -67,6 +78,10 @@ export class ObraSocialUpdateComponent implements OnInit {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackPacienteObraSocialById(index: number, item: IPacienteObraSocial) {
+        return item.id;
     }
 
     trackMedicoById(index: number, item: IMedico) {

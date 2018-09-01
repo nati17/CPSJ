@@ -42,11 +42,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CpsjApp.class)
 public class EspecialidadResourceIntTest {
 
-    private static final String DEFAULT_CODIGO_ESPECILIDAD = "AAAAAAAAAA";
-    private static final String UPDATED_CODIGO_ESPECILIDAD = "BBBBBBBBBB";
+    private static final String DEFAULT_CODIGO_ESPECIALIDAD = "AAAAAAAAAA";
+    private static final String UPDATED_CODIGO_ESPECIALIDAD = "BBBBBBBBBB";
 
     private static final String DEFAULT_NOMBRE_ESPECIALIDAD = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE_ESPECIALIDAD = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DESCRIPCION_ESPECIALIDAD = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPCION_ESPECIALIDAD = "BBBBBBBBBB";
 
     @Autowired
     private EspecialidadRepository especialidadRepository;
@@ -94,8 +97,9 @@ public class EspecialidadResourceIntTest {
      */
     public static Especialidad createEntity(EntityManager em) {
         Especialidad especialidad = new Especialidad()
-            .codigoEspecilidad(DEFAULT_CODIGO_ESPECILIDAD)
-            .nombreEspecialidad(DEFAULT_NOMBRE_ESPECIALIDAD);
+            .codigoEspecialidad(DEFAULT_CODIGO_ESPECIALIDAD)
+            .nombreEspecialidad(DEFAULT_NOMBRE_ESPECIALIDAD)
+            .descripcionEspecialidad(DEFAULT_DESCRIPCION_ESPECIALIDAD);
         return especialidad;
     }
 
@@ -120,8 +124,9 @@ public class EspecialidadResourceIntTest {
         List<Especialidad> especialidadList = especialidadRepository.findAll();
         assertThat(especialidadList).hasSize(databaseSizeBeforeCreate + 1);
         Especialidad testEspecialidad = especialidadList.get(especialidadList.size() - 1);
-        assertThat(testEspecialidad.getCodigoEspecilidad()).isEqualTo(DEFAULT_CODIGO_ESPECILIDAD);
+        assertThat(testEspecialidad.getCodigoEspecialidad()).isEqualTo(DEFAULT_CODIGO_ESPECIALIDAD);
         assertThat(testEspecialidad.getNombreEspecialidad()).isEqualTo(DEFAULT_NOMBRE_ESPECIALIDAD);
+        assertThat(testEspecialidad.getDescripcionEspecialidad()).isEqualTo(DEFAULT_DESCRIPCION_ESPECIALIDAD);
     }
 
     @Test
@@ -146,44 +151,6 @@ public class EspecialidadResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCodigoEspecilidadIsRequired() throws Exception {
-        int databaseSizeBeforeTest = especialidadRepository.findAll().size();
-        // set the field null
-        especialidad.setCodigoEspecilidad(null);
-
-        // Create the Especialidad, which fails.
-        EspecialidadDTO especialidadDTO = especialidadMapper.toDto(especialidad);
-
-        restEspecialidadMockMvc.perform(post("/api/especialidads")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(especialidadDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Especialidad> especialidadList = especialidadRepository.findAll();
-        assertThat(especialidadList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNombreEspecialidadIsRequired() throws Exception {
-        int databaseSizeBeforeTest = especialidadRepository.findAll().size();
-        // set the field null
-        especialidad.setNombreEspecialidad(null);
-
-        // Create the Especialidad, which fails.
-        EspecialidadDTO especialidadDTO = especialidadMapper.toDto(especialidad);
-
-        restEspecialidadMockMvc.perform(post("/api/especialidads")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(especialidadDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Especialidad> especialidadList = especialidadRepository.findAll();
-        assertThat(especialidadList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllEspecialidads() throws Exception {
         // Initialize the database
         especialidadRepository.saveAndFlush(especialidad);
@@ -193,8 +160,9 @@ public class EspecialidadResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(especialidad.getId().intValue())))
-            .andExpect(jsonPath("$.[*].codigoEspecilidad").value(hasItem(DEFAULT_CODIGO_ESPECILIDAD.toString())))
-            .andExpect(jsonPath("$.[*].nombreEspecialidad").value(hasItem(DEFAULT_NOMBRE_ESPECIALIDAD.toString())));
+            .andExpect(jsonPath("$.[*].codigoEspecialidad").value(hasItem(DEFAULT_CODIGO_ESPECIALIDAD.toString())))
+            .andExpect(jsonPath("$.[*].nombreEspecialidad").value(hasItem(DEFAULT_NOMBRE_ESPECIALIDAD.toString())))
+            .andExpect(jsonPath("$.[*].descripcionEspecialidad").value(hasItem(DEFAULT_DESCRIPCION_ESPECIALIDAD.toString())));
     }
     
 
@@ -209,8 +177,9 @@ public class EspecialidadResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(especialidad.getId().intValue()))
-            .andExpect(jsonPath("$.codigoEspecilidad").value(DEFAULT_CODIGO_ESPECILIDAD.toString()))
-            .andExpect(jsonPath("$.nombreEspecialidad").value(DEFAULT_NOMBRE_ESPECIALIDAD.toString()));
+            .andExpect(jsonPath("$.codigoEspecialidad").value(DEFAULT_CODIGO_ESPECIALIDAD.toString()))
+            .andExpect(jsonPath("$.nombreEspecialidad").value(DEFAULT_NOMBRE_ESPECIALIDAD.toString()))
+            .andExpect(jsonPath("$.descripcionEspecialidad").value(DEFAULT_DESCRIPCION_ESPECIALIDAD.toString()));
     }
     @Test
     @Transactional
@@ -233,8 +202,9 @@ public class EspecialidadResourceIntTest {
         // Disconnect from session so that the updates on updatedEspecialidad are not directly saved in db
         em.detach(updatedEspecialidad);
         updatedEspecialidad
-            .codigoEspecilidad(UPDATED_CODIGO_ESPECILIDAD)
-            .nombreEspecialidad(UPDATED_NOMBRE_ESPECIALIDAD);
+            .codigoEspecialidad(UPDATED_CODIGO_ESPECIALIDAD)
+            .nombreEspecialidad(UPDATED_NOMBRE_ESPECIALIDAD)
+            .descripcionEspecialidad(UPDATED_DESCRIPCION_ESPECIALIDAD);
         EspecialidadDTO especialidadDTO = especialidadMapper.toDto(updatedEspecialidad);
 
         restEspecialidadMockMvc.perform(put("/api/especialidads")
@@ -246,8 +216,9 @@ public class EspecialidadResourceIntTest {
         List<Especialidad> especialidadList = especialidadRepository.findAll();
         assertThat(especialidadList).hasSize(databaseSizeBeforeUpdate);
         Especialidad testEspecialidad = especialidadList.get(especialidadList.size() - 1);
-        assertThat(testEspecialidad.getCodigoEspecilidad()).isEqualTo(UPDATED_CODIGO_ESPECILIDAD);
+        assertThat(testEspecialidad.getCodigoEspecialidad()).isEqualTo(UPDATED_CODIGO_ESPECIALIDAD);
         assertThat(testEspecialidad.getNombreEspecialidad()).isEqualTo(UPDATED_NOMBRE_ESPECIALIDAD);
+        assertThat(testEspecialidad.getDescripcionEspecialidad()).isEqualTo(UPDATED_DESCRIPCION_ESPECIALIDAD);
     }
 
     @Test

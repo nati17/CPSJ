@@ -1,0 +1,27 @@
+
+{
+    "cpsjApp": {
+        "pacienteObraSocial" : {
+            "home": {
+                "title": "Paciente Obra Socials",
+                "createLabel": "Create a new Paciente Obra Social",
+                "createOrEditLabel": "Create or edit a Paciente Obra Social"
+            },
+            "created": "A new Paciente Obra Social is created with identifier {{ param }}",
+            "updated": "A Paciente Obra Social is updated with identifier {{ param }}",
+            "deleted": "A Paciente Obra Social is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Paciente Obra Social {{ id }}?"
+            },
+            "detail": {
+                "title": "Paciente Obra Social"
+            },
+            "idPaciente": "Id Paciente",
+            "idOSocial": "Id O Social",
+            "nroAfiliado": "Nro Afiliado",
+            "planAfiliado": "Plan Afiliado",
+            "vigencia": "Vigencia",
+            "estado": "Estado"
+        }
+    }
+}

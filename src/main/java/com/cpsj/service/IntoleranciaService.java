@@ -2,9 +2,6 @@ package com.cpsj.service;
 
 import com.cpsj.service.dto.IntoleranciaDTO;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +25,7 @@ public interface IntoleranciaService {
      */
     List<IntoleranciaDTO> findAll();
 
-    /**
-     * Get all the Intolerancia with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<IntoleranciaDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" intolerancia.
      *

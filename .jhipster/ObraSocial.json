@@ -6,11 +6,29 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "nombreObraSocial",
+            "fieldName": "nombreOSocial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direecionOSocial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoOSocial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailOSocial",
             "fieldType": "String"
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pacienteObraSocial",
+            "otherEntityName": "pacienteObraSocial",
+            "otherEntityField": "id"
+        },
         {
             "relationshipType": "many-to-many",
             "relationshipName": "medico",

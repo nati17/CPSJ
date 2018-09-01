@@ -3,22 +3,14 @@
     "fields": [
         {
             "fieldName": "valor",
-            "fieldType": "String",
+            "fieldType": "EnfermedadesEnum",
+            "fieldValues": "ASMA,DIABETES,HIPERTENSION,OBESIDAD,INSUFCARDIACA,INSUFRENAL,OTROS",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
-            "relationshipName": "values",
-            "otherEntityName": "antecedentesPersonales",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180824201054",
     "entityTableName": "enfermedad",
     "dto": "mapstruct",

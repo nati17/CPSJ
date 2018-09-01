@@ -1,14 +1,9 @@
 package com.cpsj.service.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
-import com.cpsj.domain.enumeration.EnfermedadesEnum;
-import com.cpsj.domain.enumeration.AlergiasEnum;
-import com.cpsj.domain.enumeration.IntoleranciasEnum;
-import com.cpsj.domain.enumeration.RegimenesEnum;
-import com.cpsj.domain.enumeration.BebidasEnum;
-import com.cpsj.domain.enumeration.EjerciciosEnum;
 
 /**
  * A DTO for the AntecedentesPersonales entity.
@@ -17,27 +12,21 @@ public class AntecedentesPersonalesDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
-    private EnfermedadesEnum enfermedad;
-
-    @NotNull
-    private AlergiasEnum alergia;
-
-    @NotNull
-    private IntoleranciasEnum intolerancia;
-
-    @NotNull
-    private RegimenesEnum regimen;
-
-    @NotNull
-    private BebidasEnum bebida;
-
-    @NotNull
-    private EjerciciosEnum ejercicio;
-
     private Boolean tabaco;
 
     private Boolean tecafe;
+
+    private Set<EnfermedadDTO> enfermedades = new HashSet<>();
+
+    private Set<AlergiaDTO> alergias = new HashSet<>();
+
+    private Set<IntoleranciaDTO> intolerancias = new HashSet<>();
+
+    private Set<RegimenDTO> regimenes = new HashSet<>();
+
+    private Set<BebidaDTO> bebidas = new HashSet<>();
+
+    private Set<EjercicioDTO> ejercicios = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -45,54 +34,6 @@ public class AntecedentesPersonalesDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public EnfermedadesEnum getEnfermedad() {
-        return enfermedad;
-    }
-
-    public void setEnfermedad(EnfermedadesEnum enfermedad) {
-        this.enfermedad = enfermedad;
-    }
-
-    public AlergiasEnum getAlergia() {
-        return alergia;
-    }
-
-    public void setAlergia(AlergiasEnum alergia) {
-        this.alergia = alergia;
-    }
-
-    public IntoleranciasEnum getIntolerancia() {
-        return intolerancia;
-    }
-
-    public void setIntolerancia(IntoleranciasEnum intolerancia) {
-        this.intolerancia = intolerancia;
-    }
-
-    public RegimenesEnum getRegimen() {
-        return regimen;
-    }
-
-    public void setRegimen(RegimenesEnum regimen) {
-        this.regimen = regimen;
-    }
-
-    public BebidasEnum getBebida() {
-        return bebida;
-    }
-
-    public void setBebida(BebidasEnum bebida) {
-        this.bebida = bebida;
-    }
-
-    public EjerciciosEnum getEjercicio() {
-        return ejercicio;
-    }
-
-    public void setEjercicio(EjerciciosEnum ejercicio) {
-        this.ejercicio = ejercicio;
     }
 
     public Boolean isTabaco() {
@@ -109,6 +50,54 @@ public class AntecedentesPersonalesDTO implements Serializable {
 
     public void setTecafe(Boolean tecafe) {
         this.tecafe = tecafe;
+    }
+
+    public Set<EnfermedadDTO> getEnfermedades() {
+        return enfermedades;
+    }
+
+    public void setEnfermedades(Set<EnfermedadDTO> enfermedads) {
+        this.enfermedades = enfermedads;
+    }
+
+    public Set<AlergiaDTO> getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(Set<AlergiaDTO> alergias) {
+        this.alergias = alergias;
+    }
+
+    public Set<IntoleranciaDTO> getIntolerancias() {
+        return intolerancias;
+    }
+
+    public void setIntolerancias(Set<IntoleranciaDTO> intolerancias) {
+        this.intolerancias = intolerancias;
+    }
+
+    public Set<RegimenDTO> getRegimenes() {
+        return regimenes;
+    }
+
+    public void setRegimenes(Set<RegimenDTO> regimen) {
+        this.regimenes = regimen;
+    }
+
+    public Set<BebidaDTO> getBebidas() {
+        return bebidas;
+    }
+
+    public void setBebidas(Set<BebidaDTO> bebidas) {
+        this.bebidas = bebidas;
+    }
+
+    public Set<EjercicioDTO> getEjercicios() {
+        return ejercicios;
+    }
+
+    public void setEjercicios(Set<EjercicioDTO> ejercicios) {
+        this.ejercicios = ejercicios;
     }
 
     @Override
@@ -136,12 +125,6 @@ public class AntecedentesPersonalesDTO implements Serializable {
     public String toString() {
         return "AntecedentesPersonalesDTO{" +
             "id=" + getId() +
-            ", enfermedad='" + getEnfermedad() + "'" +
-            ", alergia='" + getAlergia() + "'" +
-            ", intolerancia='" + getIntolerancia() + "'" +
-            ", regimen='" + getRegimen() + "'" +
-            ", bebida='" + getBebida() + "'" +
-            ", ejercicio='" + getEjercicio() + "'" +
             ", tabaco='" + isTabaco() + "'" +
             ", tecafe='" + isTecafe() + "'" +
             "}";

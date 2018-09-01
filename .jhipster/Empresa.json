@@ -1,0 +1,40 @@
+{
+    "name": "Empresa",
+    "fields": [
+        {
+            "fieldName": "nombreEmpresa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direccionEmpresa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoEmpresa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailEmpresa",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "sucursal",
+            "otherEntityName": "sucursal",
+            "otherEntityField": "nombreSucursal",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "empresa"
+        }
+    ],
+    "changelogDate": "20180901223951",
+    "entityTableName": "empresa",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

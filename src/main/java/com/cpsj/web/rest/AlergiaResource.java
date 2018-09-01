@@ -80,12 +80,11 @@ public class AlergiaResource {
     /**
      * GET  /alergias : get all the alergias.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of alergias in body
      */
     @GetMapping("/alergias")
     @Timed
-    public List<AlergiaDTO> getAllAlergias(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<AlergiaDTO> getAllAlergias() {
         log.debug("REST request to get all Alergias");
         return alergiaService.findAll();
     }

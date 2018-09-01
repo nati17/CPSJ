@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medicoCalendario">
+            <h2><span jhiTranslate="cpsjApp.medicoCalendario.detail.title">Medico Calendario</span> {{medicoCalendario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.medicoCalendario.idMedico">Id Medico</span></dt>
+                <dd>
+                    <span>{{medicoCalendario.idMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoCalendario.idCalendario">Id Calendario</span></dt>
+                <dd>
+                    <span>{{medicoCalendario.idCalendario}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoCalendario.estado">Estado</span></dt>
+                <dd>
+                    <span>{{medicoCalendario.estado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medico-calendario', medicoCalendario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

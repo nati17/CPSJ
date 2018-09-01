@@ -17,9 +17,14 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="codigoMedico"><span jhiTranslate="cpsjApp.medico.codigoMedico">Codigo Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nombreMedico"><span jhiTranslate="cpsjApp.medico.nombreMedico">Nombre Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="apellidoMedico"><span jhiTranslate="cpsjApp.medico.apellidoMedico">Apellido Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="direccionMedico"><span jhiTranslate="cpsjApp.medico.direccionMedico">Direccion Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="telefonoMedico"><span jhiTranslate="cpsjApp.medico.telefonoMedico">Telefono Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="emailMedico"><span jhiTranslate="cpsjApp.medico.emailMedico">Email Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="matriculaMedico"><span jhiTranslate="cpsjApp.medico.matriculaMedico">Matricula Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="horarioIMedico"><span jhiTranslate="cpsjApp.medico.horarioIMedico">Horario I Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="horarioEMedico"><span jhiTranslate="cpsjApp.medico.horarioEMedico">Horario E Medico</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="porcentaje"><span jhiTranslate="cpsjApp.medico.porcentaje">Porcentaje</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -28,9 +33,14 @@
                 <td><a [routerLink]="['/medico', medico.id, 'view' ]">{{medico.id}}</a></td>
                 <td>{{medico.codigoMedico}}</td>
                 <td>{{medico.nombreMedico}}</td>
+                <td>{{medico.apellidoMedico}}</td>
                 <td>{{medico.direccionMedico}}</td>
                 <td>{{medico.telefonoMedico}}</td>
                 <td>{{medico.emailMedico}}</td>
+                <td>{{medico.matriculaMedico}}</td>
+                <td>{{medico.horarioIMedico}}</td>
+                <td>{{medico.horarioEMedico}}</td>
+                <td>{{medico.porcentaje}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

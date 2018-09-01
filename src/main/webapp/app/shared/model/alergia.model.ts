@@ -1,11 +1,15 @@
-import { IAntecedentesPersonales } from 'app/shared/model//antecedentes-personales.model';
+export const enum AlergiasEnum {
+    SALICILATOS = 'SALICILATOS',
+    PIRAZOLONAS = 'PIRAZOLONAS',
+    PENISILINA = 'PENISILINA',
+    OTROS = 'OTROS'
+}
 
 export interface IAlergia {
     id?: number;
-    valor?: string;
-    values?: IAntecedentesPersonales[];
+    valor?: AlergiasEnum;
 }
 
 export class Alergia implements IAlergia {
-    constructor(public id?: number, public valor?: string, public values?: IAntecedentesPersonales[]) {}
+    constructor(public id?: number, public valor?: AlergiasEnum) {}
 }

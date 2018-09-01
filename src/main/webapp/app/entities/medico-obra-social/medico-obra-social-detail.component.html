@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medicoObraSocial">
+            <h2><span jhiTranslate="cpsjApp.medicoObraSocial.detail.title">Medico Obra Social</span> {{medicoObraSocial.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.medicoObraSocial.idMedico">Id Medico</span></dt>
+                <dd>
+                    <span>{{medicoObraSocial.idMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoObraSocial.idOSocial">Id O Social</span></dt>
+                <dd>
+                    <span>{{medicoObraSocial.idOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoObraSocial.observaciones">Observaciones</span></dt>
+                <dd>
+                    <span>{{medicoObraSocial.observaciones}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medico-obra-social', medicoObraSocial.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

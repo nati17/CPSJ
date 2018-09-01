@@ -80,12 +80,11 @@ public class EjercicioResource {
     /**
      * GET  /ejercicios : get all the ejercicios.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of ejercicios in body
      */
     @GetMapping("/ejercicios")
     @Timed
-    public List<EjercicioDTO> getAllEjercicios(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<EjercicioDTO> getAllEjercicios() {
         log.debug("REST request to get all Ejercicios");
         return ejercicioService.findAll();
     }

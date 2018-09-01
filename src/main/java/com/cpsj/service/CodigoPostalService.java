@@ -44,7 +44,7 @@ public interface CodigoPostalService {
      */
     void delete(Long id);
 
-    /**
+        /**
      * Search for the codigoPostal corresponding to the query.
      *
      * @param query the query of the search

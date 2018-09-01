@@ -2,9 +2,9 @@ package com.cpsj.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -20,17 +20,11 @@ public class Paciente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "nombre_paciente", nullable = false)
+    @Column(name = "nombre_paciente")
     private String nombrePaciente;
 
-    @NotNull
-    @Column(name = "apellido_paciente", nullable = false)
+    @Column(name = "apellido_paciente")
     private String apellidoPaciente;
-
-    @NotNull
-    @Column(name = "documento_paciente", nullable = false)
-    private String documentoPaciente;
 
     @Column(name = "direccion_paciente")
     private String direccionPaciente;
@@ -38,9 +32,14 @@ public class Paciente implements Serializable {
     @Column(name = "telefono_paciente")
     private String telefonoPaciente;
 
-    @NotNull
-    @Column(name = "email_paciente", nullable = false)
+    @Column(name = "email_paciente")
     private String emailPaciente;
+
+    @Column(name = "fecha_nac_paciente")
+    private LocalDate fechaNacPaciente;
+
+    @Column(name = "genero_paciente")
+    private String generoPaciente;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -81,19 +80,6 @@ public class Paciente implements Serializable {
         this.apellidoPaciente = apellidoPaciente;
     }
 
-    public String getDocumentoPaciente() {
-        return documentoPaciente;
-    }
-
-    public Paciente documentoPaciente(String documentoPaciente) {
-        this.documentoPaciente = documentoPaciente;
-        return this;
-    }
-
-    public void setDocumentoPaciente(String documentoPaciente) {
-        this.documentoPaciente = documentoPaciente;
-    }
-
     public String getDireccionPaciente() {
         return direccionPaciente;
     }
@@ -131,6 +117,32 @@ public class Paciente implements Serializable {
 
     public void setEmailPaciente(String emailPaciente) {
         this.emailPaciente = emailPaciente;
+    }
+
+    public LocalDate getFechaNacPaciente() {
+        return fechaNacPaciente;
+    }
+
+    public Paciente fechaNacPaciente(LocalDate fechaNacPaciente) {
+        this.fechaNacPaciente = fechaNacPaciente;
+        return this;
+    }
+
+    public void setFechaNacPaciente(LocalDate fechaNacPaciente) {
+        this.fechaNacPaciente = fechaNacPaciente;
+    }
+
+    public String getGeneroPaciente() {
+        return generoPaciente;
+    }
+
+    public Paciente generoPaciente(String generoPaciente) {
+        this.generoPaciente = generoPaciente;
+        return this;
+    }
+
+    public void setGeneroPaciente(String generoPaciente) {
+        this.generoPaciente = generoPaciente;
     }
 
     public ObraSocial getPacienteObraSocial() {
@@ -173,10 +185,11 @@ public class Paciente implements Serializable {
             "id=" + getId() +
             ", nombrePaciente='" + getNombrePaciente() + "'" +
             ", apellidoPaciente='" + getApellidoPaciente() + "'" +
-            ", documentoPaciente='" + getDocumentoPaciente() + "'" +
             ", direccionPaciente='" + getDireccionPaciente() + "'" +
             ", telefonoPaciente='" + getTelefonoPaciente() + "'" +
             ", emailPaciente='" + getEmailPaciente() + "'" +
+            ", fechaNacPaciente='" + getFechaNacPaciente() + "'" +
+            ", generoPaciente='" + getGeneroPaciente() + "'" +
             "}";
     }
 }

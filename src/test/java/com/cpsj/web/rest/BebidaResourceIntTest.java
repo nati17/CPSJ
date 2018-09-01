@@ -12,12 +12,9 @@ import com.cpsj.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -27,17 +24,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 
 import static com.cpsj.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.cpsj.domain.enumeration.BebidasEnum;
 /**
  * Test class for the BebidaResource REST controller.
  *
@@ -47,19 +43,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CpsjApp.class)
 public class BebidaResourceIntTest {
 
-    private static final String DEFAULT_VALOR = "AAAAAAAAAA";
-    private static final String UPDATED_VALOR = "BBBBBBBBBB";
+    private static final BebidasEnum DEFAULT_VALOR = BebidasEnum.NO;
+    private static final BebidasEnum UPDATED_VALOR = BebidasEnum.SISIEMPRE;
 
     @Autowired
     private BebidaRepository bebidaRepository;
-    @Mock
-    private BebidaRepository bebidaRepositoryMock;
+
 
     @Autowired
     private BebidaMapper bebidaMapper;
     
-    @Mock
-    private BebidaService bebidaServiceMock;
 
     @Autowired
     private BebidaService bebidaService;
@@ -180,36 +173,6 @@ public class BebidaResourceIntTest {
             .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.toString())));
     }
     
-    public void getAllBebidasWithEagerRelationshipsIsEnabled() throws Exception {
-        BebidaResource bebidaResource = new BebidaResource(bebidaServiceMock);
-        when(bebidaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restBebidaMockMvc = MockMvcBuilders.standaloneSetup(bebidaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restBebidaMockMvc.perform(get("/api/bebidas?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(bebidaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    public void getAllBebidasWithEagerRelationshipsIsNotEnabled() throws Exception {
-        BebidaResource bebidaResource = new BebidaResource(bebidaServiceMock);
-            when(bebidaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restBebidaMockMvc = MockMvcBuilders.standaloneSetup(bebidaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restBebidaMockMvc.perform(get("/api/bebidas?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(bebidaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
 
     @Test
     @Transactional

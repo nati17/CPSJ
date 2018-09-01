@@ -1,0 +1,27 @@
+
+{
+    "cpsjApp": {
+        "personal" : {
+            "home": {
+                "title": "Personals",
+                "createLabel": "Crear nuevo Personal",
+                "createOrEditLabel": "Crear o editar Personal"
+            },
+            "created": "Un nuevo Personal ha sido creado con el identificador {{ param }}",
+            "updated": "Un Personal ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Personal ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Personal {{ id }}?"
+            },
+            "detail": {
+                "title": "Personal"
+            },
+            "nombrePersonal": "Nombre Personal",
+            "apellidoPersonal": "Apellido Personal",
+            "direccionPersonal": "Direccion Personal",
+            "telefonoPersonal": "Telefono Personal",
+            "emailPersonal": "Email Personal",
+            "cargoPersonal": "Cargo Personal"
+        }
+    }
+}

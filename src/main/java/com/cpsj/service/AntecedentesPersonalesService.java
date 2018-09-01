@@ -2,6 +2,9 @@ package com.cpsj.service;
 
 import com.cpsj.service.dto.AntecedentesPersonalesDTO;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +28,13 @@ public interface AntecedentesPersonalesService {
      */
     List<AntecedentesPersonalesDTO> findAll();
 
-
+    /**
+     * Get all the AntecedentesPersonales with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    Page<AntecedentesPersonalesDTO> findAllWithEagerRelationships(Pageable pageable);
+    
     /**
      * Get the "id" antecedentesPersonales.
      *

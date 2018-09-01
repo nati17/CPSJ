@@ -2,18 +2,16 @@
     "name": "Especialidad",
     "fields": [
         {
-            "fieldName": "codigoEspecilidad",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldName": "codigoEspecialidad",
+            "fieldType": "String"
         },
         {
             "fieldName": "nombreEspecialidad",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcionEspecialidad",
+            "fieldType": "String"
         }
     ],
     "relationships": [

@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "medicoEspecialidadDiagnostico" : {
+            "home": {
+                "title": "Medico Especialidad Diagnosticos",
+                "createLabel": "Crear nuevo Medico Especialidad Diagnostico",
+                "createOrEditLabel": "Crear o editar Medico Especialidad Diagnostico"
+            },
+            "created": "Un nuevo Medico Especialidad Diagnostico ha sido creado con el identificador {{ param }}",
+            "updated": "Un Medico Especialidad Diagnostico ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Medico Especialidad Diagnostico ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Medico Especialidad Diagnostico {{ id }}?"
+            },
+            "detail": {
+                "title": "Medico Especialidad Diagnostico"
+            },
+            "idMedico": "Id Medico",
+            "idEspecialidad": "Id Especialidad",
+            "idDiagnostico": "Id Diagnostico"
+        }
+    }
+}

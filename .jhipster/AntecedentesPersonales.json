@@ -2,54 +2,6 @@
     "name": "AntecedentesPersonales",
     "fields": [
         {
-            "fieldName": "enfermedad",
-            "fieldType": "EnfermedadesEnum",
-            "fieldValues": "ASMA,DIABETES,HIPERTENSION,OBESIDAD,INSUFCARDIACA,INSUFRENAL,OTROS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "alergia",
-            "fieldType": "AlergiasEnum",
-            "fieldValues": "SALICILATOS,PIRAZOLONAS,PENISILINA,OTROS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "intolerancia",
-            "fieldType": "IntoleranciasEnum",
-            "fieldValues": "GLUTEN,LACTOSA,OTROS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "regimen",
-            "fieldType": "RegimenesEnum",
-            "fieldValues": "NO,HIPOGLUCIDOS,HIPOLIPIDOS,HIPOSODICOS,HIPERGLUCIDOS,HIPERLIPIDOS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "bebida",
-            "fieldType": "BebidasEnum",
-            "fieldValues": "NO,SISIEMPRE,SIAVECES",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "ejercicio",
-            "fieldType": "EjerciciosEnum",
-            "fieldValues": "NO,UNDIA,TRESDIAS,TODOSLOSDIAS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "tabaco",
             "fieldType": "Boolean"
         },
@@ -58,7 +10,56 @@
             "fieldType": "Boolean"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "enfermedades",
+            "otherEntityName": "enfermedad",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "alergias",
+            "otherEntityName": "alergia",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "intolerancias",
+            "otherEntityName": "intolerancia",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "regimenes",
+            "otherEntityName": "regimen",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "bebidas",
+            "otherEntityName": "bebida",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "ejercicios",
+            "otherEntityName": "ejercicio",
+            "otherEntityField": "valor",
+            "ownerSide": true
+        }
+    ],
     "changelogDate": "20180824201100",
     "entityTableName": "antecedentes_personales",
     "dto": "mapstruct",

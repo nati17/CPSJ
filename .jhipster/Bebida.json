@@ -3,22 +3,14 @@
     "fields": [
         {
             "fieldName": "valor",
-            "fieldType": "String",
+            "fieldType": "BebidasEnum",
+            "fieldValues": "NO,SISIEMPRE,SIAVECES",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
-            "relationshipName": "values",
-            "otherEntityName": "antecedentesPersonales",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180824201058",
     "entityTableName": "bebida",
     "dto": "mapstruct",

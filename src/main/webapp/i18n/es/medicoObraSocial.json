@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "medicoObraSocial" : {
+            "home": {
+                "title": "Medico Obra Socials",
+                "createLabel": "Crear nuevo Medico Obra Social",
+                "createOrEditLabel": "Crear o editar Medico Obra Social"
+            },
+            "created": "Un nuevo Medico Obra Social ha sido creado con el identificador {{ param }}",
+            "updated": "Un Medico Obra Social ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Medico Obra Social ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Medico Obra Social {{ id }}?"
+            },
+            "detail": {
+                "title": "Medico Obra Social"
+            },
+            "idMedico": "Id Medico",
+            "idOSocial": "Id O Social",
+            "observaciones": "Observaciones"
+        }
+    }
+}

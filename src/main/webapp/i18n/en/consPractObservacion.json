@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "consPractObservacion" : {
+            "home": {
+                "title": "Cons Pract Observacions",
+                "createLabel": "Create a new Cons Pract Observacion",
+                "createOrEditLabel": "Create or edit a Cons Pract Observacion"
+            },
+            "created": "A new Cons Pract Observacion is created with identifier {{ param }}",
+            "updated": "A Cons Pract Observacion is updated with identifier {{ param }}",
+            "deleted": "A Cons Pract Observacion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cons Pract Observacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Cons Pract Observacion"
+            },
+            "idConsPract": "Id Cons Pract",
+            "idObservacion": "Id Observacion"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+
+{
+    "cpsjApp": {
+        "consultaPractica" : {
+            "home": {
+                "title": "Consulta Practicas",
+                "createLabel": "Create a new Consulta Practica",
+                "createOrEditLabel": "Create or edit a Consulta Practica"
+            },
+            "created": "A new Consulta Practica is created with identifier {{ param }}",
+            "updated": "A Consulta Practica is updated with identifier {{ param }}",
+            "deleted": "A Consulta Practica is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Consulta Practica {{ id }}?"
+            },
+            "detail": {
+                "title": "Consulta Practica"
+            },
+            "attribute": "Attribute"
+        }
+    }
+}

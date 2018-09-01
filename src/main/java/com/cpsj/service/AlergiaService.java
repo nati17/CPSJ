@@ -2,9 +2,6 @@ package com.cpsj.service;
 
 import com.cpsj.service.dto.AlergiaDTO;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +25,7 @@ public interface AlergiaService {
      */
     List<AlergiaDTO> findAll();
 
-    /**
-     * Get all the Alergia with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<AlergiaDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" alergia.
      *

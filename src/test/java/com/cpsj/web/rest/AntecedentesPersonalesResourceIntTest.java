@@ -12,9 +12,12 @@ import com.cpsj.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -24,21 +27,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 
 import static com.cpsj.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.cpsj.domain.enumeration.EnfermedadesEnum;
-import com.cpsj.domain.enumeration.AlergiasEnum;
-import com.cpsj.domain.enumeration.IntoleranciasEnum;
-import com.cpsj.domain.enumeration.RegimenesEnum;
-import com.cpsj.domain.enumeration.BebidasEnum;
-import com.cpsj.domain.enumeration.EjerciciosEnum;
 /**
  * Test class for the AntecedentesPersonalesResource REST controller.
  *
@@ -48,24 +47,6 @@ import com.cpsj.domain.enumeration.EjerciciosEnum;
 @SpringBootTest(classes = CpsjApp.class)
 public class AntecedentesPersonalesResourceIntTest {
 
-    private static final EnfermedadesEnum DEFAULT_ENFERMEDAD = EnfermedadesEnum.ASMA;
-    private static final EnfermedadesEnum UPDATED_ENFERMEDAD = EnfermedadesEnum.DIABETES;
-
-    private static final AlergiasEnum DEFAULT_ALERGIA = AlergiasEnum.SALICILATOS;
-    private static final AlergiasEnum UPDATED_ALERGIA = AlergiasEnum.PIRAZOLONAS;
-
-    private static final IntoleranciasEnum DEFAULT_INTOLERANCIA = IntoleranciasEnum.GLUTEN;
-    private static final IntoleranciasEnum UPDATED_INTOLERANCIA = IntoleranciasEnum.LACTOSA;
-
-    private static final RegimenesEnum DEFAULT_REGIMEN = RegimenesEnum.NO;
-    private static final RegimenesEnum UPDATED_REGIMEN = RegimenesEnum.HIPOGLUCIDOS;
-
-    private static final BebidasEnum DEFAULT_BEBIDA = BebidasEnum.NO;
-    private static final BebidasEnum UPDATED_BEBIDA = BebidasEnum.SISIEMPRE;
-
-    private static final EjerciciosEnum DEFAULT_EJERCICIO = EjerciciosEnum.NO;
-    private static final EjerciciosEnum UPDATED_EJERCICIO = EjerciciosEnum.UNDIA;
-
     private static final Boolean DEFAULT_TABACO = false;
     private static final Boolean UPDATED_TABACO = true;
 
@@ -74,11 +55,14 @@ public class AntecedentesPersonalesResourceIntTest {
 
     @Autowired
     private AntecedentesPersonalesRepository antecedentesPersonalesRepository;
-
+    @Mock
+    private AntecedentesPersonalesRepository antecedentesPersonalesRepositoryMock;
 
     @Autowired
     private AntecedentesPersonalesMapper antecedentesPersonalesMapper;
     
+    @Mock
+    private AntecedentesPersonalesService antecedentesPersonalesServiceMock;
 
     @Autowired
     private AntecedentesPersonalesService antecedentesPersonalesService;
@@ -118,12 +102,6 @@ public class AntecedentesPersonalesResourceIntTest {
      */
     public static AntecedentesPersonales createEntity(EntityManager em) {
         AntecedentesPersonales antecedentesPersonales = new AntecedentesPersonales()
-            .enfermedad(DEFAULT_ENFERMEDAD)
-            .alergia(DEFAULT_ALERGIA)
-            .intolerancia(DEFAULT_INTOLERANCIA)
-            .regimen(DEFAULT_REGIMEN)
-            .bebida(DEFAULT_BEBIDA)
-            .ejercicio(DEFAULT_EJERCICIO)
             .tabaco(DEFAULT_TABACO)
             .tecafe(DEFAULT_TECAFE);
         return antecedentesPersonales;
@@ -150,12 +128,6 @@ public class AntecedentesPersonalesResourceIntTest {
         List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
         assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeCreate + 1);
         AntecedentesPersonales testAntecedentesPersonales = antecedentesPersonalesList.get(antecedentesPersonalesList.size() - 1);
-        assertThat(testAntecedentesPersonales.getEnfermedad()).isEqualTo(DEFAULT_ENFERMEDAD);
-        assertThat(testAntecedentesPersonales.getAlergia()).isEqualTo(DEFAULT_ALERGIA);
-        assertThat(testAntecedentesPersonales.getIntolerancia()).isEqualTo(DEFAULT_INTOLERANCIA);
-        assertThat(testAntecedentesPersonales.getRegimen()).isEqualTo(DEFAULT_REGIMEN);
-        assertThat(testAntecedentesPersonales.getBebida()).isEqualTo(DEFAULT_BEBIDA);
-        assertThat(testAntecedentesPersonales.getEjercicio()).isEqualTo(DEFAULT_EJERCICIO);
         assertThat(testAntecedentesPersonales.isTabaco()).isEqualTo(DEFAULT_TABACO);
         assertThat(testAntecedentesPersonales.isTecafe()).isEqualTo(DEFAULT_TECAFE);
     }
@@ -182,120 +154,6 @@ public class AntecedentesPersonalesResourceIntTest {
 
     @Test
     @Transactional
-    public void checkEnfermedadIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setEnfermedad(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkAlergiaIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setAlergia(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkIntoleranciaIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setIntolerancia(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkRegimenIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setRegimen(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkBebidaIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setBebida(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkEjercicioIsRequired() throws Exception {
-        int databaseSizeBeforeTest = antecedentesPersonalesRepository.findAll().size();
-        // set the field null
-        antecedentesPersonales.setEjercicio(null);
-
-        // Create the AntecedentesPersonales, which fails.
-        AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(antecedentesPersonales);
-
-        restAntecedentesPersonalesMockMvc.perform(post("/api/antecedentes-personales")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(antecedentesPersonalesDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
-        assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllAntecedentesPersonales() throws Exception {
         // Initialize the database
         antecedentesPersonalesRepository.saveAndFlush(antecedentesPersonales);
@@ -305,16 +163,40 @@ public class AntecedentesPersonalesResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(antecedentesPersonales.getId().intValue())))
-            .andExpect(jsonPath("$.[*].enfermedad").value(hasItem(DEFAULT_ENFERMEDAD.toString())))
-            .andExpect(jsonPath("$.[*].alergia").value(hasItem(DEFAULT_ALERGIA.toString())))
-            .andExpect(jsonPath("$.[*].intolerancia").value(hasItem(DEFAULT_INTOLERANCIA.toString())))
-            .andExpect(jsonPath("$.[*].regimen").value(hasItem(DEFAULT_REGIMEN.toString())))
-            .andExpect(jsonPath("$.[*].bebida").value(hasItem(DEFAULT_BEBIDA.toString())))
-            .andExpect(jsonPath("$.[*].ejercicio").value(hasItem(DEFAULT_EJERCICIO.toString())))
             .andExpect(jsonPath("$.[*].tabaco").value(hasItem(DEFAULT_TABACO.booleanValue())))
             .andExpect(jsonPath("$.[*].tecafe").value(hasItem(DEFAULT_TECAFE.booleanValue())));
     }
     
+    public void getAllAntecedentesPersonalesWithEagerRelationshipsIsEnabled() throws Exception {
+        AntecedentesPersonalesResource antecedentesPersonalesResource = new AntecedentesPersonalesResource(antecedentesPersonalesServiceMock);
+        when(antecedentesPersonalesServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        MockMvc restAntecedentesPersonalesMockMvc = MockMvcBuilders.standaloneSetup(antecedentesPersonalesResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restAntecedentesPersonalesMockMvc.perform(get("/api/antecedentes-personales?eagerload=true"))
+        .andExpect(status().isOk());
+
+        verify(antecedentesPersonalesServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    public void getAllAntecedentesPersonalesWithEagerRelationshipsIsNotEnabled() throws Exception {
+        AntecedentesPersonalesResource antecedentesPersonalesResource = new AntecedentesPersonalesResource(antecedentesPersonalesServiceMock);
+            when(antecedentesPersonalesServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+            MockMvc restAntecedentesPersonalesMockMvc = MockMvcBuilders.standaloneSetup(antecedentesPersonalesResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
+            .setMessageConverters(jacksonMessageConverter).build();
+
+        restAntecedentesPersonalesMockMvc.perform(get("/api/antecedentes-personales?eagerload=true"))
+        .andExpect(status().isOk());
+
+            verify(antecedentesPersonalesServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
 
     @Test
     @Transactional
@@ -327,12 +209,6 @@ public class AntecedentesPersonalesResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(antecedentesPersonales.getId().intValue()))
-            .andExpect(jsonPath("$.enfermedad").value(DEFAULT_ENFERMEDAD.toString()))
-            .andExpect(jsonPath("$.alergia").value(DEFAULT_ALERGIA.toString()))
-            .andExpect(jsonPath("$.intolerancia").value(DEFAULT_INTOLERANCIA.toString()))
-            .andExpect(jsonPath("$.regimen").value(DEFAULT_REGIMEN.toString()))
-            .andExpect(jsonPath("$.bebida").value(DEFAULT_BEBIDA.toString()))
-            .andExpect(jsonPath("$.ejercicio").value(DEFAULT_EJERCICIO.toString()))
             .andExpect(jsonPath("$.tabaco").value(DEFAULT_TABACO.booleanValue()))
             .andExpect(jsonPath("$.tecafe").value(DEFAULT_TECAFE.booleanValue()));
     }
@@ -357,12 +233,6 @@ public class AntecedentesPersonalesResourceIntTest {
         // Disconnect from session so that the updates on updatedAntecedentesPersonales are not directly saved in db
         em.detach(updatedAntecedentesPersonales);
         updatedAntecedentesPersonales
-            .enfermedad(UPDATED_ENFERMEDAD)
-            .alergia(UPDATED_ALERGIA)
-            .intolerancia(UPDATED_INTOLERANCIA)
-            .regimen(UPDATED_REGIMEN)
-            .bebida(UPDATED_BEBIDA)
-            .ejercicio(UPDATED_EJERCICIO)
             .tabaco(UPDATED_TABACO)
             .tecafe(UPDATED_TECAFE);
         AntecedentesPersonalesDTO antecedentesPersonalesDTO = antecedentesPersonalesMapper.toDto(updatedAntecedentesPersonales);
@@ -376,12 +246,6 @@ public class AntecedentesPersonalesResourceIntTest {
         List<AntecedentesPersonales> antecedentesPersonalesList = antecedentesPersonalesRepository.findAll();
         assertThat(antecedentesPersonalesList).hasSize(databaseSizeBeforeUpdate);
         AntecedentesPersonales testAntecedentesPersonales = antecedentesPersonalesList.get(antecedentesPersonalesList.size() - 1);
-        assertThat(testAntecedentesPersonales.getEnfermedad()).isEqualTo(UPDATED_ENFERMEDAD);
-        assertThat(testAntecedentesPersonales.getAlergia()).isEqualTo(UPDATED_ALERGIA);
-        assertThat(testAntecedentesPersonales.getIntolerancia()).isEqualTo(UPDATED_INTOLERANCIA);
-        assertThat(testAntecedentesPersonales.getRegimen()).isEqualTo(UPDATED_REGIMEN);
-        assertThat(testAntecedentesPersonales.getBebida()).isEqualTo(UPDATED_BEBIDA);
-        assertThat(testAntecedentesPersonales.getEjercicio()).isEqualTo(UPDATED_EJERCICIO);
         assertThat(testAntecedentesPersonales.isTabaco()).isEqualTo(UPDATED_TABACO);
         assertThat(testAntecedentesPersonales.isTecafe()).isEqualTo(UPDATED_TECAFE);
     }

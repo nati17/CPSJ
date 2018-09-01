@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +43,7 @@ public class AntecedentesPersonalesResource {
      */
     @PostMapping("/antecedentes-personales")
     @Timed
-    public ResponseEntity<AntecedentesPersonalesDTO> createAntecedentesPersonales(@Valid @RequestBody AntecedentesPersonalesDTO antecedentesPersonalesDTO) throws URISyntaxException {
+    public ResponseEntity<AntecedentesPersonalesDTO> createAntecedentesPersonales(@RequestBody AntecedentesPersonalesDTO antecedentesPersonalesDTO) throws URISyntaxException {
         log.debug("REST request to save AntecedentesPersonales : {}", antecedentesPersonalesDTO);
         if (antecedentesPersonalesDTO.getId() != null) {
             throw new BadRequestAlertException("A new antecedentesPersonales cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +65,7 @@ public class AntecedentesPersonalesResource {
      */
     @PutMapping("/antecedentes-personales")
     @Timed
-    public ResponseEntity<AntecedentesPersonalesDTO> updateAntecedentesPersonales(@Valid @RequestBody AntecedentesPersonalesDTO antecedentesPersonalesDTO) throws URISyntaxException {
+    public ResponseEntity<AntecedentesPersonalesDTO> updateAntecedentesPersonales(@RequestBody AntecedentesPersonalesDTO antecedentesPersonalesDTO) throws URISyntaxException {
         log.debug("REST request to update AntecedentesPersonales : {}", antecedentesPersonalesDTO);
         if (antecedentesPersonalesDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -80,11 +79,12 @@ public class AntecedentesPersonalesResource {
     /**
      * GET  /antecedentes-personales : get all the antecedentesPersonales.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of antecedentesPersonales in body
      */
     @GetMapping("/antecedentes-personales")
     @Timed
-    public List<AntecedentesPersonalesDTO> getAllAntecedentesPersonales() {
+    public List<AntecedentesPersonalesDTO> getAllAntecedentesPersonales(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all AntecedentesPersonales");
         return antecedentesPersonalesService.findAll();
     }

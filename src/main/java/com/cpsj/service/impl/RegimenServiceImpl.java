@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.RegimenMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class RegimenServiceImpl implements RegimenService {
     @Transactional(readOnly = true)
     public List<RegimenDTO> findAll() {
         log.debug("Request to get all Regimen");
-        return regimenRepository.findAllWithEagerRelationships().stream()
+        return regimenRepository.findAll().stream()
             .map(regimenMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Regimen with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<RegimenDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return regimenRepository.findAllWithEagerRelationships(pageable).map(regimenMapper::toDto);
-    }
-    
 
     /**
      * Get one regimen by id.
@@ -83,7 +72,7 @@ public class RegimenServiceImpl implements RegimenService {
     @Transactional(readOnly = true)
     public Optional<RegimenDTO> findOne(Long id) {
         log.debug("Request to get Regimen : {}", id);
-        return regimenRepository.findOneWithEagerRelationships(id)
+        return regimenRepository.findById(id)
             .map(regimenMapper::toDto);
     }
 

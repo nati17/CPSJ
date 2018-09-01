@@ -16,14 +16,14 @@
             "detail": {
                 "title": "Antecedentes Personales"
             },
-            "enfermedad": "Enfermedad",
-            "alergia": "Alergia",
-            "intolerancia": "Intolerancia",
-            "regimen": "Regimen",
-            "bebida": "Bebida",
-            "ejercicio": "Ejercicio",
             "tabaco": "Tabaco",
-            "tecafe": "Tecafe"
+            "tecafe": "Tecafe",
+            "enfermedades": "Enfermedades",
+            "alergias": "Alergias",
+            "intolerancias": "Intolerancias",
+            "regimenes": "Regimenes",
+            "bebidas": "Bebidas",
+            "ejercicios": "Ejercicios"
         }
     }
 }

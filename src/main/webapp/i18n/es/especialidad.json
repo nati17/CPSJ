@@ -16,8 +16,9 @@
             "detail": {
                 "title": "Especialidad"
             },
-            "codigoEspecilidad": "Codigo Especilidad",
+            "codigoEspecialidad": "Codigo Especialidad",
             "nombreEspecialidad": "Nombre Especialidad",
+            "descripcionEspecialidad": "Descripcion Especialidad",
             "medico": "Medico"
         }
     }

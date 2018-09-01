@@ -1,6 +1,6 @@
 package com.cpsj.service.dto;
 
-import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,21 +11,19 @@ public class PacienteDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private String nombrePaciente;
 
-    @NotNull
     private String apellidoPaciente;
-
-    @NotNull
-    private String documentoPaciente;
 
     private String direccionPaciente;
 
     private String telefonoPaciente;
 
-    @NotNull
     private String emailPaciente;
+
+    private LocalDate fechaNacPaciente;
+
+    private String generoPaciente;
 
     private Long pacienteObraSocialId;
 
@@ -53,14 +51,6 @@ public class PacienteDTO implements Serializable {
         this.apellidoPaciente = apellidoPaciente;
     }
 
-    public String getDocumentoPaciente() {
-        return documentoPaciente;
-    }
-
-    public void setDocumentoPaciente(String documentoPaciente) {
-        this.documentoPaciente = documentoPaciente;
-    }
-
     public String getDireccionPaciente() {
         return direccionPaciente;
     }
@@ -83,6 +73,22 @@ public class PacienteDTO implements Serializable {
 
     public void setEmailPaciente(String emailPaciente) {
         this.emailPaciente = emailPaciente;
+    }
+
+    public LocalDate getFechaNacPaciente() {
+        return fechaNacPaciente;
+    }
+
+    public void setFechaNacPaciente(LocalDate fechaNacPaciente) {
+        this.fechaNacPaciente = fechaNacPaciente;
+    }
+
+    public String getGeneroPaciente() {
+        return generoPaciente;
+    }
+
+    public void setGeneroPaciente(String generoPaciente) {
+        this.generoPaciente = generoPaciente;
     }
 
     public Long getPacienteObraSocialId() {
@@ -120,10 +126,11 @@ public class PacienteDTO implements Serializable {
             "id=" + getId() +
             ", nombrePaciente='" + getNombrePaciente() + "'" +
             ", apellidoPaciente='" + getApellidoPaciente() + "'" +
-            ", documentoPaciente='" + getDocumentoPaciente() + "'" +
             ", direccionPaciente='" + getDireccionPaciente() + "'" +
             ", telefonoPaciente='" + getTelefonoPaciente() + "'" +
             ", emailPaciente='" + getEmailPaciente() + "'" +
+            ", fechaNacPaciente='" + getFechaNacPaciente() + "'" +
+            ", generoPaciente='" + getGeneroPaciente() + "'" +
             ", pacienteObraSocial=" + getPacienteObraSocialId() +
             "}";
     }

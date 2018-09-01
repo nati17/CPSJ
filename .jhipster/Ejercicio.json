@@ -3,22 +3,14 @@
     "fields": [
         {
             "fieldName": "valor",
-            "fieldType": "String",
+            "fieldType": "EjerciciosEnum",
+            "fieldValues": "NO,UNDIA,TRESDIAS,TODOSLOSDIAS",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
-            "relationshipName": "values",
-            "otherEntityName": "antecedentesPersonales",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180824201059",
     "entityTableName": "ejercicio",
     "dto": "mapstruct",

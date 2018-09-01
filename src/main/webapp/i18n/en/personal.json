@@ -1,0 +1,27 @@
+
+{
+    "cpsjApp": {
+        "personal" : {
+            "home": {
+                "title": "Personals",
+                "createLabel": "Create a new Personal",
+                "createOrEditLabel": "Create or edit a Personal"
+            },
+            "created": "A new Personal is created with identifier {{ param }}",
+            "updated": "A Personal is updated with identifier {{ param }}",
+            "deleted": "A Personal is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Personal {{ id }}?"
+            },
+            "detail": {
+                "title": "Personal"
+            },
+            "nombrePersonal": "Nombre Personal",
+            "apellidoPersonal": "Apellido Personal",
+            "direccionPersonal": "Direccion Personal",
+            "telefonoPersonal": "Telefono Personal",
+            "emailPersonal": "Email Personal",
+            "cargoPersonal": "Cargo Personal"
+        }
+    }
+}

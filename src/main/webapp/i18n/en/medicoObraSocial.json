@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "medicoObraSocial" : {
+            "home": {
+                "title": "Medico Obra Socials",
+                "createLabel": "Create a new Medico Obra Social",
+                "createOrEditLabel": "Create or edit a Medico Obra Social"
+            },
+            "created": "A new Medico Obra Social is created with identifier {{ param }}",
+            "updated": "A Medico Obra Social is updated with identifier {{ param }}",
+            "deleted": "A Medico Obra Social is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Medico Obra Social {{ id }}?"
+            },
+            "detail": {
+                "title": "Medico Obra Social"
+            },
+            "idMedico": "Id Medico",
+            "idOSocial": "Id O Social",
+            "observaciones": "Observaciones"
+        }
+    }
+}

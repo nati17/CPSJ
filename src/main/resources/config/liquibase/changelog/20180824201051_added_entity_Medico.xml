@@ -23,11 +23,15 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="codigo_medico" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="nombre_medico" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
+            </column>
+
+            <column name="apellido_medico" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
 
             <column name="direccion_medico" type="varchar(255)">
@@ -39,6 +43,22 @@
             </column>
 
             <column name="email_medico" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="matricula_medico" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="horario_i_medico" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="horario_e_medico" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="porcentaje" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -66,6 +86,17 @@
         </createTable>
 
         <addPrimaryKey columnNames="medicos_id, especialidads_id" tableName="medico_especialidad"/>
+        
+        <createTable tableName="medico_dias">
+            <column name="dias_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="medicos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="medicos_id, dias_id" tableName="medico_dias"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

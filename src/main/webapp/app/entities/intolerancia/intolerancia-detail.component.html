@@ -7,13 +7,7 @@
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="cpsjApp.intolerancia.valor">Valor</span></dt>
                 <dd>
-                    <span>{{intolerancia.valor}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.intolerancia.values">Values</span></dt>
-                <dd>
-                    <span *ngFor="let values of intolerancia.values; let last = last">
-                        <a [routerLink]="['/antecedentes-personales', values?.id, 'view' ]">{{values.id}}</a>{{last ? '' : ', '}}
-                    </span>
+                    <span jhiTranslate="{{'cpsjApp.IntoleranciasEnum.' + intolerancia.valor}}">{{intolerancia.valor}}</span>
                 </dd>
             </dl>
 

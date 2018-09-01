@@ -11,8 +11,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.intolerancia.valor" for="field_valor">Valor</label>
-                    <input type="text" class="form-control" name="valor" id="field_valor"
-                        [(ngModel)]="intolerancia.valor" required/>
+                    <select class="form-control" name="valor" [(ngModel)]="intolerancia.valor" id="field_valor"  required>
+                        <option value="GLUTEN">{{'cpsjApp.IntoleranciasEnum.GLUTEN' | translate}}</option>
+                        <option value="LACTOSA">{{'cpsjApp.IntoleranciasEnum.LACTOSA' | translate}}</option>
+                        <option value="OTROS">{{'cpsjApp.IntoleranciasEnum.OTROS' | translate}}</option>
+                    </select>
                     <div [hidden]="!(editForm.controls.valor?.dirty && editForm.controls.valor?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.valor?.errors?.required" jhiTranslate="entity.validation.required">
@@ -21,12 +24,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label jhiTranslate="cpsjApp.intolerancia.values" for="field_values">Values</label>
-                    <select class="form-control" id="field_values" multiple name="values" [(ngModel)]="intolerancia.values">
-                        <option [ngValue]="getSelected(intolerancia.values, antecedentesPersonalesOption)" *ngFor="let antecedentesPersonalesOption of antecedentespersonales; trackBy: trackAntecedentesPersonalesById">{{antecedentesPersonalesOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

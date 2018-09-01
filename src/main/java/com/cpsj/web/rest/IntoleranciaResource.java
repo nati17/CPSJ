@@ -80,12 +80,11 @@ public class IntoleranciaResource {
     /**
      * GET  /intolerancias : get all the intolerancias.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of intolerancias in body
      */
     @GetMapping("/intolerancias")
     @Timed
-    public List<IntoleranciaDTO> getAllIntolerancias(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<IntoleranciaDTO> getAllIntolerancias() {
         log.debug("REST request to get all Intolerancias");
         return intoleranciaService.findAll();
     }

@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.BebidaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class BebidaServiceImpl implements BebidaService {
     @Transactional(readOnly = true)
     public List<BebidaDTO> findAll() {
         log.debug("Request to get all Bebidas");
-        return bebidaRepository.findAllWithEagerRelationships().stream()
+        return bebidaRepository.findAll().stream()
             .map(bebidaMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Bebida with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<BebidaDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return bebidaRepository.findAllWithEagerRelationships(pageable).map(bebidaMapper::toDto);
-    }
-    
 
     /**
      * Get one bebida by id.
@@ -83,7 +72,7 @@ public class BebidaServiceImpl implements BebidaService {
     @Transactional(readOnly = true)
     public Optional<BebidaDTO> findOne(Long id) {
         log.debug("Request to get Bebida : {}", id);
-        return bebidaRepository.findOneWithEagerRelationships(id)
+        return bebidaRepository.findById(id)
             .map(bebidaMapper::toDto);
     }
 

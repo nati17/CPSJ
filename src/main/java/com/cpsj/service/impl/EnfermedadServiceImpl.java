@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.EnfermedadMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class EnfermedadServiceImpl implements EnfermedadService {
     @Transactional(readOnly = true)
     public List<EnfermedadDTO> findAll() {
         log.debug("Request to get all Enfermedads");
-        return enfermedadRepository.findAllWithEagerRelationships().stream()
+        return enfermedadRepository.findAll().stream()
             .map(enfermedadMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Enfermedad with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<EnfermedadDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return enfermedadRepository.findAllWithEagerRelationships(pageable).map(enfermedadMapper::toDto);
-    }
-    
 
     /**
      * Get one enfermedad by id.
@@ -83,7 +72,7 @@ public class EnfermedadServiceImpl implements EnfermedadService {
     @Transactional(readOnly = true)
     public Optional<EnfermedadDTO> findOne(Long id) {
         log.debug("Request to get Enfermedad : {}", id);
-        return enfermedadRepository.findOneWithEagerRelationships(id)
+        return enfermedadRepository.findById(id)
             .map(enfermedadMapper::toDto);
     }
 

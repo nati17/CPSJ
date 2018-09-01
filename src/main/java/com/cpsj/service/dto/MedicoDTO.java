@@ -1,6 +1,5 @@
 package com.cpsj.service.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,11 +12,11 @@ public class MedicoDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
     private String codigoMedico;
 
-    @NotNull
     private String nombreMedico;
+
+    private String apellidoMedico;
 
     private String direccionMedico;
 
@@ -25,9 +24,19 @@ public class MedicoDTO implements Serializable {
 
     private String emailMedico;
 
+    private String matriculaMedico;
+
+    private String horarioIMedico;
+
+    private String horarioEMedico;
+
+    private String porcentaje;
+
     private Set<ObraSocialDTO> obrasocials = new HashSet<>();
 
     private Set<EspecialidadDTO> especialidads = new HashSet<>();
+
+    private Set<DiasDTO> dias = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -51,6 +60,14 @@ public class MedicoDTO implements Serializable {
 
     public void setNombreMedico(String nombreMedico) {
         this.nombreMedico = nombreMedico;
+    }
+
+    public String getApellidoMedico() {
+        return apellidoMedico;
+    }
+
+    public void setApellidoMedico(String apellidoMedico) {
+        this.apellidoMedico = apellidoMedico;
     }
 
     public String getDireccionMedico() {
@@ -77,6 +94,38 @@ public class MedicoDTO implements Serializable {
         this.emailMedico = emailMedico;
     }
 
+    public String getMatriculaMedico() {
+        return matriculaMedico;
+    }
+
+    public void setMatriculaMedico(String matriculaMedico) {
+        this.matriculaMedico = matriculaMedico;
+    }
+
+    public String getHorarioIMedico() {
+        return horarioIMedico;
+    }
+
+    public void setHorarioIMedico(String horarioIMedico) {
+        this.horarioIMedico = horarioIMedico;
+    }
+
+    public String getHorarioEMedico() {
+        return horarioEMedico;
+    }
+
+    public void setHorarioEMedico(String horarioEMedico) {
+        this.horarioEMedico = horarioEMedico;
+    }
+
+    public String getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(String porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
     public Set<ObraSocialDTO> getObrasocials() {
         return obrasocials;
     }
@@ -91,6 +140,14 @@ public class MedicoDTO implements Serializable {
 
     public void setEspecialidads(Set<EspecialidadDTO> especialidads) {
         this.especialidads = especialidads;
+    }
+
+    public Set<DiasDTO> getDias() {
+        return dias;
+    }
+
+    public void setDias(Set<DiasDTO> dias) {
+        this.dias = dias;
     }
 
     @Override
@@ -120,9 +177,14 @@ public class MedicoDTO implements Serializable {
             "id=" + getId() +
             ", codigoMedico='" + getCodigoMedico() + "'" +
             ", nombreMedico='" + getNombreMedico() + "'" +
+            ", apellidoMedico='" + getApellidoMedico() + "'" +
             ", direccionMedico='" + getDireccionMedico() + "'" +
             ", telefonoMedico='" + getTelefonoMedico() + "'" +
             ", emailMedico='" + getEmailMedico() + "'" +
+            ", matriculaMedico='" + getMatriculaMedico() + "'" +
+            ", horarioIMedico='" + getHorarioIMedico() + "'" +
+            ", horarioEMedico='" + getHorarioEMedico() + "'" +
+            ", porcentaje='" + getPorcentaje() + "'" +
             "}";
     }
 }

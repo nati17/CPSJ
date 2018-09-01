@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.IntoleranciaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class IntoleranciaServiceImpl implements IntoleranciaService {
     @Transactional(readOnly = true)
     public List<IntoleranciaDTO> findAll() {
         log.debug("Request to get all Intolerancias");
-        return intoleranciaRepository.findAllWithEagerRelationships().stream()
+        return intoleranciaRepository.findAll().stream()
             .map(intoleranciaMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Intolerancia with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<IntoleranciaDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return intoleranciaRepository.findAllWithEagerRelationships(pageable).map(intoleranciaMapper::toDto);
-    }
-    
 
     /**
      * Get one intolerancia by id.
@@ -83,7 +72,7 @@ public class IntoleranciaServiceImpl implements IntoleranciaService {
     @Transactional(readOnly = true)
     public Optional<IntoleranciaDTO> findOne(Long id) {
         log.debug("Request to get Intolerancia : {}", id);
-        return intoleranciaRepository.findOneWithEagerRelationships(id)
+        return intoleranciaRepository.findById(id)
             .map(intoleranciaMapper::toDto);
     }
 

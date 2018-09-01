@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medicoEspecialidadDiagnostico">
+            <h2><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.detail.title">Medico Especialidad Diagnostico</span> {{medicoEspecialidadDiagnostico.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idMedico">Id Medico</span></dt>
+                <dd>
+                    <span>{{medicoEspecialidadDiagnostico.idMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idEspecialidad">Id Especialidad</span></dt>
+                <dd>
+                    <span>{{medicoEspecialidadDiagnostico.idEspecialidad}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idDiagnostico">Id Diagnostico</span></dt>
+                <dd>
+                    <span>{{medicoEspecialidadDiagnostico.idDiagnostico}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medico-especialidad-diagnostico', medicoEspecialidadDiagnostico.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

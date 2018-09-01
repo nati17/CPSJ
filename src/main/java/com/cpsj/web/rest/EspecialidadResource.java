@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -49,7 +48,7 @@ public class EspecialidadResource {
      */
     @PostMapping("/especialidads")
     @Timed
-    public ResponseEntity<EspecialidadDTO> createEspecialidad(@Valid @RequestBody EspecialidadDTO especialidadDTO) throws URISyntaxException {
+    public ResponseEntity<EspecialidadDTO> createEspecialidad(@RequestBody EspecialidadDTO especialidadDTO) throws URISyntaxException {
         log.debug("REST request to save Especialidad : {}", especialidadDTO);
         if (especialidadDTO.getId() != null) {
             throw new BadRequestAlertException("A new especialidad cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,7 +70,7 @@ public class EspecialidadResource {
      */
     @PutMapping("/especialidads")
     @Timed
-    public ResponseEntity<EspecialidadDTO> updateEspecialidad(@Valid @RequestBody EspecialidadDTO especialidadDTO) throws URISyntaxException {
+    public ResponseEntity<EspecialidadDTO> updateEspecialidad(@RequestBody EspecialidadDTO especialidadDTO) throws URISyntaxException {
         log.debug("REST request to update Especialidad : {}", especialidadDTO);
         if (especialidadDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

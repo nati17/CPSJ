@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Bebida and its DTO BebidaDTO.
  */
-@Mapper(componentModel = "spring", uses = {AntecedentesPersonalesMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface BebidaMapper extends EntityMapper<BebidaDTO, Bebida> {
 
 

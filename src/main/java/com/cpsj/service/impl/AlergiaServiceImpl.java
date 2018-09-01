@@ -8,8 +8,6 @@ import com.cpsj.service.mapper.AlergiaMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,20 +56,11 @@ public class AlergiaServiceImpl implements AlergiaService {
     @Transactional(readOnly = true)
     public List<AlergiaDTO> findAll() {
         log.debug("Request to get all Alergias");
-        return alergiaRepository.findAllWithEagerRelationships().stream()
+        return alergiaRepository.findAll().stream()
             .map(alergiaMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-    /**
-     * Get all the Alergia with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    public Page<AlergiaDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return alergiaRepository.findAllWithEagerRelationships(pageable).map(alergiaMapper::toDto);
-    }
-    
 
     /**
      * Get one alergia by id.
@@ -83,7 +72,7 @@ public class AlergiaServiceImpl implements AlergiaService {
     @Transactional(readOnly = true)
     public Optional<AlergiaDTO> findOne(Long id) {
         log.debug("Request to get Alergia : {}", id);
-        return alergiaRepository.findOneWithEagerRelationships(id)
+        return alergiaRepository.findById(id)
             .map(alergiaMapper::toDto);
     }
 

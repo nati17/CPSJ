@@ -12,35 +12,12 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.paciente.nombrePaciente" for="field_nombrePaciente">Nombre Paciente</label>
                     <input type="text" class="form-control" name="nombrePaciente" id="field_nombrePaciente"
-                        [(ngModel)]="paciente.nombrePaciente" required/>
-                    <div [hidden]="!(editForm.controls.nombrePaciente?.dirty && editForm.controls.nombrePaciente?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.nombrePaciente?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+                        [(ngModel)]="paciente.nombrePaciente" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.paciente.apellidoPaciente" for="field_apellidoPaciente">Apellido Paciente</label>
                     <input type="text" class="form-control" name="apellidoPaciente" id="field_apellidoPaciente"
-                        [(ngModel)]="paciente.apellidoPaciente" required/>
-                    <div [hidden]="!(editForm.controls.apellidoPaciente?.dirty && editForm.controls.apellidoPaciente?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.apellidoPaciente?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.documentoPaciente" for="field_documentoPaciente">Documento Paciente</label>
-                    <input type="text" class="form-control" name="documentoPaciente" id="field_documentoPaciente"
-                        [(ngModel)]="paciente.documentoPaciente" required/>
-                    <div [hidden]="!(editForm.controls.documentoPaciente?.dirty && editForm.controls.documentoPaciente?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.documentoPaciente?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+                        [(ngModel)]="paciente.apellidoPaciente" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.paciente.direccionPaciente" for="field_direccionPaciente">Direccion Paciente</label>
@@ -55,13 +32,22 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.paciente.emailPaciente" for="field_emailPaciente">Email Paciente</label>
                     <input type="text" class="form-control" name="emailPaciente" id="field_emailPaciente"
-                        [(ngModel)]="paciente.emailPaciente" required/>
-                    <div [hidden]="!(editForm.controls.emailPaciente?.dirty && editForm.controls.emailPaciente?.invalid)">
-                        <small class="form-text text-danger"
-                        [hidden]="!editForm.controls.emailPaciente?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+                        [(ngModel)]="paciente.emailPaciente" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.fechaNacPaciente" for="field_fechaNacPaciente">Fecha Nac Paciente</label>
+                    <div class="input-group">
+                        <input id="field_fechaNacPaciente" type="text" class="form-control" name="fechaNacPaciente" ngbDatepicker  #fechaNacPacienteDp="ngbDatepicker" [(ngModel)]="paciente.fechaNacPaciente"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaNacPacienteDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.paciente.generoPaciente" for="field_generoPaciente">Genero Paciente</label>
+                    <input type="text" class="form-control" name="generoPaciente" id="field_generoPaciente"
+                        [(ngModel)]="paciente.generoPaciente" />
                 </div>
 
                 <div class="form-group">

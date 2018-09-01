@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pacienteObraSocial">
+            <h2><span jhiTranslate="cpsjApp.pacienteObraSocial.detail.title">Paciente Obra Social</span> {{pacienteObraSocial.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.idPaciente">Id Paciente</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.idPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.idOSocial">Id O Social</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.idOSocial}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.nroAfiliado">Nro Afiliado</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.nroAfiliado}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.planAfiliado">Plan Afiliado</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.planAfiliado}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.vigencia">Vigencia</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.vigencia}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteObraSocial.estado">Estado</span></dt>
+                <dd>
+                    <span>{{pacienteObraSocial.estado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paciente-obra-social', pacienteObraSocial.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

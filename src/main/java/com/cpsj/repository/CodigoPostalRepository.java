@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CodigoPostalRepository extends JpaRepository<CodigoPostal, Long> {
     @Query(value = "SELECT p FROM CodigoPostal p WHERE p.nombreCiudad like %?1% or p.codigo like %?1%")
-   Page<CodigoPostal> findByNombreCiudadContaining(String query, Pageable pageable);
-    
+    Page<CodigoPostal> findByNombreCiudadContaining(String query, Pageable pageable);
+
 }

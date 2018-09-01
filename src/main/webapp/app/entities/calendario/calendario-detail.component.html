@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="calendario">
+            <h2><span jhiTranslate="cpsjApp.calendario.detail.title">Calendario</span> {{calendario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.calendario.idCalendario">Id Calendario</span></dt>
+                <dd>
+                    <span>{{calendario.idCalendario}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.calendario.anioCalendario">Anio Calendario</span></dt>
+                <dd>
+                    <span>{{calendario.anioCalendario}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.calendario.mesCalendario">Mes Calendario</span></dt>
+                <dd>
+                    <span>{{calendario.mesCalendario}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/calendario', calendario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -80,12 +80,11 @@ public class BebidaResource {
     /**
      * GET  /bebidas : get all the bebidas.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of bebidas in body
      */
     @GetMapping("/bebidas")
     @Timed
-    public List<BebidaDTO> getAllBebidas(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<BebidaDTO> getAllBebidas() {
         log.debug("REST request to get all Bebidas");
         return bebidaService.findAll();
     }

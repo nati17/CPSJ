@@ -45,8 +45,17 @@ public class ObraSocialResourceIntTest {
     private static final String DEFAULT_CODIGO_OBRA_SOCIAL = "AAAAAAAAAA";
     private static final String UPDATED_CODIGO_OBRA_SOCIAL = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NOMBRE_OBRA_SOCIAL = "AAAAAAAAAA";
-    private static final String UPDATED_NOMBRE_OBRA_SOCIAL = "BBBBBBBBBB";
+    private static final String DEFAULT_NOMBRE_O_SOCIAL = "AAAAAAAAAA";
+    private static final String UPDATED_NOMBRE_O_SOCIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_DIREECION_O_SOCIAL = "AAAAAAAAAA";
+    private static final String UPDATED_DIREECION_O_SOCIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TELEFONO_O_SOCIAL = "AAAAAAAAAA";
+    private static final String UPDATED_TELEFONO_O_SOCIAL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EMAIL_O_SOCIAL = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL_O_SOCIAL = "BBBBBBBBBB";
 
     @Autowired
     private ObraSocialRepository obraSocialRepository;
@@ -95,7 +104,10 @@ public class ObraSocialResourceIntTest {
     public static ObraSocial createEntity(EntityManager em) {
         ObraSocial obraSocial = new ObraSocial()
             .codigoObraSocial(DEFAULT_CODIGO_OBRA_SOCIAL)
-            .nombreObraSocial(DEFAULT_NOMBRE_OBRA_SOCIAL);
+            .nombreOSocial(DEFAULT_NOMBRE_O_SOCIAL)
+            .direecionOSocial(DEFAULT_DIREECION_O_SOCIAL)
+            .telefonoOSocial(DEFAULT_TELEFONO_O_SOCIAL)
+            .emailOSocial(DEFAULT_EMAIL_O_SOCIAL);
         return obraSocial;
     }
 
@@ -121,7 +133,10 @@ public class ObraSocialResourceIntTest {
         assertThat(obraSocialList).hasSize(databaseSizeBeforeCreate + 1);
         ObraSocial testObraSocial = obraSocialList.get(obraSocialList.size() - 1);
         assertThat(testObraSocial.getCodigoObraSocial()).isEqualTo(DEFAULT_CODIGO_OBRA_SOCIAL);
-        assertThat(testObraSocial.getNombreObraSocial()).isEqualTo(DEFAULT_NOMBRE_OBRA_SOCIAL);
+        assertThat(testObraSocial.getNombreOSocial()).isEqualTo(DEFAULT_NOMBRE_O_SOCIAL);
+        assertThat(testObraSocial.getDireecionOSocial()).isEqualTo(DEFAULT_DIREECION_O_SOCIAL);
+        assertThat(testObraSocial.getTelefonoOSocial()).isEqualTo(DEFAULT_TELEFONO_O_SOCIAL);
+        assertThat(testObraSocial.getEmailOSocial()).isEqualTo(DEFAULT_EMAIL_O_SOCIAL);
     }
 
     @Test
@@ -156,7 +171,10 @@ public class ObraSocialResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(obraSocial.getId().intValue())))
             .andExpect(jsonPath("$.[*].codigoObraSocial").value(hasItem(DEFAULT_CODIGO_OBRA_SOCIAL.toString())))
-            .andExpect(jsonPath("$.[*].nombreObraSocial").value(hasItem(DEFAULT_NOMBRE_OBRA_SOCIAL.toString())));
+            .andExpect(jsonPath("$.[*].nombreOSocial").value(hasItem(DEFAULT_NOMBRE_O_SOCIAL.toString())))
+            .andExpect(jsonPath("$.[*].direecionOSocial").value(hasItem(DEFAULT_DIREECION_O_SOCIAL.toString())))
+            .andExpect(jsonPath("$.[*].telefonoOSocial").value(hasItem(DEFAULT_TELEFONO_O_SOCIAL.toString())))
+            .andExpect(jsonPath("$.[*].emailOSocial").value(hasItem(DEFAULT_EMAIL_O_SOCIAL.toString())));
     }
     
 
@@ -172,7 +190,10 @@ public class ObraSocialResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(obraSocial.getId().intValue()))
             .andExpect(jsonPath("$.codigoObraSocial").value(DEFAULT_CODIGO_OBRA_SOCIAL.toString()))
-            .andExpect(jsonPath("$.nombreObraSocial").value(DEFAULT_NOMBRE_OBRA_SOCIAL.toString()));
+            .andExpect(jsonPath("$.nombreOSocial").value(DEFAULT_NOMBRE_O_SOCIAL.toString()))
+            .andExpect(jsonPath("$.direecionOSocial").value(DEFAULT_DIREECION_O_SOCIAL.toString()))
+            .andExpect(jsonPath("$.telefonoOSocial").value(DEFAULT_TELEFONO_O_SOCIAL.toString()))
+            .andExpect(jsonPath("$.emailOSocial").value(DEFAULT_EMAIL_O_SOCIAL.toString()));
     }
     @Test
     @Transactional
@@ -196,7 +217,10 @@ public class ObraSocialResourceIntTest {
         em.detach(updatedObraSocial);
         updatedObraSocial
             .codigoObraSocial(UPDATED_CODIGO_OBRA_SOCIAL)
-            .nombreObraSocial(UPDATED_NOMBRE_OBRA_SOCIAL);
+            .nombreOSocial(UPDATED_NOMBRE_O_SOCIAL)
+            .direecionOSocial(UPDATED_DIREECION_O_SOCIAL)
+            .telefonoOSocial(UPDATED_TELEFONO_O_SOCIAL)
+            .emailOSocial(UPDATED_EMAIL_O_SOCIAL);
         ObraSocialDTO obraSocialDTO = obraSocialMapper.toDto(updatedObraSocial);
 
         restObraSocialMockMvc.perform(put("/api/obra-socials")
@@ -209,7 +233,10 @@ public class ObraSocialResourceIntTest {
         assertThat(obraSocialList).hasSize(databaseSizeBeforeUpdate);
         ObraSocial testObraSocial = obraSocialList.get(obraSocialList.size() - 1);
         assertThat(testObraSocial.getCodigoObraSocial()).isEqualTo(UPDATED_CODIGO_OBRA_SOCIAL);
-        assertThat(testObraSocial.getNombreObraSocial()).isEqualTo(UPDATED_NOMBRE_OBRA_SOCIAL);
+        assertThat(testObraSocial.getNombreOSocial()).isEqualTo(UPDATED_NOMBRE_O_SOCIAL);
+        assertThat(testObraSocial.getDireecionOSocial()).isEqualTo(UPDATED_DIREECION_O_SOCIAL);
+        assertThat(testObraSocial.getTelefonoOSocial()).isEqualTo(UPDATED_TELEFONO_O_SOCIAL);
+        assertThat(testObraSocial.getEmailOSocial()).isEqualTo(UPDATED_EMAIL_O_SOCIAL);
     }
 
     @Test

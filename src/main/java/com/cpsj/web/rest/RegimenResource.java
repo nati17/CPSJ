@@ -80,12 +80,11 @@ public class RegimenResource {
     /**
      * GET  /regimen : get all the regimen.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of regimen in body
      */
     @GetMapping("/regimen")
     @Timed
-    public List<RegimenDTO> getAllRegimen(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<RegimenDTO> getAllRegimen() {
         log.debug("REST request to get all Regimen");
         return regimenService.findAll();
     }

@@ -18,12 +18,18 @@
             },
             "codigoMedico": "Codigo Medico",
             "nombreMedico": "Nombre Medico",
+            "apellidoMedico": "Apellido Medico",
             "direccionMedico": "Direccion Medico",
             "telefonoMedico": "Telefono Medico",
             "emailMedico": "Email Medico",
+            "matriculaMedico": "Matricula Medico",
+            "horarioIMedico": "Horario I Medico",
+            "horarioEMedico": "Horario E Medico",
+            "porcentaje": "Porcentaje",
             "ficha": "Ficha",
             "obrasocial": "Obrasocial",
-            "especialidad": "Especialidad"
+            "especialidad": "Especialidad",
+            "dias": "Dias"
         }
     }
 }

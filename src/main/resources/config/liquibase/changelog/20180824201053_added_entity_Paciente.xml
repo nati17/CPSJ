@@ -23,15 +23,11 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="nombre_paciente" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="apellido_paciente" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="documento_paciente" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="direccion_paciente" type="varchar(255)">
@@ -43,7 +39,15 @@
             </column>
 
             <column name="email_paciente" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fecha_nac_paciente" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="genero_paciente" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
             <column name="paciente_obra_social_id" type="bigint">
                 <constraints unique="true" nullable="true" />

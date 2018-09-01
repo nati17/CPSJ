@@ -80,12 +80,11 @@ public class EnfermedadResource {
     /**
      * GET  /enfermedads : get all the enfermedads.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of enfermedads in body
      */
     @GetMapping("/enfermedads")
     @Timed
-    public List<EnfermedadDTO> getAllEnfermedads(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public List<EnfermedadDTO> getAllEnfermedads() {
         log.debug("REST request to get all Enfermedads");
         return enfermedadService.findAll();
     }

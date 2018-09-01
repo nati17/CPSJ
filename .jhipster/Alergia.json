@@ -3,22 +3,14 @@
     "fields": [
         {
             "fieldName": "valor",
-            "fieldType": "String",
+            "fieldType": "AlergiasEnum",
+            "fieldValues": "SALICILATOS,PIRAZOLONAS,PENISILINA,OTROS",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
-            "relationshipName": "values",
-            "otherEntityName": "antecedentesPersonales",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180824201055",
     "entityTableName": "alergia",
     "dto": "mapstruct",

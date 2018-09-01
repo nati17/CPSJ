@@ -21,6 +21,23 @@
     <include file="config/liquibase/changelog/20180824201101_added_entity_AntecedentesFamiliares.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180824201102_added_entity_Consulta.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180824201103_added_entity_Ficha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223943_added_entity_Turno.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223950_added_entity_ConsultaPractica.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223951_added_entity_Empresa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223952_added_entity_Sucursal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223953_added_entity_Personal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223954_added_entity_Diagnostico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223955_added_entity_MedicoEspecialidadDiagnostico.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223956_added_entity_MedicoObraSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223957_added_entity_PacienteObraSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223958_added_entity_Calendario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223959_added_entity_PacienteTurno.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224000_added_entity_MedicoCalendario.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224001_added_entity_MontoConsultaPractica.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224002_added_entity_Observacion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224003_added_entity_ConsPractObservacion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224004_added_entity_Digitalizacion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901224013_added_entity_Dias.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180824201048_added_entity_constraints_CodigoPostal.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180824201051_added_entity_constraints_Medico.xml" relativeToChangelogFile="false"/>
@@ -32,5 +49,8 @@
     <include file="config/liquibase/changelog/20180824201058_added_entity_constraints_Bebida.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180824201059_added_entity_constraints_Ejercicio.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180824201103_added_entity_constraints_Ficha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201050_added_entity_constraints_ObraSocial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180901223951_added_entity_constraints_Empresa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180824201100_added_entity_constraints_AntecedentesPersonales.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

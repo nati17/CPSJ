@@ -3,7 +3,6 @@ package com.cpsj.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -23,13 +22,14 @@ public class Especialidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "codigo_especilidad", nullable = false)
-    private String codigoEspecilidad;
+    @Column(name = "codigo_especialidad")
+    private String codigoEspecialidad;
 
-    @NotNull
-    @Column(name = "nombre_especialidad", nullable = false)
+    @Column(name = "nombre_especialidad")
     private String nombreEspecialidad;
+
+    @Column(name = "descripcion_especialidad")
+    private String descripcionEspecialidad;
 
     @ManyToMany(mappedBy = "especialidads")
     @JsonIgnore
@@ -44,17 +44,17 @@ public class Especialidad implements Serializable {
         this.id = id;
     }
 
-    public String getCodigoEspecilidad() {
-        return codigoEspecilidad;
+    public String getCodigoEspecialidad() {
+        return codigoEspecialidad;
     }
 
-    public Especialidad codigoEspecilidad(String codigoEspecilidad) {
-        this.codigoEspecilidad = codigoEspecilidad;
+    public Especialidad codigoEspecialidad(String codigoEspecialidad) {
+        this.codigoEspecialidad = codigoEspecialidad;
         return this;
     }
 
-    public void setCodigoEspecilidad(String codigoEspecilidad) {
-        this.codigoEspecilidad = codigoEspecilidad;
+    public void setCodigoEspecialidad(String codigoEspecialidad) {
+        this.codigoEspecialidad = codigoEspecialidad;
     }
 
     public String getNombreEspecialidad() {
@@ -68,6 +68,19 @@ public class Especialidad implements Serializable {
 
     public void setNombreEspecialidad(String nombreEspecialidad) {
         this.nombreEspecialidad = nombreEspecialidad;
+    }
+
+    public String getDescripcionEspecialidad() {
+        return descripcionEspecialidad;
+    }
+
+    public Especialidad descripcionEspecialidad(String descripcionEspecialidad) {
+        this.descripcionEspecialidad = descripcionEspecialidad;
+        return this;
+    }
+
+    public void setDescripcionEspecialidad(String descripcionEspecialidad) {
+        this.descripcionEspecialidad = descripcionEspecialidad;
     }
 
     public Set<Medico> getMedicos() {
@@ -120,8 +133,9 @@ public class Especialidad implements Serializable {
     public String toString() {
         return "Especialidad{" +
             "id=" + getId() +
-            ", codigoEspecilidad='" + getCodigoEspecilidad() + "'" +
+            ", codigoEspecialidad='" + getCodigoEspecialidad() + "'" +
             ", nombreEspecialidad='" + getNombreEspecialidad() + "'" +
+            ", descripcionEspecialidad='" + getDescripcionEspecialidad() + "'" +
             "}";
     }
 }

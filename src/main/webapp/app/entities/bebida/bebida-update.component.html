@@ -11,8 +11,11 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.bebida.valor" for="field_valor">Valor</label>
-                    <input type="text" class="form-control" name="valor" id="field_valor"
-                        [(ngModel)]="bebida.valor" required/>
+                    <select class="form-control" name="valor" [(ngModel)]="bebida.valor" id="field_valor"  required>
+                        <option value="NO">{{'cpsjApp.BebidasEnum.NO' | translate}}</option>
+                        <option value="SISIEMPRE">{{'cpsjApp.BebidasEnum.SISIEMPRE' | translate}}</option>
+                        <option value="SIAVECES">{{'cpsjApp.BebidasEnum.SIAVECES' | translate}}</option>
+                    </select>
                     <div [hidden]="!(editForm.controls.valor?.dirty && editForm.controls.valor?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.valor?.errors?.required" jhiTranslate="entity.validation.required">
@@ -21,12 +24,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label jhiTranslate="cpsjApp.bebida.values" for="field_values">Values</label>
-                    <select class="form-control" id="field_values" multiple name="values" [(ngModel)]="bebida.values">
-                        <option [ngValue]="getSelected(bebida.values, antecedentesPersonalesOption)" *ngFor="let antecedentesPersonalesOption of antecedentespersonales; trackBy: trackAntecedentesPersonalesById">{{antecedentesPersonalesOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

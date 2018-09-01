@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "montoConsultaPractica" : {
+            "home": {
+                "title": "Monto Consulta Practicas",
+                "createLabel": "Create a new Monto Consulta Practica",
+                "createOrEditLabel": "Create or edit a Monto Consulta Practica"
+            },
+            "created": "A new Monto Consulta Practica is created with identifier {{ param }}",
+            "updated": "A Monto Consulta Practica is updated with identifier {{ param }}",
+            "deleted": "A Monto Consulta Practica is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Monto Consulta Practica {{ id }}?"
+            },
+            "detail": {
+                "title": "Monto Consulta Practica"
+            },
+            "idMontoConsPract": "Id Monto Cons Pract",
+            "monto": "Monto"
+        }
+    }
+}

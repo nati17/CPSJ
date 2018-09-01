@@ -8,6 +8,8 @@ import com.cpsj.service.mapper.AntecedentesPersonalesMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,11 +58,20 @@ public class AntecedentesPersonalesServiceImpl implements AntecedentesPersonales
     @Transactional(readOnly = true)
     public List<AntecedentesPersonalesDTO> findAll() {
         log.debug("Request to get all AntecedentesPersonales");
-        return antecedentesPersonalesRepository.findAll().stream()
+        return antecedentesPersonalesRepository.findAllWithEagerRelationships().stream()
             .map(antecedentesPersonalesMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
+    /**
+     * Get all the AntecedentesPersonales with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    public Page<AntecedentesPersonalesDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return antecedentesPersonalesRepository.findAllWithEagerRelationships(pageable).map(antecedentesPersonalesMapper::toDto);
+    }
+    
 
     /**
      * Get one antecedentesPersonales by id.
@@ -72,7 +83,7 @@ public class AntecedentesPersonalesServiceImpl implements AntecedentesPersonales
     @Transactional(readOnly = true)
     public Optional<AntecedentesPersonalesDTO> findOne(Long id) {
         log.debug("Request to get AntecedentesPersonales : {}", id);
-        return antecedentesPersonalesRepository.findById(id)
+        return antecedentesPersonalesRepository.findOneWithEagerRelationships(id)
             .map(antecedentesPersonalesMapper::toDto);
     }
 

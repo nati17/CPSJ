@@ -16,19 +16,13 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="cpsjApp.ejercicio.valor">Valor</span></th>
-            <th><span jhiTranslate="cpsjApp.ejercicio.values">Values</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let ejercicio of ejercicios ;trackBy: trackId">
                 <td><a [routerLink]="['/ejercicio', ejercicio.id, 'view' ]">{{ejercicio.id}}</a></td>
-                <td>{{ejercicio.valor}}</td>
-                <td>
-                    <span *ngFor="let values of ejercicio.values; let last = last">
-                            <a class="form-control-static" [routerLink]="['../antecedentes-personales', values?.id, 'view' ]">{{values.id}}</a>{{last ? '' : ', '}}
-                        </span>
-                </td>
+                <td jhiTranslate="{{'cpsjApp.EjerciciosEnum.' + ejercicio.valor}}">{{ejercicio.valor}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

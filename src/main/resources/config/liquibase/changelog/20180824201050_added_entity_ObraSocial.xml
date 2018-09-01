@@ -26,7 +26,23 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="nombre_obra_social" type="varchar(255)">
+            <column name="nombre_o_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="direecion_o_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="telefono_o_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="email_o_social" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="paciente_obra_social_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

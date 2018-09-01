@@ -18,6 +18,7 @@ export class PacienteUpdateComponent implements OnInit {
     isSaving: boolean;
 
     pacienteobrasocials: IObraSocial[];
+    fechaNacPacienteDp: any;
 
     constructor(
         private jhiAlertService: JhiAlertService,

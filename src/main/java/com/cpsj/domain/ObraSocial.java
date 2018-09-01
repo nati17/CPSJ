@@ -1,6 +1,7 @@
 package com.cpsj.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -25,8 +26,21 @@ public class ObraSocial implements Serializable {
     @Column(name = "codigo_obra_social")
     private String codigoObraSocial;
 
-    @Column(name = "nombre_obra_social")
-    private String nombreObraSocial;
+    @Column(name = "nombre_o_social")
+    private String nombreOSocial;
+
+    @Column(name = "direecion_o_social")
+    private String direecionOSocial;
+
+    @Column(name = "telefono_o_social")
+    private String telefonoOSocial;
+
+    @Column(name = "email_o_social")
+    private String emailOSocial;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private PacienteObraSocial pacienteObraSocial;
 
     @ManyToMany(mappedBy = "obrasocials")
     @JsonIgnore
@@ -54,17 +68,69 @@ public class ObraSocial implements Serializable {
         this.codigoObraSocial = codigoObraSocial;
     }
 
-    public String getNombreObraSocial() {
-        return nombreObraSocial;
+    public String getNombreOSocial() {
+        return nombreOSocial;
     }
 
-    public ObraSocial nombreObraSocial(String nombreObraSocial) {
-        this.nombreObraSocial = nombreObraSocial;
+    public ObraSocial nombreOSocial(String nombreOSocial) {
+        this.nombreOSocial = nombreOSocial;
         return this;
     }
 
-    public void setNombreObraSocial(String nombreObraSocial) {
-        this.nombreObraSocial = nombreObraSocial;
+    public void setNombreOSocial(String nombreOSocial) {
+        this.nombreOSocial = nombreOSocial;
+    }
+
+    public String getDireecionOSocial() {
+        return direecionOSocial;
+    }
+
+    public ObraSocial direecionOSocial(String direecionOSocial) {
+        this.direecionOSocial = direecionOSocial;
+        return this;
+    }
+
+    public void setDireecionOSocial(String direecionOSocial) {
+        this.direecionOSocial = direecionOSocial;
+    }
+
+    public String getTelefonoOSocial() {
+        return telefonoOSocial;
+    }
+
+    public ObraSocial telefonoOSocial(String telefonoOSocial) {
+        this.telefonoOSocial = telefonoOSocial;
+        return this;
+    }
+
+    public void setTelefonoOSocial(String telefonoOSocial) {
+        this.telefonoOSocial = telefonoOSocial;
+    }
+
+    public String getEmailOSocial() {
+        return emailOSocial;
+    }
+
+    public ObraSocial emailOSocial(String emailOSocial) {
+        this.emailOSocial = emailOSocial;
+        return this;
+    }
+
+    public void setEmailOSocial(String emailOSocial) {
+        this.emailOSocial = emailOSocial;
+    }
+
+    public PacienteObraSocial getPacienteObraSocial() {
+        return pacienteObraSocial;
+    }
+
+    public ObraSocial pacienteObraSocial(PacienteObraSocial pacienteObraSocial) {
+        this.pacienteObraSocial = pacienteObraSocial;
+        return this;
+    }
+
+    public void setPacienteObraSocial(PacienteObraSocial pacienteObraSocial) {
+        this.pacienteObraSocial = pacienteObraSocial;
     }
 
     public Set<Medico> getMedicos() {
@@ -118,7 +184,10 @@ public class ObraSocial implements Serializable {
         return "ObraSocial{" +
             "id=" + getId() +
             ", codigoObraSocial='" + getCodigoObraSocial() + "'" +
-            ", nombreObraSocial='" + getNombreObraSocial() + "'" +
+            ", nombreOSocial='" + getNombreOSocial() + "'" +
+            ", direecionOSocial='" + getDireecionOSocial() + "'" +
+            ", telefonoOSocial='" + getTelefonoOSocial() + "'" +
+            ", emailOSocial='" + getEmailOSocial() + "'" +
             "}";
     }
 }

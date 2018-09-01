@@ -11,8 +11,14 @@
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.regimen.valor" for="field_valor">Valor</label>
-                    <input type="text" class="form-control" name="valor" id="field_valor"
-                        [(ngModel)]="regimen.valor" required/>
+                    <select class="form-control" name="valor" [(ngModel)]="regimen.valor" id="field_valor"  required>
+                        <option value="NO">{{'cpsjApp.RegimenesEnum.NO' | translate}}</option>
+                        <option value="HIPOGLUCIDOS">{{'cpsjApp.RegimenesEnum.HIPOGLUCIDOS' | translate}}</option>
+                        <option value="HIPOLIPIDOS">{{'cpsjApp.RegimenesEnum.HIPOLIPIDOS' | translate}}</option>
+                        <option value="HIPOSODICOS">{{'cpsjApp.RegimenesEnum.HIPOSODICOS' | translate}}</option>
+                        <option value="HIPERGLUCIDOS">{{'cpsjApp.RegimenesEnum.HIPERGLUCIDOS' | translate}}</option>
+                        <option value="HIPERLIPIDOS">{{'cpsjApp.RegimenesEnum.HIPERLIPIDOS' | translate}}</option>
+                    </select>
                     <div [hidden]="!(editForm.controls.valor?.dirty && editForm.controls.valor?.invalid)">
                         <small class="form-text text-danger"
                         [hidden]="!editForm.controls.valor?.errors?.required" jhiTranslate="entity.validation.required">
@@ -21,12 +27,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label jhiTranslate="cpsjApp.regimen.values" for="field_values">Values</label>
-                    <select class="form-control" id="field_values" multiple name="values" [(ngModel)]="regimen.values">
-                        <option [ngValue]="getSelected(regimen.values, antecedentesPersonalesOption)" *ngFor="let antecedentesPersonalesOption of antecedentespersonales; trackBy: trackAntecedentesPersonalesById">{{antecedentesPersonalesOption.id}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

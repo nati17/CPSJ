@@ -1,5 +1,4 @@
-
-//ENUMERACIONES
+// ENUMERACIONES
 enum EnfermedadesEnum {
 ASMA,
 DIABETES,
@@ -45,64 +44,167 @@ enum EjerciciosEnum {
  TODOSLOSDIAS
 }
 
-//ENTIDADES
-entity CodigoPostal {
-	codigo String,
-    nombreCiudad String
+enum DiasSemanaEnum {
+  LUNES,
+  MARTES,
+  MIERCOLES,
+  JUEVES,
+  VIERNES,
+  SABADO,
+  DOMINGO
+}
+//Entidades
+entity Turno{
+  fechaTurno LocalDate,
+  horaTurno String,
+  duracion String
 }
 
-entity Provincia{
-	nombreProvincia String
+
+entity Paciente{
+  nombrePaciente String,
+  apellidoPaciente String,
+  direccionPaciente String,
+  telefonoPaciente String,
+  emailPaciente String,
+  fechaNacPaciente LocalDate,
+  generoPaciente String
 }
 
-entity ObraSocial{
-	codigoObraSocial String,
-    nombreObraSocial String
-}
 
 entity Medico{
-	codigoMedico String required,
-    nombreMedico String required,
-    direccionMedico String,
-    telefonoMedico String,
-    emailMedico String
+  codigoMedico String,
+  nombreMedico String,
+  apellidoMedico String,
+  direccionMedico String,
+  telefonoMedico String,
+  emailMedico String,
+  matriculaMedico String,
+  horarioIMedico String,
+  horarioEMedico String,
+  porcentaje String
 }
 
+
+entity Provincia{
+  nombreProvincia String
+}
+entity CodigoPostal{
+  codigo String,
+  nombreCiudad String
+}
+entity ObraSocial{
+  codigoObraSocial String,
+  nombreOSocial String,
+  direecionOSocial String,
+  telefonoOSocial String,
+  emailOSocial String
+}
 entity Especialidad{
-	codigoEspecilidad String required,
-	nombreEspecialidad String required
+  codigoEspecialidad String,
+  nombreEspecialidad String,
+  descripcionEspecialidad String
+}
+entity ConsultaPractica{
+  attribute String
+}
+entity Empresa{
+  nombreEmpresa String,
+  direccionEmpresa String,
+  telefonoEmpresa String,
+  emailEmpresa String
 }
 
-entity Paciente {
-	nombrePaciente String required,
-    apellidoPaciente String required,
-    documentoPaciente String required,
-    direccionPaciente String,
-    telefonoPaciente String,
-    emailPaciente String required
+entity Sucursal{
+  nombreSucursal String,
+  numeroSucursal Integer
+}
+entity Personal{
+  nombrePersonal String,
+  apellidoPersonal String,
+  direccionPersonal String,
+  telefonoPersonal String,
+  emailPersonal String,
+  cargoPersonal String
+}
+entity Diagnostico{
+  idDiagnostico String,
+  codigoDiagnostico String,
+  nombreDiagnostico String,
+  descripcionDiagnostico String
+}
+entity MedicoEspecialidadDiagnostico{
+  idMedico String,
+  idEspecialidad String,
+  idDiagnostico String
+}
+entity MedicoObraSocial{
+  idMedico String,
+  idOSocial String,
+  observaciones String
+}
+entity PacienteObraSocial{
+  idPaciente String,
+  idOSocial String,
+  nroAfiliado String,
+  planAfiliado String,
+  vigencia String,
+  estado Boolean
+}
+entity Calendario{
+  idCalendario String,
+  anioCalendario String,
+  mesCalendario String
+}
+entity PacienteTurno{
+  idPaciente String,
+  idTurno String,
+  observacionesTurno String
+}
+entity MedicoCalendario{
+  idMedico String,
+  idCalendario String,
+  estado Boolean
+}
+entity MontoConsultaPractica{
+  idMontoConsPract String,
+  monto String
+}
+entity Observacion{
+  idObservacion String,
+  descripcionObservacion String
+}
+entity ConsPractObservacion{
+  idConsPract String,
+  idObservacion String
+}
+entity Digitalizacion{
+  idDigitalizacion String,
+  descripcionDigitalizacion String,
+  elementoDigitalizacion String
 }
 
-entity EnfermedadValue{
-	enfermedad EnfermedadesEnum required
+entity Enfermedad{
+	valor EnfermedadesEnum required
 }
 
-entity AlergiaValue{
+entity Alergia{
 	valor AlergiasEnum required
 }
 
-entity IntoleranciaValue{
+entity Intolerancia{
 	valor IntoleranciasEnum required
 }
 
-entity RegimenValue{
+entity Regimen{
 	valor RegimenesEnum required
 }
 
-entity BebidaValue{
+entity Bebida{
 	valor BebidasEnum required
 }
 
-entity EjercicioValue{
+entity Ejercicio{
 	valor EjerciciosEnum required
 }
 
@@ -112,40 +214,43 @@ entity AntecedentesPersonales{
 }
 
 entity AntecedentesFamiliares{
-	
-	vivoAF Boolean,
-    causaMuerteAF String
+  vivoAF Boolean,
+  causaMuerteAF String
 }
 
-entity Consulta {
-	fechaConsulta LocalDate,
-    observacionesConsulta String    
+entity Dias{
+  valor DiasSemanaEnum required
 }
 
 entity Ficha{
 	fechaIngreso LocalDate
 }
-
-//El campo OSocial aparecerá como una lista en Paciente
+// El campo OSocial aparecerá como una lista en Paciente
 relationship OneToOne {
-	Paciente{pacienteObraSocial} to ObraSocial    
+	Paciente{pacienteObraSocial} to ObraSocial,
+  Empresa{sucursal(nombreSucursal)} to Sucursal    
 }
 
 relationship OneToMany{
 	Provincia{codigopostal} to CodigoPostal{provincia(nombreProvincia)},
-    Medico{ficha} to Ficha{medico(nombreMedico)}
+  Medico{ficha} to Ficha{medico(nombreMedico)}
+}
+
+relationship ManyToOne {
+  ObraSocial{pacienteObraSocial} to PacienteObraSocial
 }
 
 
 relationship ManyToMany{
 	Medico{obrasocial(medicoObraSocial)} to ObraSocial{medico(nombreMedico)},
 	Medico{especialidad(codigoEspecialidad)} to Especialidad{medico(nombreMedico)},
-    AntecedentesPersonales{enfermedades(valor)} to EnfermedadValue,
-    AntecedentesPersonales{alergias(valor)} to AlergiaValue,
-    AntecedentesPersonales{intolerancias(valor)} to IntoleranciaValue,
-    AntecedentesPersonales{regimenes(valor)} to RegimenValue,
-    AntecedentesPersonales{bebidas(valor)} to BebidaValue,
-    AntecedentesPersonales{ejercicios(valor)} to EjercicioValue
+  Medico{dias(valor)} to Dias,
+  AntecedentesPersonales{enfermedades(valor)} to Enfermedad,
+  AntecedentesPersonales{alergias(valor)} to Alergia,
+  AntecedentesPersonales{intolerancias(valor)} to Intolerancia,
+  AntecedentesPersonales{regimenes(valor)} to Regimen,
+  AntecedentesPersonales{bebidas(valor)} to Bebida,
+  AntecedentesPersonales{ejercicios(valor)} to Ejercicio
 }
 
 // Set pagination options

@@ -2,9 +2,8 @@ package com.cpsj.service.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import com.cpsj.domain.enumeration.RegimenesEnum;
 
 /**
  * A DTO for the Regimen entity.
@@ -14,9 +13,7 @@ public class RegimenDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String valor;
-
-    private Set<AntecedentesPersonalesDTO> values = new HashSet<>();
+    private RegimenesEnum valor;
 
     public Long getId() {
         return id;
@@ -26,20 +23,12 @@ public class RegimenDTO implements Serializable {
         this.id = id;
     }
 
-    public String getValor() {
+    public RegimenesEnum getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(RegimenesEnum valor) {
         this.valor = valor;
-    }
-
-    public Set<AntecedentesPersonalesDTO> getValues() {
-        return values;
-    }
-
-    public void setValues(Set<AntecedentesPersonalesDTO> antecedentesPersonales) {
-        this.values = antecedentesPersonales;
     }
 
     @Override

@@ -2,9 +2,8 @@ package com.cpsj.service.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import com.cpsj.domain.enumeration.IntoleranciasEnum;
 
 /**
  * A DTO for the Intolerancia entity.
@@ -14,9 +13,7 @@ public class IntoleranciaDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String valor;
-
-    private Set<AntecedentesPersonalesDTO> values = new HashSet<>();
+    private IntoleranciasEnum valor;
 
     public Long getId() {
         return id;
@@ -26,20 +23,12 @@ public class IntoleranciaDTO implements Serializable {
         this.id = id;
     }
 
-    public String getValor() {
+    public IntoleranciasEnum getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(IntoleranciasEnum valor) {
         this.valor = valor;
-    }
-
-    public Set<AntecedentesPersonalesDTO> getValues() {
-        return values;
-    }
-
-    public void setValues(Set<AntecedentesPersonalesDTO> antecedentesPersonales) {
-        this.values = antecedentesPersonales;
     }
 
     @Override

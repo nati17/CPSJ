@@ -1,11 +1,18 @@
-import { IAntecedentesPersonales } from 'app/shared/model//antecedentes-personales.model';
+export const enum EnfermedadesEnum {
+    ASMA = 'ASMA',
+    DIABETES = 'DIABETES',
+    HIPERTENSION = 'HIPERTENSION',
+    OBESIDAD = 'OBESIDAD',
+    INSUFCARDIACA = 'INSUFCARDIACA',
+    INSUFRENAL = 'INSUFRENAL',
+    OTROS = 'OTROS'
+}
 
 export interface IEnfermedad {
     id?: number;
-    valor?: string;
-    values?: IAntecedentesPersonales[];
+    valor?: EnfermedadesEnum;
 }
 
 export class Enfermedad implements IEnfermedad {
-    constructor(public id?: number, public valor?: string, public values?: IAntecedentesPersonales[]) {}
+    constructor(public id?: number, public valor?: EnfermedadesEnum) {}
 }

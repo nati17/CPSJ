@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Regimen and its DTO RegimenDTO.
  */
-@Mapper(componentModel = "spring", uses = {AntecedentesPersonalesMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface RegimenMapper extends EntityMapper<RegimenDTO, Regimen> {
 
 

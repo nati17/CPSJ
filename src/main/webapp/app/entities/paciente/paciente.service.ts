@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
+import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
@@ -16,23 +19,55 @@ export class PacienteService {
     constructor(private http: HttpClient) {}
 
     create(paciente: IPaciente): Observable<EntityResponseType> {
-        return this.http.post<IPaciente>(this.resourceUrl, paciente, { observe: 'response' });
+        const copy = this.convertDateFromClient(paciente);
+        return this.http
+            .post<IPaciente>(this.resourceUrl, copy, { observe: 'response' })
+            .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
     update(paciente: IPaciente): Observable<EntityResponseType> {
-        return this.http.put<IPaciente>(this.resourceUrl, paciente, { observe: 'response' });
+        const copy = this.convertDateFromClient(paciente);
+        return this.http
+            .put<IPaciente>(this.resourceUrl, copy, { observe: 'response' })
+            .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
     find(id: number): Observable<EntityResponseType> {
-        return this.http.get<IPaciente>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+        return this.http
+            .get<IPaciente>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+            .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
-        return this.http.get<IPaciente[]>(this.resourceUrl, { params: options, observe: 'response' });
+        return this.http
+            .get<IPaciente[]>(this.resourceUrl, { params: options, observe: 'response' })
+            .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    private convertDateFromClient(paciente: IPaciente): IPaciente {
+        const copy: IPaciente = Object.assign({}, paciente, {
+            fechaNacPaciente:
+                paciente.fechaNacPaciente != null && paciente.fechaNacPaciente.isValid()
+                    ? paciente.fechaNacPaciente.format(DATE_FORMAT)
+                    : null
+        });
+        return copy;
+    }
+
+    private convertDateFromServer(res: EntityResponseType): EntityResponseType {
+        res.body.fechaNacPaciente = res.body.fechaNacPaciente != null ? moment(res.body.fechaNacPaciente) : null;
+        return res;
+    }
+
+    private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+        res.body.forEach((paciente: IPaciente) => {
+            paciente.fechaNacPaciente = paciente.fechaNacPaciente != null ? moment(paciente.fechaNacPaciente) : null;
+        });
+        return res;
     }
 }

@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "pacienteTurno" : {
+            "home": {
+                "title": "Paciente Turnos",
+                "createLabel": "Create a new Paciente Turno",
+                "createOrEditLabel": "Create or edit a Paciente Turno"
+            },
+            "created": "A new Paciente Turno is created with identifier {{ param }}",
+            "updated": "A Paciente Turno is updated with identifier {{ param }}",
+            "deleted": "A Paciente Turno is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Paciente Turno {{ id }}?"
+            },
+            "detail": {
+                "title": "Paciente Turno"
+            },
+            "idPaciente": "Id Paciente",
+            "idTurno": "Id Turno",
+            "observacionesTurno": "Observaciones Turno"
+        }
+    }
+}

@@ -16,7 +16,11 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="codigoObraSocial"><span jhiTranslate="cpsjApp.obraSocial.codigoObraSocial">Codigo Obra Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="nombreObraSocial"><span jhiTranslate="cpsjApp.obraSocial.nombreObraSocial">Nombre Obra Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nombreOSocial"><span jhiTranslate="cpsjApp.obraSocial.nombreOSocial">Nombre O Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="direecionOSocial"><span jhiTranslate="cpsjApp.obraSocial.direecionOSocial">Direecion O Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telefonoOSocial"><span jhiTranslate="cpsjApp.obraSocial.telefonoOSocial">Telefono O Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="emailOSocial"><span jhiTranslate="cpsjApp.obraSocial.emailOSocial">Email O Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pacienteObraSocialId"><span jhiTranslate="cpsjApp.obraSocial.pacienteObraSocial">Paciente Obra Social</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -24,7 +28,15 @@
             <tr *ngFor="let obraSocial of obraSocials ;trackBy: trackId">
                 <td><a [routerLink]="['/obra-social', obraSocial.id, 'view' ]">{{obraSocial.id}}</a></td>
                 <td>{{obraSocial.codigoObraSocial}}</td>
-                <td>{{obraSocial.nombreObraSocial}}</td>
+                <td>{{obraSocial.nombreOSocial}}</td>
+                <td>{{obraSocial.direecionOSocial}}</td>
+                <td>{{obraSocial.telefonoOSocial}}</td>
+                <td>{{obraSocial.emailOSocial}}</td>
+                <td>
+                    <div *ngIf="obraSocial.pacienteObraSocialId">
+                        <a [routerLink]="['../paciente-obra-social', obraSocial.pacienteObraSocialId , 'view' ]" >{{obraSocial.pacienteObraSocialId}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

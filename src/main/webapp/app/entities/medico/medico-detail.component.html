@@ -13,6 +13,10 @@
                 <dd>
                     <span>{{medico.nombreMedico}}</span>
                 </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.apellidoMedico">Apellido Medico</span></dt>
+                <dd>
+                    <span>{{medico.apellidoMedico}}</span>
+                </dd>
                 <dt><span jhiTranslate="cpsjApp.medico.direccionMedico">Direccion Medico</span></dt>
                 <dd>
                     <span>{{medico.direccionMedico}}</span>
@@ -25,6 +29,22 @@
                 <dd>
                     <span>{{medico.emailMedico}}</span>
                 </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.matriculaMedico">Matricula Medico</span></dt>
+                <dd>
+                    <span>{{medico.matriculaMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.horarioIMedico">Horario I Medico</span></dt>
+                <dd>
+                    <span>{{medico.horarioIMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.horarioEMedico">Horario E Medico</span></dt>
+                <dd>
+                    <span>{{medico.horarioEMedico}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.porcentaje">Porcentaje</span></dt>
+                <dd>
+                    <span>{{medico.porcentaje}}</span>
+                </dd>
                 <dt><span jhiTranslate="cpsjApp.medico.obrasocial">Obrasocial</span></dt>
                 <dd>
                     <span *ngFor="let obrasocial of medico.obrasocials; let last = last">
@@ -35,6 +55,12 @@
                 <dd>
                     <span *ngFor="let especialidad of medico.especialidads; let last = last">
                         <a [routerLink]="['/especialidad', especialidad?.id, 'view' ]">{{especialidad.codigoEspecialidad}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.medico.dias">Dias</span></dt>
+                <dd>
+                    <span *ngFor="let dias of medico.dias; let last = last">
+                        <a [routerLink]="['/dias', dias?.id, 'view' ]">{{dias.valor}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
             </dl>

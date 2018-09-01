@@ -5,30 +5,6 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.enfermedad">Enfermedad</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.EnfermedadesEnum.' + antecedentesPersonales.enfermedad}}">{{antecedentesPersonales.enfermedad}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.alergia">Alergia</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.AlergiasEnum.' + antecedentesPersonales.alergia}}">{{antecedentesPersonales.alergia}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.intolerancia">Intolerancia</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.IntoleranciasEnum.' + antecedentesPersonales.intolerancia}}">{{antecedentesPersonales.intolerancia}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.regimen">Regimen</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.RegimenesEnum.' + antecedentesPersonales.regimen}}">{{antecedentesPersonales.regimen}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.bebida">Bebida</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.BebidasEnum.' + antecedentesPersonales.bebida}}">{{antecedentesPersonales.bebida}}</span>
-                </dd>
-                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.ejercicio">Ejercicio</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'cpsjApp.EjerciciosEnum.' + antecedentesPersonales.ejercicio}}">{{antecedentesPersonales.ejercicio}}</span>
-                </dd>
                 <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.tabaco">Tabaco</span></dt>
                 <dd>
                     <span>{{antecedentesPersonales.tabaco}}</span>
@@ -36,6 +12,42 @@
                 <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.tecafe">Tecafe</span></dt>
                 <dd>
                     <span>{{antecedentesPersonales.tecafe}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.enfermedades">Enfermedades</span></dt>
+                <dd>
+                    <span *ngFor="let enfermedades of antecedentesPersonales.enfermedades; let last = last">
+                        <a [routerLink]="['/enfermedad', enfermedades?.id, 'view' ]">{{enfermedades.valor}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.alergias">Alergias</span></dt>
+                <dd>
+                    <span *ngFor="let alergias of antecedentesPersonales.alergias; let last = last">
+                        <a [routerLink]="['/alergia', alergias?.id, 'view' ]">{{alergias.valor}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.intolerancias">Intolerancias</span></dt>
+                <dd>
+                    <span *ngFor="let intolerancias of antecedentesPersonales.intolerancias; let last = last">
+                        <a [routerLink]="['/intolerancia', intolerancias?.id, 'view' ]">{{intolerancias.valor}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.regimenes">Regimenes</span></dt>
+                <dd>
+                    <span *ngFor="let regimenes of antecedentesPersonales.regimenes; let last = last">
+                        <a [routerLink]="['/regimen', regimenes?.id, 'view' ]">{{regimenes.valor}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.bebidas">Bebidas</span></dt>
+                <dd>
+                    <span *ngFor="let bebidas of antecedentesPersonales.bebidas; let last = last">
+                        <a [routerLink]="['/bebida', bebidas?.id, 'view' ]">{{bebidas.valor}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.antecedentesPersonales.ejercicios">Ejercicios</span></dt>
+                <dd>
+                    <span *ngFor="let ejercicios of antecedentesPersonales.ejercicios; let last = last">
+                        <a [routerLink]="['/ejercicio', ejercicios?.id, 'view' ]">{{ejercicios.valor}}</a>{{last ? '' : ', '}}
+                    </span>
                 </dd>
             </dl>
 

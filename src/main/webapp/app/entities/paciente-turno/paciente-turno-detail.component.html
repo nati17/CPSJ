@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pacienteTurno">
+            <h2><span jhiTranslate="cpsjApp.pacienteTurno.detail.title">Paciente Turno</span> {{pacienteTurno.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cpsjApp.pacienteTurno.idPaciente">Id Paciente</span></dt>
+                <dd>
+                    <span>{{pacienteTurno.idPaciente}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteTurno.idTurno">Id Turno</span></dt>
+                <dd>
+                    <span>{{pacienteTurno.idTurno}}</span>
+                </dd>
+                <dt><span jhiTranslate="cpsjApp.pacienteTurno.observacionesTurno">Observaciones Turno</span></dt>
+                <dd>
+                    <span>{{pacienteTurno.observacionesTurno}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/paciente-turno', pacienteTurno.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

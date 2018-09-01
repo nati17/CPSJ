@@ -1,0 +1,23 @@
+{
+    "name": "Dias",
+    "fields": [
+        {
+            "fieldName": "valor",
+            "fieldType": "DiasSemanaEnum",
+            "fieldValues": "LUNES,MARTES,MIERCOLES,JUEVES,VIERNES,SABADO,DOMINGO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901224013",
+    "entityTableName": "dias",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -12,12 +12,9 @@ import com.cpsj.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -27,17 +24,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 
 import static com.cpsj.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.cpsj.domain.enumeration.EnfermedadesEnum;
 /**
  * Test class for the EnfermedadResource REST controller.
  *
@@ -47,19 +43,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CpsjApp.class)
 public class EnfermedadResourceIntTest {
 
-    private static final String DEFAULT_VALOR = "AAAAAAAAAA";
-    private static final String UPDATED_VALOR = "BBBBBBBBBB";
+    private static final EnfermedadesEnum DEFAULT_VALOR = EnfermedadesEnum.ASMA;
+    private static final EnfermedadesEnum UPDATED_VALOR = EnfermedadesEnum.DIABETES;
 
     @Autowired
     private EnfermedadRepository enfermedadRepository;
-    @Mock
-    private EnfermedadRepository enfermedadRepositoryMock;
+
 
     @Autowired
     private EnfermedadMapper enfermedadMapper;
     
-    @Mock
-    private EnfermedadService enfermedadServiceMock;
 
     @Autowired
     private EnfermedadService enfermedadService;
@@ -180,36 +173,6 @@ public class EnfermedadResourceIntTest {
             .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.toString())));
     }
     
-    public void getAllEnfermedadsWithEagerRelationshipsIsEnabled() throws Exception {
-        EnfermedadResource enfermedadResource = new EnfermedadResource(enfermedadServiceMock);
-        when(enfermedadServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restEnfermedadMockMvc = MockMvcBuilders.standaloneSetup(enfermedadResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restEnfermedadMockMvc.perform(get("/api/enfermedads?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(enfermedadServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    public void getAllEnfermedadsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        EnfermedadResource enfermedadResource = new EnfermedadResource(enfermedadServiceMock);
-            when(enfermedadServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restEnfermedadMockMvc = MockMvcBuilders.standaloneSetup(enfermedadResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restEnfermedadMockMvc.perform(get("/api/enfermedads?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(enfermedadServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
 
     @Test
     @Transactional

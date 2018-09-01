@@ -2,22 +2,11 @@ package com.cpsj.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
-
-import com.cpsj.domain.enumeration.EnfermedadesEnum;
-
-import com.cpsj.domain.enumeration.AlergiasEnum;
-
-import com.cpsj.domain.enumeration.IntoleranciasEnum;
-
-import com.cpsj.domain.enumeration.RegimenesEnum;
-
-import com.cpsj.domain.enumeration.BebidasEnum;
-
-import com.cpsj.domain.enumeration.EjerciciosEnum;
 
 /**
  * A AntecedentesPersonales.
@@ -32,41 +21,47 @@ public class AntecedentesPersonales implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "enfermedad", nullable = false)
-    private EnfermedadesEnum enfermedad;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "alergia", nullable = false)
-    private AlergiasEnum alergia;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "intolerancia", nullable = false)
-    private IntoleranciasEnum intolerancia;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "regimen", nullable = false)
-    private RegimenesEnum regimen;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "bebida", nullable = false)
-    private BebidasEnum bebida;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "ejercicio", nullable = false)
-    private EjerciciosEnum ejercicio;
-
     @Column(name = "tabaco")
     private Boolean tabaco;
 
     @Column(name = "tecafe")
     private Boolean tecafe;
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_enfermedades",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "enfermedades_id", referencedColumnName = "id"))
+    private Set<Enfermedad> enfermedades = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_alergias",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "alergias_id", referencedColumnName = "id"))
+    private Set<Alergia> alergias = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_intolerancias",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "intolerancias_id", referencedColumnName = "id"))
+    private Set<Intolerancia> intolerancias = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_regimenes",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "regimenes_id", referencedColumnName = "id"))
+    private Set<Regimen> regimenes = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_bebidas",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "bebidas_id", referencedColumnName = "id"))
+    private Set<Bebida> bebidas = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "antecedentes_personales_ejercicios",
+               joinColumns = @JoinColumn(name = "antecedentes_personales_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "ejercicios_id", referencedColumnName = "id"))
+    private Set<Ejercicio> ejercicios = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -75,84 +70,6 @@ public class AntecedentesPersonales implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public EnfermedadesEnum getEnfermedad() {
-        return enfermedad;
-    }
-
-    public AntecedentesPersonales enfermedad(EnfermedadesEnum enfermedad) {
-        this.enfermedad = enfermedad;
-        return this;
-    }
-
-    public void setEnfermedad(EnfermedadesEnum enfermedad) {
-        this.enfermedad = enfermedad;
-    }
-
-    public AlergiasEnum getAlergia() {
-        return alergia;
-    }
-
-    public AntecedentesPersonales alergia(AlergiasEnum alergia) {
-        this.alergia = alergia;
-        return this;
-    }
-
-    public void setAlergia(AlergiasEnum alergia) {
-        this.alergia = alergia;
-    }
-
-    public IntoleranciasEnum getIntolerancia() {
-        return intolerancia;
-    }
-
-    public AntecedentesPersonales intolerancia(IntoleranciasEnum intolerancia) {
-        this.intolerancia = intolerancia;
-        return this;
-    }
-
-    public void setIntolerancia(IntoleranciasEnum intolerancia) {
-        this.intolerancia = intolerancia;
-    }
-
-    public RegimenesEnum getRegimen() {
-        return regimen;
-    }
-
-    public AntecedentesPersonales regimen(RegimenesEnum regimen) {
-        this.regimen = regimen;
-        return this;
-    }
-
-    public void setRegimen(RegimenesEnum regimen) {
-        this.regimen = regimen;
-    }
-
-    public BebidasEnum getBebida() {
-        return bebida;
-    }
-
-    public AntecedentesPersonales bebida(BebidasEnum bebida) {
-        this.bebida = bebida;
-        return this;
-    }
-
-    public void setBebida(BebidasEnum bebida) {
-        this.bebida = bebida;
-    }
-
-    public EjerciciosEnum getEjercicio() {
-        return ejercicio;
-    }
-
-    public AntecedentesPersonales ejercicio(EjerciciosEnum ejercicio) {
-        this.ejercicio = ejercicio;
-        return this;
-    }
-
-    public void setEjercicio(EjerciciosEnum ejercicio) {
-        this.ejercicio = ejercicio;
     }
 
     public Boolean isTabaco() {
@@ -180,6 +97,144 @@ public class AntecedentesPersonales implements Serializable {
     public void setTecafe(Boolean tecafe) {
         this.tecafe = tecafe;
     }
+
+    public Set<Enfermedad> getEnfermedades() {
+        return enfermedades;
+    }
+
+    public AntecedentesPersonales enfermedades(Set<Enfermedad> enfermedads) {
+        this.enfermedades = enfermedads;
+        return this;
+    }
+
+    public AntecedentesPersonales addEnfermedades(Enfermedad enfermedad) {
+        this.enfermedades.add(enfermedad);
+        return this;
+    }
+
+    public AntecedentesPersonales removeEnfermedades(Enfermedad enfermedad) {
+        this.enfermedades.remove(enfermedad);
+        return this;
+    }
+
+    public void setEnfermedades(Set<Enfermedad> enfermedads) {
+        this.enfermedades = enfermedads;
+    }
+
+    public Set<Alergia> getAlergias() {
+        return alergias;
+    }
+
+    public AntecedentesPersonales alergias(Set<Alergia> alergias) {
+        this.alergias = alergias;
+        return this;
+    }
+
+    public AntecedentesPersonales addAlergias(Alergia alergia) {
+        this.alergias.add(alergia);
+        return this;
+    }
+
+    public AntecedentesPersonales removeAlergias(Alergia alergia) {
+        this.alergias.remove(alergia);
+        return this;
+    }
+
+    public void setAlergias(Set<Alergia> alergias) {
+        this.alergias = alergias;
+    }
+
+    public Set<Intolerancia> getIntolerancias() {
+        return intolerancias;
+    }
+
+    public AntecedentesPersonales intolerancias(Set<Intolerancia> intolerancias) {
+        this.intolerancias = intolerancias;
+        return this;
+    }
+
+    public AntecedentesPersonales addIntolerancias(Intolerancia intolerancia) {
+        this.intolerancias.add(intolerancia);
+        return this;
+    }
+
+    public AntecedentesPersonales removeIntolerancias(Intolerancia intolerancia) {
+        this.intolerancias.remove(intolerancia);
+        return this;
+    }
+
+    public void setIntolerancias(Set<Intolerancia> intolerancias) {
+        this.intolerancias = intolerancias;
+    }
+
+    public Set<Regimen> getRegimenes() {
+        return regimenes;
+    }
+
+    public AntecedentesPersonales regimenes(Set<Regimen> regimen) {
+        this.regimenes = regimen;
+        return this;
+    }
+
+    public AntecedentesPersonales addRegimenes(Regimen regimen) {
+        this.regimenes.add(regimen);
+        return this;
+    }
+
+    public AntecedentesPersonales removeRegimenes(Regimen regimen) {
+        this.regimenes.remove(regimen);
+        return this;
+    }
+
+    public void setRegimenes(Set<Regimen> regimen) {
+        this.regimenes = regimen;
+    }
+
+    public Set<Bebida> getBebidas() {
+        return bebidas;
+    }
+
+    public AntecedentesPersonales bebidas(Set<Bebida> bebidas) {
+        this.bebidas = bebidas;
+        return this;
+    }
+
+    public AntecedentesPersonales addBebidas(Bebida bebida) {
+        this.bebidas.add(bebida);
+        return this;
+    }
+
+    public AntecedentesPersonales removeBebidas(Bebida bebida) {
+        this.bebidas.remove(bebida);
+        return this;
+    }
+
+    public void setBebidas(Set<Bebida> bebidas) {
+        this.bebidas = bebidas;
+    }
+
+    public Set<Ejercicio> getEjercicios() {
+        return ejercicios;
+    }
+
+    public AntecedentesPersonales ejercicios(Set<Ejercicio> ejercicios) {
+        this.ejercicios = ejercicios;
+        return this;
+    }
+
+    public AntecedentesPersonales addEjercicios(Ejercicio ejercicio) {
+        this.ejercicios.add(ejercicio);
+        return this;
+    }
+
+    public AntecedentesPersonales removeEjercicios(Ejercicio ejercicio) {
+        this.ejercicios.remove(ejercicio);
+        return this;
+    }
+
+    public void setEjercicios(Set<Ejercicio> ejercicios) {
+        this.ejercicios = ejercicios;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -206,12 +261,6 @@ public class AntecedentesPersonales implements Serializable {
     public String toString() {
         return "AntecedentesPersonales{" +
             "id=" + getId() +
-            ", enfermedad='" + getEnfermedad() + "'" +
-            ", alergia='" + getAlergia() + "'" +
-            ", intolerancia='" + getIntolerancia() + "'" +
-            ", regimen='" + getRegimen() + "'" +
-            ", bebida='" + getBebida() + "'" +
-            ", ejercicio='" + getEjercicio() + "'" +
             ", tabaco='" + isTabaco() + "'" +
             ", tecafe='" + isTecafe() + "'" +
             "}";

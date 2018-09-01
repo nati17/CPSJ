@@ -1,11 +1,17 @@
-import { IAntecedentesPersonales } from 'app/shared/model//antecedentes-personales.model';
+export const enum RegimenesEnum {
+    NO = 'NO',
+    HIPOGLUCIDOS = 'HIPOGLUCIDOS',
+    HIPOLIPIDOS = 'HIPOLIPIDOS',
+    HIPOSODICOS = 'HIPOSODICOS',
+    HIPERGLUCIDOS = 'HIPERGLUCIDOS',
+    HIPERLIPIDOS = 'HIPERLIPIDOS'
+}
 
 export interface IRegimen {
     id?: number;
-    valor?: string;
-    values?: IAntecedentesPersonales[];
+    valor?: RegimenesEnum;
 }
 
 export class Regimen implements IRegimen {
-    constructor(public id?: number, public valor?: string, public values?: IAntecedentesPersonales[]) {}
+    constructor(public id?: number, public valor?: RegimenesEnum) {}
 }

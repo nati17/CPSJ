@@ -1,0 +1,27 @@
+{
+    "name": "Calendario",
+    "fields": [
+        {
+            "fieldName": "idCalendario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "anioCalendario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mesCalendario",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901223958",
+    "entityTableName": "calendario",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

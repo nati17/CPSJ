@@ -1,0 +1,39 @@
+{
+    "name": "PacienteObraSocial",
+    "fields": [
+        {
+            "fieldName": "idPaciente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idOSocial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nroAfiliado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "planAfiliado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vigencia",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901223957",
+    "entityTableName": "paciente_obra_social",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

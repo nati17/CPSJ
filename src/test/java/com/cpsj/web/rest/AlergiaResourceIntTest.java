@@ -12,12 +12,9 @@ import com.cpsj.web.rest.errors.ExceptionTranslator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -27,17 +24,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 
 import static com.cpsj.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.cpsj.domain.enumeration.AlergiasEnum;
 /**
  * Test class for the AlergiaResource REST controller.
  *
@@ -47,19 +43,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CpsjApp.class)
 public class AlergiaResourceIntTest {
 
-    private static final String DEFAULT_VALOR = "AAAAAAAAAA";
-    private static final String UPDATED_VALOR = "BBBBBBBBBB";
+    private static final AlergiasEnum DEFAULT_VALOR = AlergiasEnum.SALICILATOS;
+    private static final AlergiasEnum UPDATED_VALOR = AlergiasEnum.PIRAZOLONAS;
 
     @Autowired
     private AlergiaRepository alergiaRepository;
-    @Mock
-    private AlergiaRepository alergiaRepositoryMock;
+
 
     @Autowired
     private AlergiaMapper alergiaMapper;
     
-    @Mock
-    private AlergiaService alergiaServiceMock;
 
     @Autowired
     private AlergiaService alergiaService;
@@ -180,36 +173,6 @@ public class AlergiaResourceIntTest {
             .andExpect(jsonPath("$.[*].valor").value(hasItem(DEFAULT_VALOR.toString())));
     }
     
-    public void getAllAlergiasWithEagerRelationshipsIsEnabled() throws Exception {
-        AlergiaResource alergiaResource = new AlergiaResource(alergiaServiceMock);
-        when(alergiaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        MockMvc restAlergiaMockMvc = MockMvcBuilders.standaloneSetup(alergiaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restAlergiaMockMvc.perform(get("/api/alergias?eagerload=true"))
-        .andExpect(status().isOk());
-
-        verify(alergiaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    public void getAllAlergiasWithEagerRelationshipsIsNotEnabled() throws Exception {
-        AlergiaResource alergiaResource = new AlergiaResource(alergiaServiceMock);
-            when(alergiaServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-            MockMvc restAlergiaMockMvc = MockMvcBuilders.standaloneSetup(alergiaResource)
-            .setCustomArgumentResolvers(pageableArgumentResolver)
-            .setControllerAdvice(exceptionTranslator)
-            .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
-
-        restAlergiaMockMvc.perform(get("/api/alergias?eagerload=true"))
-        .andExpect(status().isOk());
-
-            verify(alergiaServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
 
     @Test
     @Transactional

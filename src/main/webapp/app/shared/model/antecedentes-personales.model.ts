@@ -1,71 +1,33 @@
-export const enum EnfermedadesEnum {
-    ASMA = 'ASMA',
-    DIABETES = 'DIABETES',
-    HIPERTENSION = 'HIPERTENSION',
-    OBESIDAD = 'OBESIDAD',
-    INSUFCARDIACA = 'INSUFCARDIACA',
-    INSUFRENAL = 'INSUFRENAL',
-    OTROS = 'OTROS'
-}
-
-export const enum AlergiasEnum {
-    SALICILATOS = 'SALICILATOS',
-    PIRAZOLONAS = 'PIRAZOLONAS',
-    PENISILINA = 'PENISILINA',
-    OTROS = 'OTROS'
-}
-
-export const enum IntoleranciasEnum {
-    GLUTEN = 'GLUTEN',
-    LACTOSA = 'LACTOSA',
-    OTROS = 'OTROS'
-}
-
-export const enum RegimenesEnum {
-    NO = 'NO',
-    HIPOGLUCIDOS = 'HIPOGLUCIDOS',
-    HIPOLIPIDOS = 'HIPOLIPIDOS',
-    HIPOSODICOS = 'HIPOSODICOS',
-    HIPERGLUCIDOS = 'HIPERGLUCIDOS',
-    HIPERLIPIDOS = 'HIPERLIPIDOS'
-}
-
-export const enum BebidasEnum {
-    NO = 'NO',
-    SISIEMPRE = 'SISIEMPRE',
-    SIAVECES = 'SIAVECES'
-}
-
-export const enum EjerciciosEnum {
-    NO = 'NO',
-    UNDIA = 'UNDIA',
-    TRESDIAS = 'TRESDIAS',
-    TODOSLOSDIAS = 'TODOSLOSDIAS'
-}
+import { IEnfermedad } from 'app/shared/model//enfermedad.model';
+import { IAlergia } from 'app/shared/model//alergia.model';
+import { IIntolerancia } from 'app/shared/model//intolerancia.model';
+import { IRegimen } from 'app/shared/model//regimen.model';
+import { IBebida } from 'app/shared/model//bebida.model';
+import { IEjercicio } from 'app/shared/model//ejercicio.model';
 
 export interface IAntecedentesPersonales {
     id?: number;
-    enfermedad?: EnfermedadesEnum;
-    alergia?: AlergiasEnum;
-    intolerancia?: IntoleranciasEnum;
-    regimen?: RegimenesEnum;
-    bebida?: BebidasEnum;
-    ejercicio?: EjerciciosEnum;
     tabaco?: boolean;
     tecafe?: boolean;
+    enfermedades?: IEnfermedad[];
+    alergias?: IAlergia[];
+    intolerancias?: IIntolerancia[];
+    regimenes?: IRegimen[];
+    bebidas?: IBebida[];
+    ejercicios?: IEjercicio[];
 }
 
 export class AntecedentesPersonales implements IAntecedentesPersonales {
     constructor(
         public id?: number,
-        public enfermedad?: EnfermedadesEnum,
-        public alergia?: AlergiasEnum,
-        public intolerancia?: IntoleranciasEnum,
-        public regimen?: RegimenesEnum,
-        public bebida?: BebidasEnum,
-        public ejercicio?: EjerciciosEnum,
         public tabaco?: boolean,
-        public tecafe?: boolean
+        public tecafe?: boolean,
+        public enfermedades?: IEnfermedad[],
+        public alergias?: IAlergia[],
+        public intolerancias?: IIntolerancia[],
+        public regimenes?: IRegimen[],
+        public bebidas?: IBebida[],
+        public ejercicios?: IEjercicio[]
     ) {
         this.tabaco = false;
         this.tecafe = false;

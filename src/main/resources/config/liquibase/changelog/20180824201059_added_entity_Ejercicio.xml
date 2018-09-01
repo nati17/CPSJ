@@ -29,17 +29,6 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
-        <createTable tableName="ejercicio_values">
-            <column name="values_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ejercicios_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="ejercicios_id, values_id" tableName="ejercicio_values"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

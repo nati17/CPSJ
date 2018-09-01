@@ -12,7 +12,15 @@ public class ObraSocialDTO implements Serializable {
 
     private String codigoObraSocial;
 
-    private String nombreObraSocial;
+    private String nombreOSocial;
+
+    private String direecionOSocial;
+
+    private String telefonoOSocial;
+
+    private String emailOSocial;
+
+    private Long pacienteObraSocialId;
 
     public Long getId() {
         return id;
@@ -30,12 +38,44 @@ public class ObraSocialDTO implements Serializable {
         this.codigoObraSocial = codigoObraSocial;
     }
 
-    public String getNombreObraSocial() {
-        return nombreObraSocial;
+    public String getNombreOSocial() {
+        return nombreOSocial;
     }
 
-    public void setNombreObraSocial(String nombreObraSocial) {
-        this.nombreObraSocial = nombreObraSocial;
+    public void setNombreOSocial(String nombreOSocial) {
+        this.nombreOSocial = nombreOSocial;
+    }
+
+    public String getDireecionOSocial() {
+        return direecionOSocial;
+    }
+
+    public void setDireecionOSocial(String direecionOSocial) {
+        this.direecionOSocial = direecionOSocial;
+    }
+
+    public String getTelefonoOSocial() {
+        return telefonoOSocial;
+    }
+
+    public void setTelefonoOSocial(String telefonoOSocial) {
+        this.telefonoOSocial = telefonoOSocial;
+    }
+
+    public String getEmailOSocial() {
+        return emailOSocial;
+    }
+
+    public void setEmailOSocial(String emailOSocial) {
+        this.emailOSocial = emailOSocial;
+    }
+
+    public Long getPacienteObraSocialId() {
+        return pacienteObraSocialId;
+    }
+
+    public void setPacienteObraSocialId(Long pacienteObraSocialId) {
+        this.pacienteObraSocialId = pacienteObraSocialId;
     }
 
     @Override
@@ -64,7 +104,11 @@ public class ObraSocialDTO implements Serializable {
         return "ObraSocialDTO{" +
             "id=" + getId() +
             ", codigoObraSocial='" + getCodigoObraSocial() + "'" +
-            ", nombreObraSocial='" + getNombreObraSocial() + "'" +
+            ", nombreOSocial='" + getNombreOSocial() + "'" +
+            ", direecionOSocial='" + getDireecionOSocial() + "'" +
+            ", telefonoOSocial='" + getTelefonoOSocial() + "'" +
+            ", emailOSocial='" + getEmailOSocial() + "'" +
+            ", pacienteObraSocial=" + getPacienteObraSocialId() +
             "}";
     }
 }

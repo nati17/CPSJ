@@ -10,6 +10,8 @@ import { IObraSocial } from 'app/shared/model/obra-social.model';
 import { ObraSocialService } from 'app/entities/obra-social';
 import { IEspecialidad } from 'app/shared/model/especialidad.model';
 import { EspecialidadService } from 'app/entities/especialidad';
+import { IDias } from 'app/shared/model/dias.model';
+import { DiasService } from 'app/entities/dias';
 
 @Component({
     selector: 'jhi-medico-update',
@@ -23,11 +25,14 @@ export class MedicoUpdateComponent implements OnInit {
 
     especialidads: IEspecialidad[];
 
+    dias: IDias[];
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private medicoService: MedicoService,
         private obraSocialService: ObraSocialService,
         private especialidadService: EspecialidadService,
+        private diasService: DiasService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -45,6 +50,12 @@ export class MedicoUpdateComponent implements OnInit {
         this.especialidadService.query().subscribe(
             (res: HttpResponse<IEspecialidad[]>) => {
                 this.especialidads = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.diasService.query().subscribe(
+            (res: HttpResponse<IDias[]>) => {
+                this.dias = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -85,6 +96,10 @@ export class MedicoUpdateComponent implements OnInit {
     }
 
     trackEspecialidadById(index: number, item: IEspecialidad) {
+        return item.id;
+    }
+
+    trackDiasById(index: number, item: IDias) {
         return item.id;
     }
 

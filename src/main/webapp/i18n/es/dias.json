@@ -1,0 +1,22 @@
+
+{
+    "cpsjApp": {
+        "dias" : {
+            "home": {
+                "title": "Dias",
+                "createLabel": "Crear nuevo Dias",
+                "createOrEditLabel": "Crear o editar Dias"
+            },
+            "created": "Un nuevo Dias ha sido creado con el identificador {{ param }}",
+            "updated": "Un Dias ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Dias ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Dias {{ id }}?"
+            },
+            "detail": {
+                "title": "Dias"
+            },
+            "valor": "Valor"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "digitalizacion" : {
+            "home": {
+                "title": "Digitalizacions",
+                "createLabel": "Create a new Digitalizacion",
+                "createOrEditLabel": "Create or edit a Digitalizacion"
+            },
+            "created": "A new Digitalizacion is created with identifier {{ param }}",
+            "updated": "A Digitalizacion is updated with identifier {{ param }}",
+            "deleted": "A Digitalizacion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Digitalizacion {{ id }}?"
+            },
+            "detail": {
+                "title": "Digitalizacion"
+            },
+            "idDigitalizacion": "Id Digitalizacion",
+            "descripcionDigitalizacion": "Descripcion Digitalizacion",
+            "elementoDigitalizacion": "Elemento Digitalizacion"
+        }
+    }
+}

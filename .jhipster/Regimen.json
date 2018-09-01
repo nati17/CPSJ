@@ -3,22 +3,14 @@
     "fields": [
         {
             "fieldName": "valor",
-            "fieldType": "String",
+            "fieldType": "RegimenesEnum",
+            "fieldValues": "NO,HIPOGLUCIDOS,HIPOLIPIDOS,HIPOSODICOS,HIPERGLUCIDOS,HIPERLIPIDOS",
             "fieldValidateRules": [
                 "required"
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "",
-            "relationshipName": "values",
-            "otherEntityName": "antecedentesPersonales",
-            "otherEntityField": "id",
-            "ownerSide": true
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20180824201057",
     "entityTableName": "regimen",
     "dto": "mapstruct",

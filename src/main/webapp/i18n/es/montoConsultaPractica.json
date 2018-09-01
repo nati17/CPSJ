@@ -1,0 +1,23 @@
+
+{
+    "cpsjApp": {
+        "montoConsultaPractica" : {
+            "home": {
+                "title": "Monto Consulta Practicas",
+                "createLabel": "Crear nuevo Monto Consulta Practica",
+                "createOrEditLabel": "Crear o editar Monto Consulta Practica"
+            },
+            "created": "Un nuevo Monto Consulta Practica ha sido creado con el identificador {{ param }}",
+            "updated": "Un Monto Consulta Practica ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Monto Consulta Practica ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Monto Consulta Practica {{ id }}?"
+            },
+            "detail": {
+                "title": "Monto Consulta Practica"
+            },
+            "idMontoConsPract": "Id Monto Cons Pract",
+            "monto": "Monto"
+        }
+    }
+}

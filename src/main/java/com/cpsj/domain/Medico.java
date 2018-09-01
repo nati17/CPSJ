@@ -3,7 +3,6 @@ package com.cpsj.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -23,13 +22,14 @@ public class Medico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "codigo_medico", nullable = false)
+    @Column(name = "codigo_medico")
     private String codigoMedico;
 
-    @NotNull
-    @Column(name = "nombre_medico", nullable = false)
+    @Column(name = "nombre_medico")
     private String nombreMedico;
+
+    @Column(name = "apellido_medico")
+    private String apellidoMedico;
 
     @Column(name = "direccion_medico")
     private String direccionMedico;
@@ -39,6 +39,18 @@ public class Medico implements Serializable {
 
     @Column(name = "email_medico")
     private String emailMedico;
+
+    @Column(name = "matricula_medico")
+    private String matriculaMedico;
+
+    @Column(name = "horario_i_medico")
+    private String horarioIMedico;
+
+    @Column(name = "horario_e_medico")
+    private String horarioEMedico;
+
+    @Column(name = "porcentaje")
+    private String porcentaje;
 
     @OneToMany(mappedBy = "medico")
     private Set<Ficha> fichas = new HashSet<>();
@@ -54,6 +66,12 @@ public class Medico implements Serializable {
                joinColumns = @JoinColumn(name = "medicos_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "especialidads_id", referencedColumnName = "id"))
     private Set<Especialidad> especialidads = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "medico_dias",
+               joinColumns = @JoinColumn(name = "medicos_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "dias_id", referencedColumnName = "id"))
+    private Set<Dias> dias = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,6 +106,19 @@ public class Medico implements Serializable {
 
     public void setNombreMedico(String nombreMedico) {
         this.nombreMedico = nombreMedico;
+    }
+
+    public String getApellidoMedico() {
+        return apellidoMedico;
+    }
+
+    public Medico apellidoMedico(String apellidoMedico) {
+        this.apellidoMedico = apellidoMedico;
+        return this;
+    }
+
+    public void setApellidoMedico(String apellidoMedico) {
+        this.apellidoMedico = apellidoMedico;
     }
 
     public String getDireccionMedico() {
@@ -127,6 +158,58 @@ public class Medico implements Serializable {
 
     public void setEmailMedico(String emailMedico) {
         this.emailMedico = emailMedico;
+    }
+
+    public String getMatriculaMedico() {
+        return matriculaMedico;
+    }
+
+    public Medico matriculaMedico(String matriculaMedico) {
+        this.matriculaMedico = matriculaMedico;
+        return this;
+    }
+
+    public void setMatriculaMedico(String matriculaMedico) {
+        this.matriculaMedico = matriculaMedico;
+    }
+
+    public String getHorarioIMedico() {
+        return horarioIMedico;
+    }
+
+    public Medico horarioIMedico(String horarioIMedico) {
+        this.horarioIMedico = horarioIMedico;
+        return this;
+    }
+
+    public void setHorarioIMedico(String horarioIMedico) {
+        this.horarioIMedico = horarioIMedico;
+    }
+
+    public String getHorarioEMedico() {
+        return horarioEMedico;
+    }
+
+    public Medico horarioEMedico(String horarioEMedico) {
+        this.horarioEMedico = horarioEMedico;
+        return this;
+    }
+
+    public void setHorarioEMedico(String horarioEMedico) {
+        this.horarioEMedico = horarioEMedico;
+    }
+
+    public String getPorcentaje() {
+        return porcentaje;
+    }
+
+    public Medico porcentaje(String porcentaje) {
+        this.porcentaje = porcentaje;
+        return this;
+    }
+
+    public void setPorcentaje(String porcentaje) {
+        this.porcentaje = porcentaje;
     }
 
     public Set<Ficha> getFichas() {
@@ -203,6 +286,29 @@ public class Medico implements Serializable {
     public void setEspecialidads(Set<Especialidad> especialidads) {
         this.especialidads = especialidads;
     }
+
+    public Set<Dias> getDias() {
+        return dias;
+    }
+
+    public Medico dias(Set<Dias> dias) {
+        this.dias = dias;
+        return this;
+    }
+
+    public Medico addDias(Dias dias) {
+        this.dias.add(dias);
+        return this;
+    }
+
+    public Medico removeDias(Dias dias) {
+        this.dias.remove(dias);
+        return this;
+    }
+
+    public void setDias(Set<Dias> dias) {
+        this.dias = dias;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -231,9 +337,14 @@ public class Medico implements Serializable {
             "id=" + getId() +
             ", codigoMedico='" + getCodigoMedico() + "'" +
             ", nombreMedico='" + getNombreMedico() + "'" +
+            ", apellidoMedico='" + getApellidoMedico() + "'" +
             ", direccionMedico='" + getDireccionMedico() + "'" +
             ", telefonoMedico='" + getTelefonoMedico() + "'" +
             ", emailMedico='" + getEmailMedico() + "'" +
+            ", matriculaMedico='" + getMatriculaMedico() + "'" +
+            ", horarioIMedico='" + getHorarioIMedico() + "'" +
+            ", horarioEMedico='" + getHorarioEMedico() + "'" +
+            ", porcentaje='" + getPorcentaje() + "'" +
             "}";
     }
 }

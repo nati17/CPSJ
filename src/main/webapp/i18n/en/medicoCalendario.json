@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "medicoCalendario" : {
+            "home": {
+                "title": "Medico Calendarios",
+                "createLabel": "Create a new Medico Calendario",
+                "createOrEditLabel": "Create or edit a Medico Calendario"
+            },
+            "created": "A new Medico Calendario is created with identifier {{ param }}",
+            "updated": "A Medico Calendario is updated with identifier {{ param }}",
+            "deleted": "A Medico Calendario is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Medico Calendario {{ id }}?"
+            },
+            "detail": {
+                "title": "Medico Calendario"
+            },
+            "idMedico": "Id Medico",
+            "idCalendario": "Id Calendario",
+            "estado": "Estado"
+        }
+    }
+}

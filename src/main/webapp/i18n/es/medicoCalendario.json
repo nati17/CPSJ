@@ -1,0 +1,24 @@
+
+{
+    "cpsjApp": {
+        "medicoCalendario" : {
+            "home": {
+                "title": "Medico Calendarios",
+                "createLabel": "Crear nuevo Medico Calendario",
+                "createOrEditLabel": "Crear o editar Medico Calendario"
+            },
+            "created": "Un nuevo Medico Calendario ha sido creado con el identificador {{ param }}",
+            "updated": "Un Medico Calendario ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Medico Calendario ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Medico Calendario {{ id }}?"
+            },
+            "detail": {
+                "title": "Medico Calendario"
+            },
+            "idMedico": "Id Medico",
+            "idCalendario": "Id Calendario",
+            "estado": "Estado"
+        }
+    }
+}

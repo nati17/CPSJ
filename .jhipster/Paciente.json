@@ -3,24 +3,11 @@
     "fields": [
         {
             "fieldName": "nombrePaciente",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "apellidoPaciente",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "documentoPaciente",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
         },
         {
             "fieldName": "direccionPaciente",
@@ -32,10 +19,15 @@
         },
         {
             "fieldName": "emailPaciente",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaNacPaciente",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "generoPaciente",
+            "fieldType": "String"
         }
     ],
     "relationships": [

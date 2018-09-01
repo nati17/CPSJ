@@ -30,5 +30,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="especialidad"/>
         
+        <addForeignKeyConstraint baseColumnNames="medicos_id"
+                                 baseTableName="medico_dias"
+                                 constraintName="fk_medico_dias_medicos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medico"/>
+        <addForeignKeyConstraint baseColumnNames="dias_id"
+                                 baseTableName="medico_dias"
+                                 constraintName="fk_medico_dias_dias_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dias"/>
+        
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,39 @@
+{
+    "name": "Personal",
+    "fields": [
+        {
+            "fieldName": "nombrePersonal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellidoPersonal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "direccionPersonal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefonoPersonal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "emailPersonal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cargoPersonal",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901223953",
+    "entityTableName": "personal",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

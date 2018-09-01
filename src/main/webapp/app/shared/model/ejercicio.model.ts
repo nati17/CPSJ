@@ -1,11 +1,15 @@
-import { IAntecedentesPersonales } from 'app/shared/model//antecedentes-personales.model';
+export const enum EjerciciosEnum {
+    NO = 'NO',
+    UNDIA = 'UNDIA',
+    TRESDIAS = 'TRESDIAS',
+    TODOSLOSDIAS = 'TODOSLOSDIAS'
+}
 
 export interface IEjercicio {
     id?: number;
-    valor?: string;
-    values?: IAntecedentesPersonales[];
+    valor?: EjerciciosEnum;
 }
 
 export class Ejercicio implements IEjercicio {
-    constructor(public id?: number, public valor?: string, public values?: IAntecedentesPersonales[]) {}
+    constructor(public id?: number, public valor?: EjerciciosEnum) {}
 }

@@ -18,10 +18,11 @@
             },
             "nombrePaciente": "Nombre Paciente",
             "apellidoPaciente": "Apellido Paciente",
-            "documentoPaciente": "Documento Paciente",
             "direccionPaciente": "Direccion Paciente",
             "telefonoPaciente": "Telefono Paciente",
             "emailPaciente": "Email Paciente",
+            "fechaNacPaciente": "Fecha Nac Paciente",
+            "generoPaciente": "Genero Paciente",
             "pacienteObraSocial": "Paciente Obra Social"
         }
     }

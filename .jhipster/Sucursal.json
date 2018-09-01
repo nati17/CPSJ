@@ -1,0 +1,23 @@
+{
+    "name": "Sucursal",
+    "fields": [
+        {
+            "fieldName": "nombreSucursal",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numeroSucursal",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901223952",
+    "entityTableName": "sucursal",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "MontoConsultaPractica",
+    "fields": [
+        {
+            "fieldName": "idMontoConsPract",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "monto",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901224001",
+    "entityTableName": "monto_consulta_practica",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

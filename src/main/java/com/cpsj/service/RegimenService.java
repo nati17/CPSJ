@@ -2,9 +2,6 @@ package com.cpsj.service;
 
 import com.cpsj.service.dto.RegimenDTO;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +25,7 @@ public interface RegimenService {
      */
     List<RegimenDTO> findAll();
 
-    /**
-     * Get all the Regimen with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<RegimenDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" regimen.
      *

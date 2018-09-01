@@ -1,11 +1,14 @@
-import { IAntecedentesPersonales } from 'app/shared/model//antecedentes-personales.model';
+export const enum IntoleranciasEnum {
+    GLUTEN = 'GLUTEN',
+    LACTOSA = 'LACTOSA',
+    OTROS = 'OTROS'
+}
 
 export interface IIntolerancia {
     id?: number;
-    valor?: string;
-    values?: IAntecedentesPersonales[];
+    valor?: IntoleranciasEnum;
 }
 
 export class Intolerancia implements IIntolerancia {
-    constructor(public id?: number, public valor?: string, public values?: IAntecedentesPersonales[]) {}
+    constructor(public id?: number, public valor?: IntoleranciasEnum) {}
 }

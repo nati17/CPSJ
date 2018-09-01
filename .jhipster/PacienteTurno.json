@@ -1,0 +1,27 @@
+{
+    "name": "PacienteTurno",
+    "fields": [
+        {
+            "fieldName": "idPaciente",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idTurno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "observacionesTurno",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901223959",
+    "entityTableName": "paciente_turno",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

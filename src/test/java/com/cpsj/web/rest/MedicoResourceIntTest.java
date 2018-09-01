@@ -53,6 +53,9 @@ public class MedicoResourceIntTest {
     private static final String DEFAULT_NOMBRE_MEDICO = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE_MEDICO = "BBBBBBBBBB";
 
+    private static final String DEFAULT_APELLIDO_MEDICO = "AAAAAAAAAA";
+    private static final String UPDATED_APELLIDO_MEDICO = "BBBBBBBBBB";
+
     private static final String DEFAULT_DIRECCION_MEDICO = "AAAAAAAAAA";
     private static final String UPDATED_DIRECCION_MEDICO = "BBBBBBBBBB";
 
@@ -61,6 +64,18 @@ public class MedicoResourceIntTest {
 
     private static final String DEFAULT_EMAIL_MEDICO = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_MEDICO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_MATRICULA_MEDICO = "AAAAAAAAAA";
+    private static final String UPDATED_MATRICULA_MEDICO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_HORARIO_I_MEDICO = "AAAAAAAAAA";
+    private static final String UPDATED_HORARIO_I_MEDICO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_HORARIO_E_MEDICO = "AAAAAAAAAA";
+    private static final String UPDATED_HORARIO_E_MEDICO = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PORCENTAJE = "AAAAAAAAAA";
+    private static final String UPDATED_PORCENTAJE = "BBBBBBBBBB";
 
     @Autowired
     private MedicoRepository medicoRepository;
@@ -113,9 +128,14 @@ public class MedicoResourceIntTest {
         Medico medico = new Medico()
             .codigoMedico(DEFAULT_CODIGO_MEDICO)
             .nombreMedico(DEFAULT_NOMBRE_MEDICO)
+            .apellidoMedico(DEFAULT_APELLIDO_MEDICO)
             .direccionMedico(DEFAULT_DIRECCION_MEDICO)
             .telefonoMedico(DEFAULT_TELEFONO_MEDICO)
-            .emailMedico(DEFAULT_EMAIL_MEDICO);
+            .emailMedico(DEFAULT_EMAIL_MEDICO)
+            .matriculaMedico(DEFAULT_MATRICULA_MEDICO)
+            .horarioIMedico(DEFAULT_HORARIO_I_MEDICO)
+            .horarioEMedico(DEFAULT_HORARIO_E_MEDICO)
+            .porcentaje(DEFAULT_PORCENTAJE);
         return medico;
     }
 
@@ -142,9 +162,14 @@ public class MedicoResourceIntTest {
         Medico testMedico = medicoList.get(medicoList.size() - 1);
         assertThat(testMedico.getCodigoMedico()).isEqualTo(DEFAULT_CODIGO_MEDICO);
         assertThat(testMedico.getNombreMedico()).isEqualTo(DEFAULT_NOMBRE_MEDICO);
+        assertThat(testMedico.getApellidoMedico()).isEqualTo(DEFAULT_APELLIDO_MEDICO);
         assertThat(testMedico.getDireccionMedico()).isEqualTo(DEFAULT_DIRECCION_MEDICO);
         assertThat(testMedico.getTelefonoMedico()).isEqualTo(DEFAULT_TELEFONO_MEDICO);
         assertThat(testMedico.getEmailMedico()).isEqualTo(DEFAULT_EMAIL_MEDICO);
+        assertThat(testMedico.getMatriculaMedico()).isEqualTo(DEFAULT_MATRICULA_MEDICO);
+        assertThat(testMedico.getHorarioIMedico()).isEqualTo(DEFAULT_HORARIO_I_MEDICO);
+        assertThat(testMedico.getHorarioEMedico()).isEqualTo(DEFAULT_HORARIO_E_MEDICO);
+        assertThat(testMedico.getPorcentaje()).isEqualTo(DEFAULT_PORCENTAJE);
     }
 
     @Test
@@ -169,44 +194,6 @@ public class MedicoResourceIntTest {
 
     @Test
     @Transactional
-    public void checkCodigoMedicoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = medicoRepository.findAll().size();
-        // set the field null
-        medico.setCodigoMedico(null);
-
-        // Create the Medico, which fails.
-        MedicoDTO medicoDTO = medicoMapper.toDto(medico);
-
-        restMedicoMockMvc.perform(post("/api/medicos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(medicoDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Medico> medicoList = medicoRepository.findAll();
-        assertThat(medicoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkNombreMedicoIsRequired() throws Exception {
-        int databaseSizeBeforeTest = medicoRepository.findAll().size();
-        // set the field null
-        medico.setNombreMedico(null);
-
-        // Create the Medico, which fails.
-        MedicoDTO medicoDTO = medicoMapper.toDto(medico);
-
-        restMedicoMockMvc.perform(post("/api/medicos")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(medicoDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Medico> medicoList = medicoRepository.findAll();
-        assertThat(medicoList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllMedicos() throws Exception {
         // Initialize the database
         medicoRepository.saveAndFlush(medico);
@@ -218,9 +205,14 @@ public class MedicoResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(medico.getId().intValue())))
             .andExpect(jsonPath("$.[*].codigoMedico").value(hasItem(DEFAULT_CODIGO_MEDICO.toString())))
             .andExpect(jsonPath("$.[*].nombreMedico").value(hasItem(DEFAULT_NOMBRE_MEDICO.toString())))
+            .andExpect(jsonPath("$.[*].apellidoMedico").value(hasItem(DEFAULT_APELLIDO_MEDICO.toString())))
             .andExpect(jsonPath("$.[*].direccionMedico").value(hasItem(DEFAULT_DIRECCION_MEDICO.toString())))
             .andExpect(jsonPath("$.[*].telefonoMedico").value(hasItem(DEFAULT_TELEFONO_MEDICO.toString())))
-            .andExpect(jsonPath("$.[*].emailMedico").value(hasItem(DEFAULT_EMAIL_MEDICO.toString())));
+            .andExpect(jsonPath("$.[*].emailMedico").value(hasItem(DEFAULT_EMAIL_MEDICO.toString())))
+            .andExpect(jsonPath("$.[*].matriculaMedico").value(hasItem(DEFAULT_MATRICULA_MEDICO.toString())))
+            .andExpect(jsonPath("$.[*].horarioIMedico").value(hasItem(DEFAULT_HORARIO_I_MEDICO.toString())))
+            .andExpect(jsonPath("$.[*].horarioEMedico").value(hasItem(DEFAULT_HORARIO_E_MEDICO.toString())))
+            .andExpect(jsonPath("$.[*].porcentaje").value(hasItem(DEFAULT_PORCENTAJE.toString())));
     }
     
     public void getAllMedicosWithEagerRelationshipsIsEnabled() throws Exception {
@@ -267,9 +259,14 @@ public class MedicoResourceIntTest {
             .andExpect(jsonPath("$.id").value(medico.getId().intValue()))
             .andExpect(jsonPath("$.codigoMedico").value(DEFAULT_CODIGO_MEDICO.toString()))
             .andExpect(jsonPath("$.nombreMedico").value(DEFAULT_NOMBRE_MEDICO.toString()))
+            .andExpect(jsonPath("$.apellidoMedico").value(DEFAULT_APELLIDO_MEDICO.toString()))
             .andExpect(jsonPath("$.direccionMedico").value(DEFAULT_DIRECCION_MEDICO.toString()))
             .andExpect(jsonPath("$.telefonoMedico").value(DEFAULT_TELEFONO_MEDICO.toString()))
-            .andExpect(jsonPath("$.emailMedico").value(DEFAULT_EMAIL_MEDICO.toString()));
+            .andExpect(jsonPath("$.emailMedico").value(DEFAULT_EMAIL_MEDICO.toString()))
+            .andExpect(jsonPath("$.matriculaMedico").value(DEFAULT_MATRICULA_MEDICO.toString()))
+            .andExpect(jsonPath("$.horarioIMedico").value(DEFAULT_HORARIO_I_MEDICO.toString()))
+            .andExpect(jsonPath("$.horarioEMedico").value(DEFAULT_HORARIO_E_MEDICO.toString()))
+            .andExpect(jsonPath("$.porcentaje").value(DEFAULT_PORCENTAJE.toString()));
     }
     @Test
     @Transactional
@@ -294,9 +291,14 @@ public class MedicoResourceIntTest {
         updatedMedico
             .codigoMedico(UPDATED_CODIGO_MEDICO)
             .nombreMedico(UPDATED_NOMBRE_MEDICO)
+            .apellidoMedico(UPDATED_APELLIDO_MEDICO)
             .direccionMedico(UPDATED_DIRECCION_MEDICO)
             .telefonoMedico(UPDATED_TELEFONO_MEDICO)
-            .emailMedico(UPDATED_EMAIL_MEDICO);
+            .emailMedico(UPDATED_EMAIL_MEDICO)
+            .matriculaMedico(UPDATED_MATRICULA_MEDICO)
+            .horarioIMedico(UPDATED_HORARIO_I_MEDICO)
+            .horarioEMedico(UPDATED_HORARIO_E_MEDICO)
+            .porcentaje(UPDATED_PORCENTAJE);
         MedicoDTO medicoDTO = medicoMapper.toDto(updatedMedico);
 
         restMedicoMockMvc.perform(put("/api/medicos")
@@ -310,9 +312,14 @@ public class MedicoResourceIntTest {
         Medico testMedico = medicoList.get(medicoList.size() - 1);
         assertThat(testMedico.getCodigoMedico()).isEqualTo(UPDATED_CODIGO_MEDICO);
         assertThat(testMedico.getNombreMedico()).isEqualTo(UPDATED_NOMBRE_MEDICO);
+        assertThat(testMedico.getApellidoMedico()).isEqualTo(UPDATED_APELLIDO_MEDICO);
         assertThat(testMedico.getDireccionMedico()).isEqualTo(UPDATED_DIRECCION_MEDICO);
         assertThat(testMedico.getTelefonoMedico()).isEqualTo(UPDATED_TELEFONO_MEDICO);
         assertThat(testMedico.getEmailMedico()).isEqualTo(UPDATED_EMAIL_MEDICO);
+        assertThat(testMedico.getMatriculaMedico()).isEqualTo(UPDATED_MATRICULA_MEDICO);
+        assertThat(testMedico.getHorarioIMedico()).isEqualTo(UPDATED_HORARIO_I_MEDICO);
+        assertThat(testMedico.getHorarioEMedico()).isEqualTo(UPDATED_HORARIO_E_MEDICO);
+        assertThat(testMedico.getPorcentaje()).isEqualTo(UPDATED_PORCENTAJE);
     }
 
     @Test

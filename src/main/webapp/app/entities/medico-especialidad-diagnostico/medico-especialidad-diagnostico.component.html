@@ -1,0 +1,58 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.home.title">Medico Especialidad Diagnosticos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-medico-especialidad-diagnostico" [routerLink]="['/medico-especialidad-diagnostico/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.home.createLabel">
+            Create new Medico Especialidad Diagnostico
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="medicoEspecialidadDiagnosticos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idMedico">Id Medico</span></th>
+            <th><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idEspecialidad">Id Especialidad</span></th>
+            <th><span jhiTranslate="cpsjApp.medicoEspecialidadDiagnostico.idDiagnostico">Id Diagnostico</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let medicoEspecialidadDiagnostico of medicoEspecialidadDiagnosticos ;trackBy: trackId">
+                <td><a [routerLink]="['/medico-especialidad-diagnostico', medicoEspecialidadDiagnostico.id, 'view' ]">{{medicoEspecialidadDiagnostico.id}}</a></td>
+                <td>{{medicoEspecialidadDiagnostico.idMedico}}</td>
+                <td>{{medicoEspecialidadDiagnostico.idEspecialidad}}</td>
+                <td>{{medicoEspecialidadDiagnostico.idDiagnostico}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/medico-especialidad-diagnostico', medicoEspecialidadDiagnostico.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/medico-especialidad-diagnostico', medicoEspecialidadDiagnostico.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'medico-especialidad-diagnostico/'+ medicoEspecialidadDiagnostico.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

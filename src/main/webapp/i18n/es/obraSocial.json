@@ -17,7 +17,11 @@
                 "title": "Obra Social"
             },
             "codigoObraSocial": "Codigo Obra Social",
-            "nombreObraSocial": "Nombre Obra Social",
+            "nombreOSocial": "Nombre O Social",
+            "direecionOSocial": "Direecion O Social",
+            "telefonoOSocial": "Telefono O Social",
+            "emailOSocial": "Email O Social",
+            "pacienteObraSocial": "Paciente Obra Social",
             "medico": "Medico"
         }
     }

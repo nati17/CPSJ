@@ -2,9 +2,6 @@ package com.cpsj.service;
 
 import com.cpsj.service.dto.EjercicioDTO;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +25,7 @@ public interface EjercicioService {
      */
     List<EjercicioDTO> findAll();
 
-    /**
-     * Get all the Ejercicio with eager load of many-to-many relationships.
-     *
-     * @return the list of entities
-     */
-    Page<EjercicioDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
     /**
      * Get the "id" ejercicio.
      *

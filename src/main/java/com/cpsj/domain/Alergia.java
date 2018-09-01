@@ -5,9 +5,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+
+import com.cpsj.domain.enumeration.AlergiasEnum;
 
 /**
  * A Alergia.
@@ -23,14 +23,9 @@ public class Alergia implements Serializable {
     private Long id;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "valor", nullable = false)
-    private String valor;
-
-    @ManyToMany
-    @JoinTable(name = "alergia_values",
-               joinColumns = @JoinColumn(name = "alergias_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "values_id", referencedColumnName = "id"))
-    private Set<AntecedentesPersonales> values = new HashSet<>();
+    private AlergiasEnum valor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -41,40 +36,17 @@ public class Alergia implements Serializable {
         this.id = id;
     }
 
-    public String getValor() {
+    public AlergiasEnum getValor() {
         return valor;
     }
 
-    public Alergia valor(String valor) {
+    public Alergia valor(AlergiasEnum valor) {
         this.valor = valor;
         return this;
     }
 
-    public void setValor(String valor) {
+    public void setValor(AlergiasEnum valor) {
         this.valor = valor;
-    }
-
-    public Set<AntecedentesPersonales> getValues() {
-        return values;
-    }
-
-    public Alergia values(Set<AntecedentesPersonales> antecedentesPersonales) {
-        this.values = antecedentesPersonales;
-        return this;
-    }
-
-    public Alergia addValues(AntecedentesPersonales antecedentesPersonales) {
-        this.values.add(antecedentesPersonales);
-        return this;
-    }
-
-    public Alergia removeValues(AntecedentesPersonales antecedentesPersonales) {
-        this.values.remove(antecedentesPersonales);
-        return this;
-    }
-
-    public void setValues(Set<AntecedentesPersonales> antecedentesPersonales) {
-        this.values = antecedentesPersonales;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

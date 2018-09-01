@@ -1,6 +1,5 @@
 package com.cpsj.service.dto;
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,11 +10,11 @@ public class EspecialidadDTO implements Serializable {
 
     private Long id;
 
-    @NotNull
-    private String codigoEspecilidad;
+    private String codigoEspecialidad;
 
-    @NotNull
     private String nombreEspecialidad;
+
+    private String descripcionEspecialidad;
 
     public Long getId() {
         return id;
@@ -25,12 +24,12 @@ public class EspecialidadDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCodigoEspecilidad() {
-        return codigoEspecilidad;
+    public String getCodigoEspecialidad() {
+        return codigoEspecialidad;
     }
 
-    public void setCodigoEspecilidad(String codigoEspecilidad) {
-        this.codigoEspecilidad = codigoEspecilidad;
+    public void setCodigoEspecialidad(String codigoEspecialidad) {
+        this.codigoEspecialidad = codigoEspecialidad;
     }
 
     public String getNombreEspecialidad() {
@@ -39,6 +38,14 @@ public class EspecialidadDTO implements Serializable {
 
     public void setNombreEspecialidad(String nombreEspecialidad) {
         this.nombreEspecialidad = nombreEspecialidad;
+    }
+
+    public String getDescripcionEspecialidad() {
+        return descripcionEspecialidad;
+    }
+
+    public void setDescripcionEspecialidad(String descripcionEspecialidad) {
+        this.descripcionEspecialidad = descripcionEspecialidad;
     }
 
     @Override
@@ -66,8 +73,9 @@ public class EspecialidadDTO implements Serializable {
     public String toString() {
         return "EspecialidadDTO{" +
             "id=" + getId() +
-            ", codigoEspecilidad='" + getCodigoEspecilidad() + "'" +
+            ", codigoEspecialidad='" + getCodigoEspecialidad() + "'" +
             ", nombreEspecialidad='" + getNombreEspecialidad() + "'" +
+            ", descripcionEspecialidad='" + getDescripcionEspecialidad() + "'" +
             "}";
     }
 }

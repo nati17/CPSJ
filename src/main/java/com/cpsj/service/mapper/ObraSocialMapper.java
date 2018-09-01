@@ -8,10 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity ObraSocial and its DTO ObraSocialDTO.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {PacienteObraSocialMapper.class})
 public interface ObraSocialMapper extends EntityMapper<ObraSocialDTO, ObraSocial> {
 
+    @Mapping(source = "pacienteObraSocial.id", target = "pacienteObraSocialId")
+    ObraSocialDTO toDto(ObraSocial obraSocial);
 
+    @Mapping(source = "pacienteObraSocialId", target = "pacienteObraSocial")
     @Mapping(target = "medicos", ignore = true)
     ObraSocial toEntity(ObraSocialDTO obraSocialDTO);
 

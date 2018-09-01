@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
 
 import { IEjercicio } from 'app/shared/model/ejercicio.model';
 import { EjercicioService } from './ejercicio.service';
-import { IAntecedentesPersonales } from 'app/shared/model/antecedentes-personales.model';
-import { AntecedentesPersonalesService } from 'app/entities/antecedentes-personales';
 
 @Component({
     selector: 'jhi-ejercicio-update',
@@ -17,26 +14,13 @@ export class EjercicioUpdateComponent implements OnInit {
     private _ejercicio: IEjercicio;
     isSaving: boolean;
 
-    antecedentespersonales: IAntecedentesPersonales[];
-
-    constructor(
-        private jhiAlertService: JhiAlertService,
-        private ejercicioService: EjercicioService,
-        private antecedentesPersonalesService: AntecedentesPersonalesService,
-        private activatedRoute: ActivatedRoute
-    ) {}
+    constructor(private ejercicioService: EjercicioService, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ ejercicio }) => {
             this.ejercicio = ejercicio;
         });
-        this.antecedentesPersonalesService.query().subscribe(
-            (res: HttpResponse<IAntecedentesPersonales[]>) => {
-                this.antecedentespersonales = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     previousState() {
@@ -63,25 +47,6 @@ export class EjercicioUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
-    }
-
-    private onError(errorMessage: string) {
-        this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackAntecedentesPersonalesById(index: number, item: IAntecedentesPersonales) {
-        return item.id;
-    }
-
-    getSelected(selectedVals: Array<any>, option: any) {
-        if (selectedVals) {
-            for (let i = 0; i < selectedVals.length; i++) {
-                if (option.id === selectedVals[i].id) {
-                    return selectedVals[i];
-                }
-            }
-        }
-        return option;
     }
     get ejercicio() {
         return this._ejercicio;

@@ -1,0 +1,27 @@
+{
+    "name": "MedicoCalendario",
+    "fields": [
+        {
+            "fieldName": "idMedico",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idCalendario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180901224000",
+    "entityTableName": "medico_calendario",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

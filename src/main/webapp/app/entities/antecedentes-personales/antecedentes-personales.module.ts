@@ -11,7 +11,6 @@ import {
     antecedentesPersonalesRoute,
     antecedentesPersonalesPopupRoute
 } from './';
-import { EnumToArrayPipe } from './EnumToArrayPipe';
 
 const ENTITY_STATES = [...antecedentesPersonalesRoute, ...antecedentesPersonalesPopupRoute];
 
@@ -22,8 +21,7 @@ const ENTITY_STATES = [...antecedentesPersonalesRoute, ...antecedentesPersonales
         AntecedentesPersonalesDetailComponent,
         AntecedentesPersonalesUpdateComponent,
         AntecedentesPersonalesDeleteDialogComponent,
-        AntecedentesPersonalesDeletePopupComponent,
-        EnumToArrayPipe
+        AntecedentesPersonalesDeletePopupComponent
     ],
     entryComponents: [
         AntecedentesPersonalesComponent,
@@ -31,7 +29,6 @@ const ENTITY_STATES = [...antecedentesPersonalesRoute, ...antecedentesPersonales
         AntecedentesPersonalesDeleteDialogComponent,
         AntecedentesPersonalesDeletePopupComponent
     ],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    providers: [EnumToArrayPipe]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CpsjAntecedentesPersonalesModule {}

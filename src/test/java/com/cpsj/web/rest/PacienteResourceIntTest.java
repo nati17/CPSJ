@@ -24,6 +24,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -48,9 +50,6 @@ public class PacienteResourceIntTest {
     private static final String DEFAULT_APELLIDO_PACIENTE = "AAAAAAAAAA";
     private static final String UPDATED_APELLIDO_PACIENTE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DOCUMENTO_PACIENTE = "AAAAAAAAAA";
-    private static final String UPDATED_DOCUMENTO_PACIENTE = "BBBBBBBBBB";
-
     private static final String DEFAULT_DIRECCION_PACIENTE = "AAAAAAAAAA";
     private static final String UPDATED_DIRECCION_PACIENTE = "BBBBBBBBBB";
 
@@ -59,6 +58,12 @@ public class PacienteResourceIntTest {
 
     private static final String DEFAULT_EMAIL_PACIENTE = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL_PACIENTE = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_FECHA_NAC_PACIENTE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_FECHA_NAC_PACIENTE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_GENERO_PACIENTE = "AAAAAAAAAA";
+    private static final String UPDATED_GENERO_PACIENTE = "BBBBBBBBBB";
 
     @Autowired
     private PacienteRepository pacienteRepository;
@@ -108,10 +113,11 @@ public class PacienteResourceIntTest {
         Paciente paciente = new Paciente()
             .nombrePaciente(DEFAULT_NOMBRE_PACIENTE)
             .apellidoPaciente(DEFAULT_APELLIDO_PACIENTE)
-            .documentoPaciente(DEFAULT_DOCUMENTO_PACIENTE)
             .direccionPaciente(DEFAULT_DIRECCION_PACIENTE)
             .telefonoPaciente(DEFAULT_TELEFONO_PACIENTE)
-            .emailPaciente(DEFAULT_EMAIL_PACIENTE);
+            .emailPaciente(DEFAULT_EMAIL_PACIENTE)
+            .fechaNacPaciente(DEFAULT_FECHA_NAC_PACIENTE)
+            .generoPaciente(DEFAULT_GENERO_PACIENTE);
         return paciente;
     }
 
@@ -138,10 +144,11 @@ public class PacienteResourceIntTest {
         Paciente testPaciente = pacienteList.get(pacienteList.size() - 1);
         assertThat(testPaciente.getNombrePaciente()).isEqualTo(DEFAULT_NOMBRE_PACIENTE);
         assertThat(testPaciente.getApellidoPaciente()).isEqualTo(DEFAULT_APELLIDO_PACIENTE);
-        assertThat(testPaciente.getDocumentoPaciente()).isEqualTo(DEFAULT_DOCUMENTO_PACIENTE);
         assertThat(testPaciente.getDireccionPaciente()).isEqualTo(DEFAULT_DIRECCION_PACIENTE);
         assertThat(testPaciente.getTelefonoPaciente()).isEqualTo(DEFAULT_TELEFONO_PACIENTE);
         assertThat(testPaciente.getEmailPaciente()).isEqualTo(DEFAULT_EMAIL_PACIENTE);
+        assertThat(testPaciente.getFechaNacPaciente()).isEqualTo(DEFAULT_FECHA_NAC_PACIENTE);
+        assertThat(testPaciente.getGeneroPaciente()).isEqualTo(DEFAULT_GENERO_PACIENTE);
     }
 
     @Test
@@ -166,82 +173,6 @@ public class PacienteResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNombrePacienteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = pacienteRepository.findAll().size();
-        // set the field null
-        paciente.setNombrePaciente(null);
-
-        // Create the Paciente, which fails.
-        PacienteDTO pacienteDTO = pacienteMapper.toDto(paciente);
-
-        restPacienteMockMvc.perform(post("/api/pacientes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(pacienteDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Paciente> pacienteList = pacienteRepository.findAll();
-        assertThat(pacienteList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkApellidoPacienteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = pacienteRepository.findAll().size();
-        // set the field null
-        paciente.setApellidoPaciente(null);
-
-        // Create the Paciente, which fails.
-        PacienteDTO pacienteDTO = pacienteMapper.toDto(paciente);
-
-        restPacienteMockMvc.perform(post("/api/pacientes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(pacienteDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Paciente> pacienteList = pacienteRepository.findAll();
-        assertThat(pacienteList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkDocumentoPacienteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = pacienteRepository.findAll().size();
-        // set the field null
-        paciente.setDocumentoPaciente(null);
-
-        // Create the Paciente, which fails.
-        PacienteDTO pacienteDTO = pacienteMapper.toDto(paciente);
-
-        restPacienteMockMvc.perform(post("/api/pacientes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(pacienteDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Paciente> pacienteList = pacienteRepository.findAll();
-        assertThat(pacienteList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkEmailPacienteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = pacienteRepository.findAll().size();
-        // set the field null
-        paciente.setEmailPaciente(null);
-
-        // Create the Paciente, which fails.
-        PacienteDTO pacienteDTO = pacienteMapper.toDto(paciente);
-
-        restPacienteMockMvc.perform(post("/api/pacientes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(pacienteDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Paciente> pacienteList = pacienteRepository.findAll();
-        assertThat(pacienteList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllPacientes() throws Exception {
         // Initialize the database
         pacienteRepository.saveAndFlush(paciente);
@@ -253,10 +184,11 @@ public class PacienteResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(paciente.getId().intValue())))
             .andExpect(jsonPath("$.[*].nombrePaciente").value(hasItem(DEFAULT_NOMBRE_PACIENTE.toString())))
             .andExpect(jsonPath("$.[*].apellidoPaciente").value(hasItem(DEFAULT_APELLIDO_PACIENTE.toString())))
-            .andExpect(jsonPath("$.[*].documentoPaciente").value(hasItem(DEFAULT_DOCUMENTO_PACIENTE.toString())))
             .andExpect(jsonPath("$.[*].direccionPaciente").value(hasItem(DEFAULT_DIRECCION_PACIENTE.toString())))
             .andExpect(jsonPath("$.[*].telefonoPaciente").value(hasItem(DEFAULT_TELEFONO_PACIENTE.toString())))
-            .andExpect(jsonPath("$.[*].emailPaciente").value(hasItem(DEFAULT_EMAIL_PACIENTE.toString())));
+            .andExpect(jsonPath("$.[*].emailPaciente").value(hasItem(DEFAULT_EMAIL_PACIENTE.toString())))
+            .andExpect(jsonPath("$.[*].fechaNacPaciente").value(hasItem(DEFAULT_FECHA_NAC_PACIENTE.toString())))
+            .andExpect(jsonPath("$.[*].generoPaciente").value(hasItem(DEFAULT_GENERO_PACIENTE.toString())));
     }
     
 
@@ -273,10 +205,11 @@ public class PacienteResourceIntTest {
             .andExpect(jsonPath("$.id").value(paciente.getId().intValue()))
             .andExpect(jsonPath("$.nombrePaciente").value(DEFAULT_NOMBRE_PACIENTE.toString()))
             .andExpect(jsonPath("$.apellidoPaciente").value(DEFAULT_APELLIDO_PACIENTE.toString()))
-            .andExpect(jsonPath("$.documentoPaciente").value(DEFAULT_DOCUMENTO_PACIENTE.toString()))
             .andExpect(jsonPath("$.direccionPaciente").value(DEFAULT_DIRECCION_PACIENTE.toString()))
             .andExpect(jsonPath("$.telefonoPaciente").value(DEFAULT_TELEFONO_PACIENTE.toString()))
-            .andExpect(jsonPath("$.emailPaciente").value(DEFAULT_EMAIL_PACIENTE.toString()));
+            .andExpect(jsonPath("$.emailPaciente").value(DEFAULT_EMAIL_PACIENTE.toString()))
+            .andExpect(jsonPath("$.fechaNacPaciente").value(DEFAULT_FECHA_NAC_PACIENTE.toString()))
+            .andExpect(jsonPath("$.generoPaciente").value(DEFAULT_GENERO_PACIENTE.toString()));
     }
     @Test
     @Transactional
@@ -301,10 +234,11 @@ public class PacienteResourceIntTest {
         updatedPaciente
             .nombrePaciente(UPDATED_NOMBRE_PACIENTE)
             .apellidoPaciente(UPDATED_APELLIDO_PACIENTE)
-            .documentoPaciente(UPDATED_DOCUMENTO_PACIENTE)
             .direccionPaciente(UPDATED_DIRECCION_PACIENTE)
             .telefonoPaciente(UPDATED_TELEFONO_PACIENTE)
-            .emailPaciente(UPDATED_EMAIL_PACIENTE);
+            .emailPaciente(UPDATED_EMAIL_PACIENTE)
+            .fechaNacPaciente(UPDATED_FECHA_NAC_PACIENTE)
+            .generoPaciente(UPDATED_GENERO_PACIENTE);
         PacienteDTO pacienteDTO = pacienteMapper.toDto(updatedPaciente);
 
         restPacienteMockMvc.perform(put("/api/pacientes")
@@ -318,10 +252,11 @@ public class PacienteResourceIntTest {
         Paciente testPaciente = pacienteList.get(pacienteList.size() - 1);
         assertThat(testPaciente.getNombrePaciente()).isEqualTo(UPDATED_NOMBRE_PACIENTE);
         assertThat(testPaciente.getApellidoPaciente()).isEqualTo(UPDATED_APELLIDO_PACIENTE);
-        assertThat(testPaciente.getDocumentoPaciente()).isEqualTo(UPDATED_DOCUMENTO_PACIENTE);
         assertThat(testPaciente.getDireccionPaciente()).isEqualTo(UPDATED_DIRECCION_PACIENTE);
         assertThat(testPaciente.getTelefonoPaciente()).isEqualTo(UPDATED_TELEFONO_PACIENTE);
         assertThat(testPaciente.getEmailPaciente()).isEqualTo(UPDATED_EMAIL_PACIENTE);
+        assertThat(testPaciente.getFechaNacPaciente()).isEqualTo(UPDATED_FECHA_NAC_PACIENTE);
+        assertThat(testPaciente.getGeneroPaciente()).isEqualTo(UPDATED_GENERO_PACIENTE);
     }
 
     @Test

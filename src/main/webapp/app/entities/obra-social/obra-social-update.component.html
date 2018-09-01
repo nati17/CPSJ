@@ -15,11 +15,33 @@
                         [(ngModel)]="obraSocial.codigoObraSocial" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.nombreObraSocial" for="field_nombreObraSocial">Nombre Obra Social</label>
-                    <input type="text" class="form-control" name="nombreObraSocial" id="field_nombreObraSocial"
-                        [(ngModel)]="obraSocial.nombreObraSocial" />
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.nombreOSocial" for="field_nombreOSocial">Nombre O Social</label>
+                    <input type="text" class="form-control" name="nombreOSocial" id="field_nombreOSocial"
+                        [(ngModel)]="obraSocial.nombreOSocial" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.direecionOSocial" for="field_direecionOSocial">Direecion O Social</label>
+                    <input type="text" class="form-control" name="direecionOSocial" id="field_direecionOSocial"
+                        [(ngModel)]="obraSocial.direecionOSocial" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.telefonoOSocial" for="field_telefonoOSocial">Telefono O Social</label>
+                    <input type="text" class="form-control" name="telefonoOSocial" id="field_telefonoOSocial"
+                        [(ngModel)]="obraSocial.telefonoOSocial" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.emailOSocial" for="field_emailOSocial">Email O Social</label>
+                    <input type="text" class="form-control" name="emailOSocial" id="field_emailOSocial"
+                        [(ngModel)]="obraSocial.emailOSocial" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cpsjApp.obraSocial.pacienteObraSocial" for="field_pacienteObraSocial">Paciente Obra Social</label>
+                    <select class="form-control" id="field_pacienteObraSocial" name="pacienteObraSocial" [(ngModel)]="obraSocial.pacienteObraSocialId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pacienteObraSocialOption.id" *ngFor="let pacienteObraSocialOption of pacienteobrasocials; trackBy: trackPacienteObraSocialById">{{pacienteObraSocialOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
