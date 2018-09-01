@@ -1,0 +1,160 @@
+
+//ENUMERACIONES
+enum EnfermedadesEnum {
+ASMA,
+DIABETES,
+HIPERTENSION,
+OBESIDAD,
+INSUFCARDIACA,
+INSUFRENAL,
+OTROS
+}
+
+enum AlergiasEnum {
+ SALICILATOS,
+ PIRAZOLONAS,
+ PENISILINA,
+ OTROS
+}
+
+enum IntoleranciasEnum {
+ GLUTEN,
+ LACTOSA,
+ OTROS
+}
+
+enum RegimenesEnum {
+ NO,
+ HIPOGLUCIDOS,
+ HIPOLIPIDOS,
+ HIPOSODICOS,
+ HIPERGLUCIDOS,
+ HIPERLIPIDOS
+}
+
+enum BebidasEnum {
+ NO,
+ SISIEMPRE,
+ SIAVECES
+}
+
+enum EjerciciosEnum {
+ NO,
+ UNDIA,
+ TRESDIAS,
+ TODOSLOSDIAS
+}
+
+//ENTIDADES
+entity CodigoPostal {
+	codigo String,
+    nombreCiudad String
+}
+
+entity Provincia{
+	nombreProvincia String
+}
+
+entity ObraSocial{
+	codigoObraSocial String,
+    nombreObraSocial String
+}
+
+entity Medico{
+	codigoMedico String required,
+    nombreMedico String required,
+    direccionMedico String,
+    telefonoMedico String,
+    emailMedico String
+}
+
+entity Especialidad{
+	codigoEspecilidad String required,
+	nombreEspecialidad String required
+}
+
+entity Paciente {
+	nombrePaciente String required,
+    apellidoPaciente String required,
+    documentoPaciente String required,
+    direccionPaciente String,
+    telefonoPaciente String,
+    emailPaciente String required
+}
+
+entity EnfermedadValue{
+	enfermedad EnfermedadesEnum required
+}
+
+entity AlergiaValue{
+	valor AlergiasEnum required
+}
+
+entity IntoleranciaValue{
+	valor IntoleranciasEnum required
+}
+
+entity RegimenValue{
+	valor RegimenesEnum required
+}
+
+entity BebidaValue{
+	valor BebidasEnum required
+}
+
+entity EjercicioValue{
+	valor EjerciciosEnum required
+}
+
+entity AntecedentesPersonales{
+    tabaco Boolean,
+    tecafe Boolean
+}
+
+entity AntecedentesFamiliares{
+	
+	vivoAF Boolean,
+    causaMuerteAF String
+}
+
+entity Consulta {
+	fechaConsulta LocalDate,
+    observacionesConsulta String    
+}
+
+entity Ficha{
+	fechaIngreso LocalDate
+}
+
+//El campo OSocial aparecerá como una lista en Paciente
+relationship OneToOne {
+	Paciente{pacienteObraSocial} to ObraSocial    
+}
+
+relationship OneToMany{
+	Provincia{codigopostal} to CodigoPostal{provincia(nombreProvincia)},
+    Medico{ficha} to Ficha{medico(nombreMedico)}
+}
+
+
+relationship ManyToMany{
+	Medico{obrasocial(medicoObraSocial)} to ObraSocial{medico(nombreMedico)},
+	Medico{especialidad(codigoEspecialidad)} to Especialidad{medico(nombreMedico)},
+    AntecedentesPersonales{enfermedades(valor)} to EnfermedadValue,
+    AntecedentesPersonales{alergias(valor)} to AlergiaValue,
+    AntecedentesPersonales{intolerancias(valor)} to IntoleranciaValue,
+    AntecedentesPersonales{regimenes(valor)} to RegimenValue,
+    AntecedentesPersonales{bebidas(valor)} to BebidaValue,
+    AntecedentesPersonales{ejercicios(valor)} to EjercicioValue
+}
+
+// Set pagination options
+//paginate CodigoPostal, ObraSocial with infinite-scroll
+paginate CodigoPostal, Paciente, Especialidad, Medico, ObraSocial with pagination
+
+dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl
+// Set an angular suffix
+//angularSuffix * with cpsj_ang
