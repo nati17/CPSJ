@@ -30,14 +30,14 @@ spring:
             enabled: false # we use Webpack dev server + BrowserSync for livereload
     jackson:
         serialization.indent_output: true  
-    datasource:
+    datasource: #db4free.net = 85.10.205.173
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/app_CPSJ?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-        #url: jdbc:mysql://db4free.net:33066/app_cpsj?useUnicode=true&characterEncoding=utf8&useSSL=false
-        #username: rootdb4
-        #password: 1q2w3e4r
-        username: root
-        password: 1q2w
+        #url: jdbc:mysql://localhost:3306/app_CPSJ?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://85.10.205.173/app_cpsj?useUnicode=true&characterEncoding=utf8&useSSL=false 
+        username: rootdb4
+        password: 1q2w3e4r
+        #username: root
+        #password: 1q2w
         hikari:
             data-source-properties:
                 cachePrepStmts: true
