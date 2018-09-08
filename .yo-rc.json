@@ -1,38 +1,38 @@
 {
-    "generator-jhipster": {
-        "promptValues": {
-            "packageName": "com.cpsj",
-            "nativeLanguage": "es"
-        },
-        "jhipsterVersion": "5.1.0",
-        "applicationType": "monolith",
-        "baseName": "CPSJ",
-        "packageName": "com.cpsj",
-        "packageFolder": "com/cpsj",
-        "serverPort": "8080",
-        "authenticationType": "session",
-        "cacheProvider": "no",
-        "websocket": false,
-        "databaseType": "sql",
-        "devDatabaseType": "mysql",
-        "prodDatabaseType": "mysql",
-        "searchEngine": false,
-        "messageBroker": false,
-        "serviceDiscoveryType": false,
-        "buildTool": "maven",
-        "enableSwaggerCodegen": false,
-        "rememberMeKey": "ff78e2c1046e523213c29d8caa35705a781b13ac",
-        "clientFramework": "angularX",
-        "useSass": false,
-        "clientPackageManager": "yarn",
-        "testFrameworks": [],
-        "jhiPrefix": "jhi",
-        "enableTranslation": true,
-        "nativeLanguage": "es",
-        "languages": [
-            "es",
-            "en"
-        ],
-        "herokuDeployType": "git"
-    }
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cpsj",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "5.1.0",
+    "applicationType": "monolith",
+    "baseName": "CPSJ",
+    "packageName": "com.cpsj",
+    "packageFolder": "com/cpsj",
+    "serverPort": "8080",
+    "authenticationType": "session",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "rememberMeKey": "ff78e2c1046e523213c29d8caa35705a781b13ac",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "yarn",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": [
+      "es",
+      "en"
+    ],
+    "herokuDeployType": "git"
+  }
 }
