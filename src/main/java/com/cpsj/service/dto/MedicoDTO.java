@@ -1,9 +1,11 @@
 package com.cpsj.service.dto;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+
 
 /**
  * A DTO for the Medico entity.

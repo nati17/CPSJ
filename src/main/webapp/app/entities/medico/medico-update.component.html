@@ -6,58 +6,51 @@
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!medico.id">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        [(ngModel)]="medico.id" readonly />
+                    <input type="text" class="form-control" id="id" name="id" [(ngModel)]="medico.id" readonly />
+                </div>
+                <div class="form-group">
+                    <img [src]='imagenUrl' style='width: 250px; height: 200px'>
+                    <input type='file' #Image accept='image/*' (change)='handleFileInput($event.target.files)' [readOnly]="!medico.id">
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.codigoMedico" for="field_codigoMedico">Codigo Medico</label>
-                    <input type="text" class="form-control" name="codigoMedico" id="field_codigoMedico"
-                        [(ngModel)]="medico.codigoMedico" />
+                    <input type="text" class="form-control" name="codigoMedico" id="field_codigoMedico" [(ngModel)]="medico.codigoMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.nombreMedico" for="field_nombreMedico">Nombre Medico</label>
-                    <input type="text" class="form-control" name="nombreMedico" id="field_nombreMedico"
-                        [(ngModel)]="medico.nombreMedico" />
+                    <input type="text" class="form-control" name="nombreMedico" id="field_nombreMedico" [(ngModel)]="medico.nombreMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.apellidoMedico" for="field_apellidoMedico">Apellido Medico</label>
-                    <input type="text" class="form-control" name="apellidoMedico" id="field_apellidoMedico"
-                        [(ngModel)]="medico.apellidoMedico" />
+                    <input type="text" class="form-control" name="apellidoMedico" id="field_apellidoMedico" [(ngModel)]="medico.apellidoMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.direccionMedico" for="field_direccionMedico">Direccion Medico</label>
-                    <input type="text" class="form-control" name="direccionMedico" id="field_direccionMedico"
-                        [(ngModel)]="medico.direccionMedico" />
+                    <input type="text" class="form-control" name="direccionMedico" id="field_direccionMedico" [(ngModel)]="medico.direccionMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.telefonoMedico" for="field_telefonoMedico">Telefono Medico</label>
-                    <input type="text" class="form-control" name="telefonoMedico" id="field_telefonoMedico"
-                        [(ngModel)]="medico.telefonoMedico" />
+                    <input type="text" class="form-control" name="telefonoMedico" id="field_telefonoMedico" [(ngModel)]="medico.telefonoMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.emailMedico" for="field_emailMedico">Email Medico</label>
-                    <input type="text" class="form-control" name="emailMedico" id="field_emailMedico"
-                        [(ngModel)]="medico.emailMedico" />
+                    <input type="text" class="form-control" name="emailMedico" id="field_emailMedico" [(ngModel)]="medico.emailMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.matriculaMedico" for="field_matriculaMedico">Matricula Medico</label>
-                    <input type="text" class="form-control" name="matriculaMedico" id="field_matriculaMedico"
-                        [(ngModel)]="medico.matriculaMedico" />
+                    <input type="text" class="form-control" name="matriculaMedico" id="field_matriculaMedico" [(ngModel)]="medico.matriculaMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.horarioIMedico" for="field_horarioIMedico">Horario I Medico</label>
-                    <input type="text" class="form-control" name="horarioIMedico" id="field_horarioIMedico"
-                        [(ngModel)]="medico.horarioIMedico" />
+                    <input type="text" class="form-control" name="horarioIMedico" id="field_horarioIMedico" [(ngModel)]="medico.horarioIMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.horarioEMedico" for="field_horarioEMedico">Horario E Medico</label>
-                    <input type="text" class="form-control" name="horarioEMedico" id="field_horarioEMedico"
-                        [(ngModel)]="medico.horarioEMedico" />
+                    <input type="text" class="form-control" name="horarioEMedico" id="field_horarioEMedico" [(ngModel)]="medico.horarioEMedico" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cpsjApp.medico.porcentaje" for="field_porcentaje">Porcentaje</label>
-                    <input type="text" class="form-control" name="porcentaje" id="field_porcentaje"
-                        [(ngModel)]="medico.porcentaje" />
+                    <input type="text" class="form-control" name="porcentaje" id="field_porcentaje" [(ngModel)]="medico.porcentaje" />
                 </div>
 
                 <div class="form-group">
@@ -80,7 +73,7 @@
                 </div>
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">

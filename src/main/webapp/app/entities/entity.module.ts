@@ -33,6 +33,7 @@ import { CpsjObservacionModule } from './observacion/observacion.module';
 import { CpsjConsPractObservacionModule } from './cons-pract-observacion/cons-pract-observacion.module';
 import { CpsjDigitalizacionModule } from './digitalizacion/digitalizacion.module';
 import { CpsjDiasModule } from './dias/dias.module';
+import { CpsjStaffModule } from './staff/staff.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -71,6 +72,7 @@ import { CpsjDiasModule } from './dias/dias.module';
         CpsjConsPractObservacionModule,
         CpsjDigitalizacionModule,
         CpsjDiasModule,
+        CpsjStaffModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

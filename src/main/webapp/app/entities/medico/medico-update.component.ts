@@ -20,6 +20,8 @@ import { DiasService } from 'app/entities/dias';
 export class MedicoUpdateComponent implements OnInit {
     private _medico: IMedico;
     isSaving: boolean;
+    imagenUrl: string = '/content/images/default_doc.png';
+    fileToUpload: File = null;
 
     obrasocials: IObraSocial[];
 
@@ -67,6 +69,7 @@ export class MedicoUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.medico.imagenMedico = this.fileToUpload;
         if (this.medico.id !== undefined) {
             this.subscribeToSaveResponse(this.medicoService.update(this.medico));
         } else {
@@ -119,5 +122,16 @@ export class MedicoUpdateComponent implements OnInit {
 
     set medico(medico: IMedico) {
         this._medico = medico;
+    }
+
+    handleFileInput(file: FileList) {
+        this.fileToUpload = file.item(0);
+
+        // Vista previa de imagen a cargar
+        let reader = new FileReader();
+        reader.onload = (event: any) => {
+            this.imagenUrl = event.target.result;
+        };
+        reader.readAsDataURL(this.fileToUpload);
     }
 }

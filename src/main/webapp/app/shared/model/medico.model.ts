@@ -19,6 +19,7 @@ export interface IMedico {
     obrasocials?: IObraSocial[];
     especialidads?: IEspecialidad[];
     dias?: IDias[];
+    imagenMedico?: File;
 }
 
 export class Medico implements IMedico {
@@ -37,6 +38,7 @@ export class Medico implements IMedico {
         public fichas?: IFicha[],
         public obrasocials?: IObraSocial[],
         public especialidads?: IEspecialidad[],
-        public dias?: IDias[]
+        public dias?: IDias[],
+        public imagenMedico?: File
     ) {}
 }
